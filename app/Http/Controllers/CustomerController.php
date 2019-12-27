@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Entitie;
+use App\Membership;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -14,7 +16,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::with('membership')->get();
+        // return $customers;
         return view('receptionist/customer.index', compact('customers'));
     }
 
@@ -23,9 +26,21 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( $entitie_id= null, $membership_id=null)
     {
-        return view('receptionist/customer/create');
+
+        $entities=null;
+        if(!$entitie_id){
+            $entities=Entitie::all();
+        }
+        
+
+         $memberships=null;
+         if(!$membership_id){
+            $memberships=Membership::all();
+         }
+         return view('receptionist/customer/create',['entitie_id'=>$entitie_id, 'entities'=>$entities, 'membership_id'=>$membership_id,'memberships'=>$memberships]);
+         // return view('receptionist/customer/create', ['membership_id'=>$membership_id,'memberships'=>$memberships]);
     }
 
     /**

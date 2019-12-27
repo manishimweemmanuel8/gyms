@@ -10,9 +10,10 @@
         <th>last name</th>
         <th>phone</th>
         <th>email</th>
-        <th>entity id</th>
         <th>date of birth</th>
         <th>entity responsibility</th>
+        <th>entity name</th>
+        
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -25,9 +26,11 @@
         <td>{{$customer['lastName']}}</td>
         <td>{{$customer['phone']}}</td>
         <td>{{$customer['email']}}</td>
-        <td>{{$customer['entitie_id']}}</td>
         <td>{{$customer['dob']}}</td>
         <td>{{$customer['entity_representative']}}</td>
+        <td>{{$customer->entitie->name}}</td>
+
+
         <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
       
       <td>
@@ -39,6 +42,7 @@
           </form>
         </td>
       </tr>
+
       @endforeach
     </tbody>
   </table>

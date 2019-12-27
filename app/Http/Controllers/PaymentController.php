@@ -2,100 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Payment;
 use Illuminate\Http\Request;
+use DB;
+use App\Customer;
+use App\Receptionist;
+use App\Payment;
 
 class PaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+     public function index()
     {
-        $payments = Payment::all();
-        return view('receptionist/payment.index', compact('payments'));
+        $payments = Payment::with('categorie')->get();
+        // return $payments;
+         return view('receptionist/payment.index', compact('payments'));
     }
+    
+     public function create( $customer_id=null,$receptionist_id=null)
+        {
+            $customers=null;
+        if(!$customer_id){
+            $customers=Customer::all();
+        }
+        $receptionists= null;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('receptionist/payment/create');
-    }
+        if(!$receptionist_id){
+            $receptionists = Receptionist::all();
+        }
+            $categories = DB::table("categories")->pluck("name","id");
+            return view('receptionist/payment.create',compact('categories'),[ 'customer_id'=>$customer_id, 'customers'=>$customers,'receptionist_id'=>$receptionist_id, 'receptionists'=>$receptionists]);
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+        public function getSportList(Request $request)
+        {
+            $sports = DB::table("sports")
+            ->where("category_id",$request->category_id)
+            ->pluck("name","id");
+            return response()->json($sports);
+        }
+
+        public function getMembershipList(Request $request)
+        {
+            $memberships = DB::table("memberships")
+            ->where("sport_id",$request->sport_id)
+            ->pluck("name","id");
+            return response()->json($memberships);
+        }
+
+        public function store(Request $request)
     {
+       
+
         $payment = new Payment([
             'customer_id' => $request->get('customer_id'),
             'receptionist_id' => $request->get('receptionist_id'),
-            'amount' => $request->get('amount'),
+            'category_id' => $request->get('category_id'),
+            'sport_id' => $request->get('sport_id'),
+            'membership_id' => $request->get('membership_id'),
             
           ]);
   
           $payment->save();
           return redirect('/receptionist/payment')->with('succes', 'Data has been successfully save!');; 
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Payment $payment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $payment = Payment::find($id);
-        return view('receptionist.payment.edit', compact('payment','id'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $payment = Payment::find($id);
-        $payment->customer_id = $request->get('customer_id');
-        $payment->receptionist_id = $request->get('receptionist_id');
-        $payment->amount = $request->get('amount');
-        $payment->update();
-        return redirect('/receptionist/payment');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Payment  $payment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        payment::destroy($id);
-        return redirect('/receptionist/payment');
-    }
+    
 }

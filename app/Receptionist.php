@@ -6,6 +6,7 @@ use App\Notifications\Receptionist\ReceptionistResetPassword;
 use App\Notifications\Receptionist\ReceptionistVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Payment;
 
 class Receptionist extends Authenticatable
 {
@@ -57,6 +58,10 @@ class Receptionist extends Authenticatable
     public function sendEmailVerificationNotification()
     {
         $this->notify(new ReceptionistVerifyEmail);
+    }
+
+    public function payment(){
+        return $this->hasOne(Payment::class);
     }
 
 }

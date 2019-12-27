@@ -8,7 +8,10 @@
         <th>ID</th>
         <th>Customer ID</th>
         <th>Receptionist ID</th>
-        <th>Amount</th>
+        <th>Category</th>
+        <th>sport</th>
+        <th>membership</th>
+        <th>price</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -17,9 +20,12 @@
       @foreach($payments as $payment)
       <tr>
         <td>{{$payment['id']}}</td>
-        <td>{{$payment['customer_id']}}</td>
-        <td>{{$payment['receptionist_id']}}</td>
-        <td>{{$payment['amount']}}</td>
+        <td>{{$payment->customer->firstName}} {{$payment->customer->lastName}}</td>
+        <td>{{$payment->receptionist->name}}</td>
+        <td>{{$payment->category_id}}</td>
+        <td>{{$payment->sport_id}}</td>
+        <td>{{$payment->membership_id}}</td>
+        <td>{{$payment->price_id}}</td>
         <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>
       
       <td>
