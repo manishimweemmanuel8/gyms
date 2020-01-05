@@ -20,8 +20,11 @@ class PaymentController extends Controller
     {
         $payments = Payment::with('categorie')->get();
          return view('receptionist/payment.index', compact('payments'));
+         
  
     }
+
+ 
     
      public function create( $customer_id=null,$receptionist_id=null, $membership_id=null)
         {
