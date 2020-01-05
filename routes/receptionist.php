@@ -2,6 +2,8 @@
 
 Route::group(['namespace' => 'Receptionist'], function() {
     Route::get('/', 'HomeController@index')->name('receptionist.dashboard');
+    // Route::resource('/customer', 'CustomerController');
+    // Route::resource('/payment', 'PaymentController');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('receptionist.login');

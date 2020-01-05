@@ -11,7 +11,7 @@ use App\Payment;
 
 class Attendance extends Model
 {
-	protected $fillable = ['id','customer_id','controller_id','sport_id','membership_id','category_id'];   
+	protected $fillable = ['id','customer_id','controller_id','sport_id','membership_id','category_id','payment_id'];   
     public function sport(){
     	return $this->belongsTo(Sport::class);
     }

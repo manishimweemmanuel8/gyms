@@ -19,6 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('lastName',50);
             $table->string('phone',13)->unique();
             $table->string('email',191)->unique();
+            $table->string('gender');
             $table->integer('entitie_id');
             $table->date('dob')->nullable();
             $table->boolean('entity_representative')->default(false);

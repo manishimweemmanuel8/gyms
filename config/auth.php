@@ -41,6 +41,8 @@ return [
             'provider' => 'receptionists',
         ],
 
+        
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -76,6 +78,8 @@ return [
             'model'  => App\Receptionist::class,
         ],
 
+        
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -108,6 +112,8 @@ return [
             'table'    => 'password_resets',
             'expire'   => 60,
         ],
+
+        
 
         'users' => [
             'provider' => 'users',

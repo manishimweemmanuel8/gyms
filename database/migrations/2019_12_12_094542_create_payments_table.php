@@ -20,7 +20,8 @@ class CreatePaymentsTable extends Migration
             $table->integer('category_id');
             $table->integer('sport_id');
             $table->integer('membership_id');
-            $table->integer('price_id');
+            $table->integer('duration');
+            $table->date('expiry_date');
             $table->timestamps();
             $table->softDeletes();
         });

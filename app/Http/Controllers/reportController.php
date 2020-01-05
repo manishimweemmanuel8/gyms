@@ -361,6 +361,72 @@ class reportController extends Controller
             ->where("category_id",3)->value("amount");
         }
 
+        //TICKETS
+        public static function gymTicket(){
+            $todayDate = date("Y-m-d");
+            return DB::table("attendances")
+                 ->where("sport_id",2)
+                ->where("membership_id",31)
+                ->where("created_at", $todayDate)
+                ->where("category_id",3)->count();
+            }
+
+        public static function gymTicketAmount(){
+                return DB::table("prices")
+                    ->where("sport_id",2)
+                    ->where("membership_id",31)
+                    ->where("category_id",3)->value("amount");
+                }
+
+
+                public static function massageTicket(){
+                    $todayDate = date("Y-m-d");
+                    return DB::table("attendances")
+                         ->where("sport_id",4)
+                        ->where("membership_id",33)
+                        ->where("created_at", $todayDate)
+                        ->where("category_id",3)->count();
+                    }
+        
+                    public static function massageTicketAmount(){
+                        return DB::table("prices")
+                            ->where("sport_id",4)
+                            ->where("membership_id",33)
+                            ->where("category_id",3)->value("amount");
+                        }
+
+                        public static function poolTicket(){
+                            $todayDate = date("Y-m-d");
+                            return DB::table("attendances")
+                                 ->where("sport_id",1)
+                                ->where("membership_id",30)
+                                ->where("created_at", $todayDate)
+                                ->where("category_id",3)->count();
+                            }
+                
+                            public static function poolTicketAmount(){
+                                return DB::table("prices")
+                                    ->where("sport_id",1)
+                                    ->where("membership_id",30)
+                                    ->where("category_id",3)->value("amount");
+                                }
+
+                                public static function saunaTicket(){
+                                    $todayDate = date("Y-m-d");
+                                    return DB::table("attendances")
+                                         ->where("sport_id",3)
+                                        ->where("membership_id",32)
+                                        ->where("created_at", $todayDate)
+                                        ->where("category_id",3)->count();
+                                    }
+                        
+                                    public static function saunaTicketAmount(){
+                                        return DB::table("prices")
+                                            ->where("sport_id",3)
+                                            ->where("membership_id",32)
+                                            ->where("category_id",3)->value("amount");
+                                        }
+
 
 
 

@@ -11,6 +11,7 @@
         <th>sport ID</th>
         <th>Membership</th>
         <th>Category</th>
+        <th>Created id</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -19,11 +20,12 @@
       @foreach($attendances as $attendance)
       <tr>
         <td>{{$attendance->id}}</td>
-        <td>{{$attendance->customer_id}}</td>
-        <td>{{$attendance->controller_id}}</td>
-        <td>{{$attendance->sport_id}}</td>
-        <td>{{$attendance->membership_id}}</td>
-        <td>{{$attendance->category_id}}</td>
+        <td>{{$attendance->payment->customer->firstName}} {{$attendance->payment->customer->lastName}}</td>
+        <td>{{$attendance->controller->name}}</td>
+        <td>{{$attendance->payment->sport->name}}</td>
+        <td>{{$attendance->payment->membership->name}}</td>
+        <td>{{$attendance->payment->categorie->name}}</td>
+        <td>{{$attendance->created_at}}</td>
         <td><a href="{{action('AttendanceController@edit', $attendance['id'])}}" class="btn btn-warning">Edit</a></td>
       
       <td>

@@ -11,7 +11,7 @@ use App\Membership;
 
 class Customer extends Model
 {
-    protected $fillable = ['id','firstName','lastName','phone','email','entitie_id','membership_id','dob','entity_representative'];
+    protected $fillable = ['id','firstName','lastName','gender','phone','email','entitie_id','dob','entity_representative'];
     use SoftDeletes;
 
     // public function entity(){
@@ -23,7 +23,7 @@ class Customer extends Model
     
     public function payment(){
     	return $this->hasOne(Payment::class);
-    }
+    } 
 
     public function membership(){
         return $this->belongsTo(Membership::class);

@@ -17,7 +17,6 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::with('membership')->get();
-        // return $customers;
         return view('receptionist/customer.index', compact('customers'));
     }
 
@@ -54,6 +53,7 @@ class CustomerController extends Controller
         $customer = new Customer([
             'firstName' => $request->get('firstName'),
             'lastName' => $request->get('lastName'),
+            'gender' =>$request->get('gender'),
             'phone' => $request->get('phone'),
             'email' => $request->get('email'),
             'entitie_id' => $request->get('entitie_id'),
@@ -82,10 +82,14 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$entitie_id=null)
     {
+         $entities=null;
+        if(!$entitie_id){
+            $entities=Entitie::all();
+        }
         $customer = Customer::find($id);
-        return view('receptionist.customer.edit', compact('customer','id'));
+        return view('receptionist.customer.edit', compact('customer','id'),['entitie_id'=>$entitie_id,'entities'=>$entities]);
     }
 
     /**
@@ -100,11 +104,12 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         $customer->firstName = $request->get('firstName');
         $customer->lastName = $request->get('lastName');
+        $customer->gender= $request->get('gender');
         $customer->phone = $request->get('phone');
         $customer->email = $request->get('email');
-        // $customer->entitie_id = $request->get('entitie_id');
+        $customer->entitie_id = $request->get('entitie_id');
         $customer->dob = $request->get('dob');
-        // $customer->entity_representative=$request->get('entity_representative');
+        //$customer->entity_representative=$request->get('entity_representative');
         $customer->update();
         return redirect('/receptionist/customer');
     }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Price;
 use App\Customer;
 use App\Sport;
+use App\Payment;
 
 class Membership extends Model
 {
@@ -22,5 +23,8 @@ class Membership extends Model
     public function sport(){
     	return $this->belongsTo(Sport::class);
     }
+    public function payment(){
+    	return $this->hasOne(Payment::class);
+    } 
 
 }

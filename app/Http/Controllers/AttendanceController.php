@@ -42,15 +42,20 @@ class AttendanceController extends Controller
 
         $customers=null;
         if(!$customer_id){
-            $customers=Customer::all();
+           $todayDate = date("Y-m-d");
+            $customers=DB::table("customers")
+           ;
         }
 
         $payments=null;
         if(!$payment_id){
-            $payments=Payment::all();
+           $todayDate = date("Y-m-d");
+            $payments=DB::table("payments")
+            ->where('expiry_date','>=',$todayDate)
+            ->where('duration', '>', 0)
+            ->get();
         }
 
-       
 
         return view('controller/attendance/create',['customer_id'=>$customer_id, 'customers'=>$customers,'controller_id'=>$controller_id,'controllers'=>$controllers,'payment_id'=>$payment_id, 'payments'=>$payments]);
 
@@ -67,16 +72,36 @@ class AttendanceController extends Controller
     {
         //
         $attendance = new Attendance([
-            'customer_id' => $request->get('customer_id'),
+            'payment_id' => $request->get('payment_id'),
             'controller_id' => $request->get('controller_id'),
-            'sport_id' => $request->get('sport_id'),
-            'membership_id' => $request->get('membership_id'),
-            'category_id' => $request->get('category_id'),
+            'sport_id' =>DB::table("payments")
+            ->where("id", $request->get('payment_id'))->value("sport_id"),
+            'membership_id' =>DB::table("payments")
+            ->where("id", $request->get('payment_id'))->value("membership_id"),
+            'category_id' =>DB::table("payments")
+            ->where("id", $request->get('payment_id'))->value("categorie_id"),
+            'customer_id'=>DB::table("payments")
+            ->where("id", $request->get('payment_id'))->value("customer_id"),
+            
           ]);
-  
-          $attendance->save();
-          return redirect('/controller/attendance')->with('succes', 'Data has been successfully save!');; 
-    }
+
+        // if(!DB::table("attendances")
+        //   ->where("payment_id",$request->get('payment_id') ){
+            $todayDate = date("Y-m-d");
+        $result=DB::table("attendances")
+        ->where("payment_id",$request->get('payment_id'))
+        ->where("created_at",$todayDate)
+        ->value("payment_id");
+        if ($result!=$request->get('payment_id')){
+            $attendance->save();
+            DB::table('payments')->where('id',$request->get('payment_id'))
+            ->decrement('duration');
+            return redirect('/controller/attendance')->with('succes', 'Data has been successfully save!');; 
+     }
+     else{
+         return "you attend";
+     }
+}
 
     
 
