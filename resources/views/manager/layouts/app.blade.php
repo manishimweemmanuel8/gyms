@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -9,19 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} :: Receptionist</title>
+    <title>{{ config('app.name', 'Laravel') }} :: Manager</title>
 
     <!-- Scripts -->
-    <script src="http://www.codermen.com/js/jquery.js"></script>
-
-	<!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+	<script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  -->
-
-
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,18 +25,8 @@
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'GYMS') }}
+                {{ config('app.name', 'Laravel') }}
             </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Customer
-            </a>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                payment
-            </a>
-              <a class="navbar-brand" href="{{ url('/report/report') }}">
-                Report
-            </a>
-
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,27 +40,27 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @if (Auth::guard('receptionist')->guest())
+                    @if (Auth::guard('manager')->guest())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('receptionist.login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('manager.login') }}">{{ __('Login') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('receptionist.register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('manager.register') }}">{{ __('Register') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('receptionist')->user()->name }} <span class="caret"></span>
+                                {{ Auth::guard('manager')->user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('receptionist.logout') }}"
+                                <a class="dropdown-item" href="{{ route('manager.logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('receptionist.logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('manager.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>

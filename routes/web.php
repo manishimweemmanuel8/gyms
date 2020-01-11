@@ -22,6 +22,7 @@ Route::resource('/receptionist/customer', 'CustomerController');
 Route::resource('/receptionist/payment', 'PaymentController');
 Route::resource('/report/report', 'reportController');
 Route::resource('/controller/attendance', 'AttendanceController');
+//Route::resource('/controller/attendance', 'AttendanceController@delete');
 Route::resource('/manager/entity', 'EntityPaymentController');
 Route::get('dropdownlist','PaymentController@index');
 Route::get('get-sport-list','PaymentController@getSportList');

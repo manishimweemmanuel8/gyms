@@ -1,7 +1,7 @@
-@extends('receptionist.layouts.app')
+@extends('layouts.master-client')
 @section('content')
 <div class="container">
-  <form method="post" action="{{action('PaymentController@update', $id)}}">
+    <form class="well form-horizontal" id="contact_form" method="post" action="{{action('PaymentController@update', $id)}}">
   {{csrf_field()}}
     <div class="form-group row">
        <input name="_method" type="hidden" value="PATCH">

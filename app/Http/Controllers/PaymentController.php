@@ -18,11 +18,12 @@ class PaymentController extends Controller
 {
      public function index()
     {
-        $payments = Payment::with('categorie')->get();
+        $payments = Payment::with('customer')->get();
          return view('receptionist/payment.index', compact('payments'));
-         
+
  
     }
+
 
  
     
@@ -37,11 +38,6 @@ class PaymentController extends Controller
             $receptionists = Receptionist::all();
         }
 
-        // $memberships= null;
-        // if(!$membership_id){
-        //     $memberships = Membership::all()
-        //     ->where("id",);
-        // }
 
             $categories = DB::table("categories")->pluck("name","id");
             return view('receptionist/payment.create',compact('categories'),[ 'customer_id'=>$customer_id, 'customers'=>$customers,'receptionist_id'=>$receptionist_id, 'receptionists'=>$receptionists
@@ -65,13 +61,7 @@ class PaymentController extends Controller
             return response()->json($memberships);
         }
 
-        public function duration(){
-            // $memberships= null;
-        // if(!$membership_id){
-            $memberships = Membership::all()
-            ->where("id",$request->get('membership_id'));
-        
-        }
+
 
         public function store(Request $request)
     {
@@ -98,6 +88,33 @@ class PaymentController extends Controller
   
           $payment->save();
           return redirect('/receptionist/payment')->with('succes', 'Data has been successfully save!');; 
+    }
+
+    public function edit($id)
+    {
+
+        return view('receptionist.payment.edit');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $payment = Payment::find($id);
+        $payment->customer_id = $request->get('customer_id');
+        $payment->lastName = $request->get('lastName');
+        $customer->gender= $request->get('gender');
+        $customer->phone = $request->get('phone');
+        $customer->email = $request->get('email');
+        $customer->entitie_id = $request->get('entitie_id');
+        $customer->dob = $request->get('dob');
+        //$customer->entity_representative=$request->get('entity_representative');
+        $customer->update();
+        return redirect('/receptionist/payment');
+    }
+
+    public function destroy($id)
+    {
+        payment::destroy($id);
+        return redirect('/receptionist/payment');
     }
     
 }

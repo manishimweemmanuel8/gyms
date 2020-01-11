@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'manager' => [
+            'driver'   => 'session',
+            'provider' => 'managers',
+        ],
+
         'receptionist' => [
             'driver'   => 'session',
             'provider' => 'receptionists',
@@ -73,6 +78,11 @@ return [
     */
 
     'providers' => [
+        'managers' => [
+            'driver' => 'eloquent',
+            'model'  => App\Manager::class,
+        ],
+
         'receptionists' => [
             'driver' => 'eloquent',
             'model'  => App\Receptionist::class,
@@ -107,6 +117,12 @@ return [
     */
 
     'passwords' => [
+        'managers' => [
+            'provider' => 'managers',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'receptionists' => [
             'provider' => 'receptionists',
             'table'    => 'password_resets',

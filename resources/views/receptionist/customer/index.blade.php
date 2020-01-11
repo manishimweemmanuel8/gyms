@@ -1,4 +1,4 @@
-@extends('receptionist.layouts.app')
+@extends('layouts.master-client')
 @section('content')
   <div class="container">
       <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>

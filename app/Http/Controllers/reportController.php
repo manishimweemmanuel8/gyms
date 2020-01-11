@@ -7,425 +7,389 @@ use DB;
 
 class reportController extends Controller
 {
-	
-    public function index()
-    {
-        // $payments = Payment::all();
-        return view('report.report');
+
+
+    public function store(Request $request){
+        $from = $request->get('from');
+        $to = $request->get('to');
+        $gymSessionAdult = DB::table("attendances")
+            ->where("sport_id", 2)
+            ->where("membership_id", 5)
+            ->where("created_at", [$from, $to])
+            ->where("category_id", 3)->count();
+        $gymSessionAdultAmount = DB::table("prices")
+            ->where("sport_id", 2)
+            ->where("membership_id", 5)
+            ->where("category_id", 3)->value("amount");
+        $cashGymSessionAdult = $gymSessionAdultAmount * $gymSessionAdult+10;
+
+        return view('report.report', compact('gymSessionAdult', 'gymSessionAdultAmount', 'cashGymSessionAdult')
+        );
+
     }
 
-    //GYM 
-    public static function gymSessionAdult(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",2)
-            ->where("membership_id",5)
-            ->where("created_at", $todayDate)
-            ->where("category_id",3)->count();
-        }
-        public static function gymStudent(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",6)
+    public function index(Request $request)
+    {
+        //GYM
+        //gym adult
+            $todayDate = date("Y-m-d");
+            $gymSessionAdult = DB::table("attendances")
+                ->where("sport_id", 2)
+                ->where("membership_id", 5)
+                ->where("created_at", $todayDate)
+                ->where("category_id", 3)->count();
+            $gymSessionAdultAmount = DB::table("prices")
+                ->where("sport_id", 2)
+                ->where("membership_id", 5)
+                ->where("category_id", 3)->value("amount");
+            $cashGymSessionAdult = $gymSessionAdultAmount * $gymSessionAdult+2;
+
+           //gym student
+        $gymStudent=DB::table("attendances")
+            ->where("sport_id",6)
             ->where("membership_id",21)
             ->where("created_at", $todayDate)
             ->where("category_id",2)->count();
-        }
 
-        public static function gymMonth(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",2)
-            ->where("membership_id",6)
-            ->where("created_at", $todayDate)
-            ->where("category_id",3)->count();
-        }
-
-      
-
-        public static function gymYear(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",2)
-            ->where("membership_id",7)
-            ->where("created_at", $todayDate)
-            ->where("category_id",3)->count();
-        }
-
-        //GYM AMOUNT
-        public static function gymSessionAdultAmount(){
-    	return DB::table("prices")
-            ->where("sport_id",2)
-            ->where("membership_id",5)
-            ->where("category_id",3)->value("amount");
-        }
-
-        public static function gymStudentAmount(){
-    	return DB::table("prices")
+        $gymStudentAmount=DB::table("prices")
             ->where("sport_id",6)
             ->where("membership_id",21)
             ->where("category_id",2)->value("amount");
-        }
 
-        public static function gymMonthAmount(){
-    	return DB::table("prices")
+        $cashGymStudent=$gymStudent*$gymStudentAmount;
+        //gym Month
+        $gymMonth=DB::table("attendances")
+            ->where("sport_id",2)
+            ->where("membership_id",6)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $gymMonthAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",6)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymMonth=$gymMonth*$gymMonthAmount;
 
-        public static function gymYearAmount(){
-    	return DB::table("prices")
+        //GYM YEAR
+
+        $gymYear= DB::table("attendances")
+            ->where("sport_id",2)
+            ->where("membership_id",7)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $gymYearAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",7)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymYear=$gymYear*$gymYearAmount;
+
+        //GYM TICKETS
+
+        $gymTicket=DB::table("attendances")
+            ->where("sport_id",2)
+            ->where("membership_id",31)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $gymTicketAmount=DB::table("prices")
+            ->where("sport_id",2)
+            ->where("membership_id",31)
+            ->where("category_id",3)->value("amount");
+        $cashGymTickets=$gymTicket+$gymTicketAmount;
+
+        //TOTAL SALES
+
+        $gymTotalSales=$cashGymSessionAdult+$cashGymStudent+$cashGymMonth+$cashGymYear+$cashGymTickets;
+
+        //GYM ATTENDANCE
+
+        $gymAttandanceSession=$gymSessionAdult+$gymStudent;
+        $gymAttandanceSubscribers=$gymMonth+$gymYear;
+        $gymTotalService=$gymAttandanceSubscribers+$gymAttandanceSession;
 
         //MASSAGE
-          public static function massageSessionAdult(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",4)
+        //session
+
+        $massageSessionAdult=DB::table("attendances")
+            ->where("sport_id",4)
             ->where("membership_id",13)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-
-        //MASSAGE AMOUNT
-
-        public static function massageSessionAdultAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",4)
+        $massageSessionAdultAmount=DB::table("prices")
+            ->where("sport_id",4)
             ->where("membership_id",13)
             ->where("category_id",3)->value("amount");
-        }
+        $cashMassageSession=$massageSessionAdultAmount*$massageSessionAdult;
 
-        //SWIMMING POOL
+        //tickets
+        $massageTicket=DB::table("attendances")
+            ->where("sport_id",4)
+            ->where("membership_id",33)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $massageTicketAmount= DB::table("prices")
+            ->where("sport_id",4)
+            ->where("membership_id",33)
+            ->where("category_id",3)->value("amount");
+        $cashMassageTicket=$massageTicketAmount+$massageTicket;
 
-        public static function poolSessionAdult(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",1)
+        $massageTotalSales=$cashMassageTicket+$cashMassageSession;
+        $massageTotalService=$massageTicket+$massageSessionAdult;
+
+
+        //POOL
+
+        //adult session
+        $poolSessionAdult=DB::table("attendances")
+            ->where("sport_id",1)
             ->where("membership_id",1)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function poolSessionAdultAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",1)
+
+        $poolSessionAdultAmount=DB::table("prices")
+            ->where("sport_id",1)
             ->where("membership_id",1)
             ->where("category_id",3)->value("amount");
-        }
 
+        $cashPoolSessionAdult=$poolSessionAdultAmount*$poolSessionAdult;
 
-        public static function poolStudent(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",7)
+        //student
+
+        $poolStudent=DB::table("attendances")
+            ->where("sport_id",7)
             ->where("membership_id",22)
             ->where("created_at", $todayDate)
             ->where("category_id",2)->count();
-        }
-        //AMOUNT
-        public static function poolStudentAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",7)
+        $poolStudentAmount=DB::table("prices")
+            ->where("sport_id",7)
             ->where("membership_id",22)
             ->where("category_id",2)->value("amount");
-        }
+        $cashPoolStudent=$poolStudent*$poolStudentAmount;
 
-
-        public static function poolSessionKid(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",5)
+        $poolSessionKid= DB::table("attendances")
+            ->where("sport_id",5)
             ->where("membership_id",17)
             ->where("created_at", $todayDate)
             ->where("category_id",1)->count();
-        }
-        //AMOUNT
-        public static function poolSessionKidAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",5)
+
+        $poolSessionKidAmount= DB::table("prices")
+            ->where("sport_id",5)
             ->where("membership_id",17)
             ->where("category_id",1)->value("amount");
-        }
+        $cashPoolSessionKid=$poolSessionKidAmount*$poolSessionKid;
 
-         public static function poolMonthAdult(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",1)
+        $poolMonthAdult=DB::table("attendances")
+            ->where("sport_id",1)
             ->where("membership_id",2)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function poolMonthAdultAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",1)
+        $poolMonthAdultAmount= DB::table("attendances")
+            ->where("sport_id",1)
             ->where("membership_id",2)
-            ->where("category_id",3)->value("amount");
-        }
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $cashPoolMonthAdult=$poolMonthAdultAmount*$poolMonthAdult;
 
-         public static function poolMonthKid(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",5)
+        $poolMonthKid=DB::table("attendances")
+            ->where("sport_id",5)
             ->where("membership_id",18)
             ->where("created_at", $todayDate)
             ->where("category_id",1)->count();
-        }
-        //AMOUNT
-        public static function poolMonthKidAmount(){
-    	return DB::table("prices")
-             ->where("sport_id",5)
+
+        $poolMonthKidAmount=DB::table("prices")
+            ->where("sport_id",5)
             ->where("membership_id",18)
             ->where("category_id",1)->value("amount");
-        }
+        $cashPoolMonthKid=$poolMonthKidAmount*$poolMonthKid;
 
-          public static function poolYear(){
-    	$todayDate = date("Y-m-d");
-    	return DB::table("attendances")
-             ->where("sport_id",1)
+        $poolYear=DB::table("attendances")
+            ->where("sport_id",1)
             ->where("membership_id",3)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function poolYearAmount(){
-    	return DB::table("prices")
+        $poolYearAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",3)
             ->where("category_id",3)->value("amount");
-        }
+        $cashPoolYear=$poolYearAmount*$poolYear;
 
-          public static function saunaSession(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $poolTicket=DB::table("attendances")
+            ->where("sport_id",1)
+            ->where("membership_id",30)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $poolTicketAmount=DB::table("prices")
+            ->where("sport_id",1)
+            ->where("membership_id",30)
+            ->where("category_id",3)->value("amount");
+        $cashPoolTicket=$poolTicket*$poolTicketAmount;
+
+        $poolTotalSales=$cashPoolTicket+$cashPoolYear+$cashPoolMonthKid+$cashPoolMonthAdult+$cashPoolSessionAdult+$cashPoolStudent;
+
+        //SUANA
+
+        $saunaSession=DB::table("attendances")
             ->where("sport_id",3)
             ->where("membership_id",9)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaSessionAmount(){
-        return DB::table("prices")
+        $saunaSessionAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",9)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaSession=$saunaSession*$saunaSessionAmount;
 
-          public static function saunaMonth(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaMonth=DB::table("attendances")
             ->where("sport_id",3)
             ->where("membership_id",10)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaMonthAmount(){
-        return DB::table("prices")
+        $saunaMonthAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",10)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaMonth=$saunaMonth*$saunaMonthAmount;
 
-        public static function saunaYear(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaYear=DB::table("attendances")
             ->where("sport_id",3)
             ->where("membership_id",11)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaYearAmount(){
-        return DB::table("prices")
+
+        $saunaYearAmount= DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",11)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaYear=$saunaYear*$saunaYearAmount;
 
-        public static function gymPoolSession(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaTicket= DB::table("attendances")
+            ->where("sport_id",3)
+            ->where("membership_id",32)
+            ->where("created_at", $todayDate)
+            ->where("category_id",3)->count();
+        $saunaTicketAmount=DB::table("prices")
+            ->where("sport_id",3)
+            ->where("membership_id",32)
+            ->where("category_id",3)->value("amount");
+        $cashSaunaTicket=$saunaTicket*$saunaTicketAmount;
+
+        $saunaTotalSales=$cashSaunaTicket+$cashSaunaYear+$cashSaunaMonth+$cashSaunaSession;
+
+        $saunaAttendanceSubscribers=$saunaMonth+$saunaYear;
+        $saunaTotalAttendance=$saunaYear+$saunaMonth+$saunaSession+$saunaTicket;
+
+        //GYM AND POOL
+
+        $gymPoolSession=DB::table("attendances")
             ->where("sport_id",8)
             ->where("membership_id",23)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function gymPoolSessionAmount(){
-        return DB::table("prices")
+        $gymPoolSessionAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",23)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymPoolSession=$gymPoolSession+$gymPoolSessionAmount;
 
-         public static function gymPoolMonth(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $gymPoolMonth=DB::table("attendances")
             ->where("sport_id",8)
             ->where("membership_id",24)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function gymPoolMonthAmount(){
-        return DB::table("prices")
+        $gymPoolMonthAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",24)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymPoolMonth=$gymPoolMonth*$gymPoolMonthAmount;
 
-         public static function gymSaunaSession(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $gymSaunaSession=DB::table("attendances")
             ->where("sport_id",9)
             ->where("membership_id",25)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function gymSaunaSessionAmount(){
-        return DB::table("prices")
+        $gymSaunaSessionAmount=DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",25)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymSaunaSession=$gymSaunaSession*$gymSaunaSessionAmount;
 
-         public static function gymSaunaMonth(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $gymSaunaMonth=DB::table("attendances")
             ->where("sport_id",9)
             ->where("membership_id",26)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function gymSaunaMonthAmount(){
-        return DB::table("prices")
+        $gymSaunaMonthAmount= DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",26)
             ->where("category_id",3)->value("amount");
-        }
+        $cashGymSaunaMonth=$gymSaunaSessionAmount*$gymSaunaMonth;
 
-         public static function saunaMassageSession(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaMassageSession=DB::table("attendances")
             ->where("sport_id",10)
             ->where("membership_id",27)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaMassageSessionAmount(){
-        return DB::table("prices")
+        $saunaMassageSessionAmount=DB::table("prices")
             ->where("sport_id",10)
             ->where("membership_id",27)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaMassageSession=$saunaMassageSession*$saunaMassageSessionAmount;
 
-        public static function saunaPoolSession(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaPoolSession=DB::table("attendances")
             ->where("sport_id",11)
             ->where("membership_id",28)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaPoolSessionAmount(){
-        return DB::table("prices")
+        $saunaPoolSessionAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",28)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaPoolSession=$saunaPoolSession*$saunaPoolSessionAmount;
 
-
-        public static function saunaPoolMonth(){
-        $todayDate = date("Y-m-d");
-        return DB::table("attendances")
+        $saunaPoolMonth=DB::table("attendances")
             ->where("sport_id",11)
             ->where("membership_id",29)
             ->where("created_at", $todayDate)
             ->where("category_id",3)->count();
-        }
-        //AMOUNT
-        public static function saunaPoolMonthAmount(){
-        return DB::table("prices")
+        $saunaPoolMonthAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",29)
             ->where("category_id",3)->value("amount");
-        }
+        $cashSaunaPoolMonth=$saunaPoolMonth*$saunaPoolMonthAmount;
 
-        //TICKETS
-        public static function gymTicket(){
-            $todayDate = date("Y-m-d");
-            return DB::table("attendances")
-                 ->where("sport_id",2)
-                ->where("membership_id",31)
-                ->where("created_at", $todayDate)
-                ->where("category_id",3)->count();
-            }
+        $combinationTotalSales=$cashSaunaPoolMonth+$cashSaunaPoolSession+$cashSaunaMassageSession+$cashGymSaunaMonth+$cashGymSaunaSession+$cashGymPoolMonth+$cashGymPoolSession;
 
-        public static function gymTicketAmount(){
-                return DB::table("prices")
-                    ->where("sport_id",2)
-                    ->where("membership_id",31)
-                    ->where("category_id",3)->value("amount");
-                }
+        $combinationAttendanceSession=$gymPoolSession+$gymSaunaSession+$saunaMassageSession+$saunaPoolSession;
+        $combinationAttendanceMonth=$gymPoolMonth+$gymSaunaMonth+$saunaPoolMonth;
+        $combinationAttendanceTotalService=$combinationAttendanceSession+$combinationAttendanceMonth;
+
+        $attendanceReportSession=$gymSessionAdult+$gymStudent+$massageSessionAdult+$poolSessionAdult+$poolSessionKid+$saunaSession+$gymPoolSession+$gymSaunaSession+$gymPoolSession
+            +$gymSaunaSession+$saunaMassageSession+$saunaPoolSession;
 
 
-                public static function massageTicket(){
-                    $todayDate = date("Y-m-d");
-                    return DB::table("attendances")
-                         ->where("sport_id",4)
-                        ->where("membership_id",33)
-                        ->where("created_at", $todayDate)
-                        ->where("category_id",3)->count();
-                    }
-        
-                    public static function massageTicketAmount(){
-                        return DB::table("prices")
-                            ->where("sport_id",4)
-                            ->where("membership_id",33)
-                            ->where("category_id",3)->value("amount");
-                        }
 
-                        public static function poolTicket(){
-                            $todayDate = date("Y-m-d");
-                            return DB::table("attendances")
-                                 ->where("sport_id",1)
-                                ->where("membership_id",30)
-                                ->where("created_at", $todayDate)
-                                ->where("category_id",3)->count();
-                            }
-                
-                            public static function poolTicketAmount(){
-                                return DB::table("prices")
-                                    ->where("sport_id",1)
-                                    ->where("membership_id",30)
-                                    ->where("category_id",3)->value("amount");
-                                }
+        return view('report.report', compact('gymSessionAdult', 'gymSessionAdultAmount', 'cashGymSessionAdult','gymStudent',
+                'gymStudentAmount','gymStudent','cashGymStudent','gymMonth','gymMonthAmount','cashGymMonth','gymYear','gymYearAmount','cashGymYear',
+                'gymTicket','gymTicketAmount','cashGymTickets','gymTotalSales','gymAttandanceSession','gymAttandanceSubscribers','gymTotalService'
+            ,'massageSessionAdult','massageSessionAdultAmount','cashMassageSession','massageTicket','massageTicketAmount','cashMassageTicket','massageTotalSales',
+                'massageTotalService','poolSessionAdult','poolSessionAdultAmount','cashPoolSessionAdult','poolStudent','poolStudentAmount','cashPoolStudent','poolSessionKid',
+                'poolSessionKidAmount','cashPoolSessionKid','poolMonthAdult','poolMonthAdultAmount','cashPoolMonthAdult','poolMonthKid','poolMonthKidAmount','cashPoolMonthKid',
+                'poolYear','poolYearAmount','cashPoolYear','poolTicket','poolTicketAmount','cashPoolTicket','poolTotalSales','saunaSession','saunaSessionAmount',
+                'cashSaunaSession','saunaMonthAmount','saunaMonth','cashSaunaMonth','saunaYearAmount','saunaYear','cashSaunaYear','saunaTicket','saunaTicketAmount',
+                'cashSaunaTicket','saunaTotalSales','saunaAttendanceSubscribers','saunaTotalAttendance','gymPoolSessionAmount','gymPoolSession','cashGymPoolSession',
+                'gymPoolMonth','gymPoolMonthAmount','cashGymPoolMonth','gymSaunaSession','gymSaunaSessionAmount','cashGymSaunaSession','gymSaunaMonth','gymSaunaMonthAmount',
+                'cashGymSaunaMonth','saunaMassageSession','saunaMassageSessionAmount','cashSaunaMassageSession','saunaPoolSession','saunaPoolSessionAmount',
+                'cashSaunaPoolSession','saunaPoolMonth','saunaPoolMonthAmount','cashSaunaPoolMonth','combinationTotalSales','combinationAttendanceSession',
+                'combinationAttendanceMonth','combinationAttendanceTotalService','attendanceReportSession')
+        );
 
-                                public static function saunaTicket(){
-                                    $todayDate = date("Y-m-d");
-                                    return DB::table("attendances")
-                                         ->where("sport_id",3)
-                                        ->where("membership_id",32)
-                                        ->where("created_at", $todayDate)
-                                        ->where("category_id",3)->count();
-                                    }
-                        
-                                    public static function saunaTicketAmount(){
-                                        return DB::table("prices")
-                                            ->where("sport_id",3)
-                                            ->where("membership_id",32)
-                                            ->where("category_id",3)->value("amount");
-                                        }
+
+}
+
+
+
+
+
+
+
 
 
 

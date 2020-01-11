@@ -14,6 +14,7 @@
 	<!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
         <script src="http://www.codermen.com/js/jquery.js"></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">

@@ -1,4 +1,4 @@
-@extends('receptionist.layouts.app')
+@extends('layouts.master-client')
 @section('content')
 <div class="container">
  <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
