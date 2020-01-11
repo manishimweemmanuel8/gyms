@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd67d72-4590-4193-9e66-67055b788ea2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/reportBackuup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/controller/attendance/backupAttendance.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/master-client.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/master-login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/receptionist/layouts/master-client.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/receptionist/layouts/master-login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AttendanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/reportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/reportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/controller/attendance/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/controller/attendance/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/controller/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/controller/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/customer/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/customer/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/customer/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/customer/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/customer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/customer/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gyms (1).sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/report/report.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/report/report.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/reportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="380" column="106" selection-start-line="380" selection-start-column="106" selection-end-line="380" selection-end-column="106" />
+            <state relative-caret-position="374">
+              <caret line="388" column="76" selection-start-line="388" selection-start-column="76" selection-end-line="388" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -58,17 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/reportBackuup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="413" selection-start-line="413" selection-end-line="413" />
+            <state relative-caret-position="243">
+              <caret line="146" column="42" lean-forward="true" selection-start-line="143" selection-start-column="7" selection-end-line="146" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/report/report.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="783" column="65" selection-start-line="783" selection-start-column="65" selection-end-line="783" selection-end-column="65" />
+            <state relative-caret-position="-1846">
+              <caret line="542" column="50" selection-start-line="542" selection-start-column="50" selection-end-line="542" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -103,8 +77,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/reportBackup" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/reportBackuup.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/reportController.php" />
         <option value="$PROJECT_DIR$/resources/views/report/report.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/reportController.php" />
       </list>
     </option>
   </component>
@@ -340,12 +314,12 @@
       <workItem from="1578647904604" duration="762000" />
       <workItem from="1578650994526" duration="1948000" />
       <workItem from="1578659372856" duration="6493000" />
-      <workItem from="1578767157731" duration="6230000" />
+      <workItem from="1578767157731" duration="9950000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78033000" />
+    <option name="totallyTimeSpent" value="81753000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,7 +346,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.35679215" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.07855974" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -658,22 +632,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/reportBackuup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="413" selection-start-line="413" selection-end-line="413" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/reportController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="380" column="106" selection-start-line="380" selection-start-column="106" selection-end-line="380" selection-end-column="106" />
+        <state relative-caret-position="243">
+          <caret line="146" column="42" lean-forward="true" selection-start-line="143" selection-start-column="7" selection-end-line="146" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/report/report.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="783" column="65" selection-start-line="783" selection-start-column="65" selection-end-line="783" selection-end-column="65" />
+        <state relative-caret-position="-1846">
+          <caret line="542" column="50" selection-start-line="542" selection-start-column="50" selection-end-line="542" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/reportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="388" column="76" selection-start-line="388" selection-start-column="76" selection-end-line="388" selection-end-column="76" />
         </state>
       </provider>
     </entry>

@@ -360,8 +360,8 @@
                       <td>Tickets</td>
                       <td>{{$massageTicket}}</td>
                       <td>x</td>
-                      <td>{{$massageTicketAmount}}</td>
-                      <td>{{$cashMassageTicket}}</td>
+                      <td>{{$massageTicketAmount}} RWF</td>
+                      <td>{{$cashMassageTicket}} RWF</td>
                       <td></td>
                       <td></td>
                       </tr>
@@ -539,8 +539,8 @@
                       <td>Tickets</td>
                       <td>{{$saunaTicket}}</td>
                       <td>x</td>
-                      <td>{{$saunaTicketAmount}}</td>
-                      <td>{{$cashSaunaTicket}}</td>
+                      <td>{{$saunaTicketAmount}} RWF</td>
+                      <td>{{$cashSaunaTicket}} RWF</td>
                       <td></td>
                       <td></td>
                       </tr>
@@ -761,15 +761,11 @@
                     </tr>
                     <tr>
                       <td>Subscribers</td>
-{{--                      <td>{{\App\Http\Controllers\reportController::gymMonth()+\App\Http\Controllers\reportController::poolMonthAdult()--}}
-{{--                      +\App\Http\Controllers\reportController::poolMonthKid()+\App\Http\Controllers\reportController::saunaMonth()--}}
-{{--                      +\App\Http\Controllers\reportController::gymYear()+\App\Http\Controllers\reportController::poolYear()--}}
-{{--                      +\App\Http\Controllers\reportController::saunaYear()+\App\Http\Controllers\reportController::gymPoolMonth()--}}
-{{--                      +\App\Http\Controllers\reportController::gymSaunaMonth()+\App\Http\Controllers\reportController::saunaPoolMonth()}}</td>--}}
+                      <td>{{$attendanceReportMonth}}</td>
                     </tr>
                     <tr>
                       <td>Tickets Return</td>
-{{--                      <td>{{\App\Http\Controllers\reportController::saunaTicket()+\App\Http\Controllers\reportController::poolTicket()+\App\Http\Controllers\reportController::massageTicket()+\App\Http\Controllers\reportController::gymTicket()}}</td>--}}
+                      <td>{{$attendanceReportTickets}}</td>
                       </tr>
                     <tr>
                       <td>Companies</td>
@@ -781,7 +777,7 @@
                       </tr>
                       <tr>
                       <td><b>Total Service</b></td>
-{{--                      <td>{{\App\Http\Controllers\reportController::saunaTicket()+\App\Http\Controllers\reportController::poolTicket()+\App\Http\Controllers\reportController::massageTicket()+\App\Http\Controllers\reportController::gymTicket()+\App\Http\Controllers\reportController::gymSessionAdult()+\App\Http\Controllers\reportController::gymStudent()+\App\Http\Controllers\reportController::massageSessionAdult()+\App\Http\Controllers\reportController::poolSessionAdult()+\App\Http\Controllers\reportController::poolStudent()+\App\Http\Controllers\reportController::poolSessionKid()+\App\Http\Controllers\reportController::saunaSession()+\App\Http\Controllers\reportController::gymPoolSession()+\App\Http\Controllers\reportController::gymSaunaSession()+\App\Http\Controllers\reportController::saunaMassageSession()+\App\Http\Controllers\reportController::saunaPoolSession()+\App\Http\Controllers\reportController::gymMonth()+\App\Http\Controllers\reportController::poolMonthAdult()+\App\Http\Controllers\reportController::poolMonthKid()+\App\Http\Controllers\reportController::saunaMonth()+\App\Http\Controllers\reportController::gymYear()+\App\Http\Controllers\reportController::poolYear()+\App\Http\Controllers\reportController::saunaYear()+\App\Http\Controllers\reportController::gymPoolMonth()+\App\Http\Controllers\reportController::gymSaunaMonth()+\App\Http\Controllers\reportController::saunaPoolMonth()}}</td>--}}
+                      <td>{{$attendanceReport}}</td>
                       </tr>
                   </tbody>
                 </table>
