@@ -41,6 +41,26 @@ return [
             'provider' => 'managers',
         ],
 
+        'manager' => [
+            'driver'   => 'session',
+            'provider' => 'managers',
+        ],
+
+        'manager' => [
+            'driver'   => 'session',
+            'provider' => 'managers',
+        ],
+
+        'manager' => [
+            'driver'   => 'session',
+            'provider' => 'managers',
+        ],
+
+        'manager' => [
+            'driver'   => 'session',
+            'provider' => 'managers',
+        ],
+
         'receptionist' => [
             'driver'   => 'session',
             'provider' => 'receptionists',
@@ -83,6 +103,26 @@ return [
             'model'  => App\Manager::class,
         ],
 
+        'managers' => [
+            'driver' => 'eloquent',
+            'model'  => App\Manager::class,
+        ],
+
+        'managers' => [
+            'driver' => 'eloquent',
+            'model'  => App\Manager::class,
+        ],
+
+        'managers' => [
+            'driver' => 'eloquent',
+            'model'  => App\Manager::class,
+        ],
+
+        'managers' => [
+            'driver' => 'eloquent',
+            'model'  => App\Manager::class,
+        ],
+
         'receptionists' => [
             'driver' => 'eloquent',
             'model'  => App\Receptionist::class,
@@ -117,6 +157,30 @@ return [
     */
 
     'passwords' => [
+        'managers' => [
+            'provider' => 'managers',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'managers' => [
+            'provider' => 'managers',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'managers' => [
+            'provider' => 'managers',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'managers' => [
+            'provider' => 'managers',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'managers' => [
             'provider' => 'managers',
             'table'    => 'password_resets',

@@ -129,7 +129,7 @@ class ApiController extends Controller
                 'entitie_id'       =>9,
                 'dob'        =>'1994-06-28',
                 'gender'  =>'any',
-                'entity_representative	'=>'0',
+                'entity_representative	'=>'0 ',
             ]);
         }
 
