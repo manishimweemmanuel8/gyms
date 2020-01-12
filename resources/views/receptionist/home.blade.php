@@ -1,4 +1,4 @@
-@extends('receptionist.layouts.app')
+@extends('layouts.master-client')
 
 @section('content')
 <div class="container">
