@@ -4,12 +4,15 @@ namespace App;
 
 use App\Notifications\Manager\ManagerResetPassword;
 use App\Notifications\Manager\ManagerVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Manager extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
+
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +20,7 @@ class Manager extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'email', 'password','last_name','tel','national_id'
     ];
 
     /**

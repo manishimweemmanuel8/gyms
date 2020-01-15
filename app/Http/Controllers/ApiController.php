@@ -109,7 +109,7 @@ class ApiController extends Controller
         $password=$request->input('password');
         $data=DB::table('controllers')
             ->where('email',$email)
-            ->where('password',$password)->value('post_id');
+            ->where('password',$password)->get();
         if($data){
             return $data;
         }else{

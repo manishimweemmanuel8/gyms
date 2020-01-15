@@ -1,10 +1,17 @@
 @extends('layouts.master-client')
 @section('content')
-  <div class="container">
-      <a href="{{action('PaymentController@create')}}" class="btn btn-warning">Add new</a>
-    <table class="table table-striped">
-    <thead>
-      <tr>
+        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+                    <div class="card-body">
+                        <h2 class="title"> Payment List</h2>
+
+
+                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                        <thead>
+                        <a href="{{action('PaymentController@create')}}" class="btn btn-warning">Add new</a>
+
+
+                        <tr>
         <th>ID</th>
         <th>Customer </th>
         <th>Receptionist </th>
@@ -45,4 +52,8 @@
     </tbody>
   </table>
   </div>
+                </div>
+
+
+
 @endsection

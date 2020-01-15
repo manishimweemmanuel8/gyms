@@ -41,6 +41,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapManagerRoutes();
 
+        $this->mapManagementRoutes();
+
         $this->mapReceptionistRoutes();
 
         //
@@ -62,6 +64,21 @@ class RouteServiceProvider extends ServiceProvider
     }    
     
     /**
+     * Define the "management" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapManagementRoutes()
+    {
+        Route::prefix('management')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/management.php'));
+    }    
+    
+    /**
      * Define the "manager" routes for the application.
      *
      * These routes are typically stateless.
@@ -75,6 +92,8 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/manager.php'));
     }
+
+
 
 
 

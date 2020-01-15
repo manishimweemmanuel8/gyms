@@ -12,7 +12,7 @@
 use App\Customer;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/receptionist/auth/login');
 
      
 
@@ -36,8 +36,8 @@ Route::get('gym_session_adult','reportController@gymSessionAdult');
 // Route::get('get-sports-list','AttendanceController@getSportList');
 // Route::get('get-memberships-list','AttendanceController@getMembershipList');
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+//Route::group(['prefix' => 'admin'], function () {
+//    Voyager::routes();
+//});
 
 

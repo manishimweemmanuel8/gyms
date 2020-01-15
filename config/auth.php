@@ -41,25 +41,22 @@ return [
             'provider' => 'managers',
         ],
 
-        'manager' => [
+        'management' => [
             'driver'   => 'session',
-            'provider' => 'managers',
+            'provider' => 'managements',
         ],
 
-        'manager' => [
-            'driver'   => 'session',
-            'provider' => 'managers',
-        ],
+        
 
-        'manager' => [
-            'driver'   => 'session',
-            'provider' => 'managers',
-        ],
+        
 
-        'manager' => [
-            'driver'   => 'session',
-            'provider' => 'managers',
-        ],
+        
+
+        
+
+        
+
+        
 
         'receptionist' => [
             'driver'   => 'session',
@@ -103,25 +100,22 @@ return [
             'model'  => App\Manager::class,
         ],
 
-        'managers' => [
+        'managements' => [
             'driver' => 'eloquent',
-            'model'  => App\Manager::class,
+            'model'  => App\Management::class,
         ],
 
-        'managers' => [
-            'driver' => 'eloquent',
-            'model'  => App\Manager::class,
-        ],
+        
 
-        'managers' => [
-            'driver' => 'eloquent',
-            'model'  => App\Manager::class,
-        ],
+        
 
-        'managers' => [
-            'driver' => 'eloquent',
-            'model'  => App\Manager::class,
-        ],
+        
+
+        
+
+        
+
+        
 
         'receptionists' => [
             'driver' => 'eloquent',
@@ -163,29 +157,23 @@ return [
             'expire'   => 60,
         ],
 
-        'managers' => [
-            'provider' => 'managers',
+        'managements' => [
+            'provider' => 'managements',
             'table'    => 'password_resets',
             'expire'   => 60,
         ],
 
-        'managers' => [
-            'provider' => 'managers',
-            'table'    => 'password_resets',
-            'expire'   => 60,
-        ],
+        
 
-        'managers' => [
-            'provider' => 'managers',
-            'table'    => 'password_resets',
-            'expire'   => 60,
-        ],
+        
 
-        'managers' => [
-            'provider' => 'managers',
-            'table'    => 'password_resets',
-            'expire'   => 60,
-        ],
+        
+
+        
+
+        
+
+        
 
         'receptionists' => [
             'provider' => 'receptionists',

@@ -1,4 +1,4 @@
-@extends('layouts.master-login')
+@extends('management.layouts.app')
 
 @section('content')
 <div class="container">
@@ -8,11 +8,11 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('receptionist.login') }}" aria-label="{{ __('Login') }}">
+                    <form method="POST" action="{{ route('management.login') }}" aria-label="{{ __('Login') }}">
                         @csrf
 
                         <div class="form-group row">
-                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
@@ -57,7 +57,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('receptionist.password.request') }}">
+                                <a class="btn btn-link" href="{{ route('management.password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>

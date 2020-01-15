@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManagersTable extends Migration
+class CreateManagementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateManagersTable extends Migration
      */
     public function up()
     {
-        Schema::create('managers', function (Blueprint $table) {
+        Schema::create('managements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -31,6 +31,6 @@ class CreateManagersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('managers');
+        Schema::dropIfExists('managements');
     }
 }

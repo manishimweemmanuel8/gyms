@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Receptionist;
+namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
 
-    protected $redirectTo = '/receptionist/login';
+    protected $redirectTo = '/management/login';
 
     /**
      * Create a new controller instance.
@@ -16,16 +16,16 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('receptionist.auth:receptionist');
+        $this->middleware('management.auth:management');
     }
 
     /**
-     * Show the Receptionist dashboard.
+     * Show the Management dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('receptionist.home');
+        return view('management.home');
     }
 
 }
