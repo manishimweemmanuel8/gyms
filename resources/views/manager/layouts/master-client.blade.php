@@ -5,7 +5,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png')}}">
         <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png')}}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Gym receptionist</title>
+        <title>Gym manager</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -118,11 +118,17 @@
                             <a class="navbar-brand" href="{{ url('/manager/Entity') }}">
                                 Entity
                             </a>
-                            <a class="navbar-brand" href="{{ url('/receptionist/payment') }}">
-                                Payment
+                            <a class="navbar-brand" href="{{ url('/manager/category') }}">
+                                Category
                             </a>
-                            <a class="navbar-brand" href="{{ url('/report/report') }}">
-                                Report
+                            <a class="navbar-brand" href="{{ url('/manager/sport') }}">
+                                Sport
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/membership') }}">
+                                Membership
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/price') }}">
+                                Membership
                             </a>
 
 

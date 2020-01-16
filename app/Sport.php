@@ -12,7 +12,9 @@ use App\Payment;
 
 class Sport extends Model
 {
-    // use selfDeletes;
+//    use selfDeletes;
+    protected $fillable = ['id','name','category_id'];
+
 
     public function attendance(){
     	return $this->hasMany(Attendance::class);

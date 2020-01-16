@@ -1,4 +1,4 @@
-@extends('layouts.master-client')
+@extends('manager.layouts.master-client')
 @section('content')
   <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
         <div class="wrapper wrapper--w680">

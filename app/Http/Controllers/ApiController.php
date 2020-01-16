@@ -16,36 +16,34 @@ class ApiController extends Controller
     public function show($payment){
 
         $ticket=DB::table('payments')->where('customer_id',$payment)
-            ->where('sport_id',1)
+            ->where('sport_id',3)
             ->whereIn('membership_id',[30,31,32,33])
             ->value('id');
 
         if($ticket){
-
             $duration= DB::table('payments')->where('id', $ticket)
                 ->value('duration');
             if($duration > 0) {
-                DB::table('payments')->where('id',$ticket)
-                    ->decrement('duration');
 
                 Attendance::create([
                     'customer_id' => $payment,
                     'controller_id' => 1,
                     'sport_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 1)
+                        ->where('sport_id', 3)
                         ->value('sport_id'),
                     'membership_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 1)
+                        ->where('sport_id', 3)
                         ->value('membership_id'),
 
                     'category_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 1)
+                        ->where('sport_id', 3)
                         ->value('categorie_id'),
                     'payment_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 1)
+                        ->where('sport_id', 3)
                         ->value('id'),
                 ]);
-
+                DB::table('payments')->where('id',$ticket)
+                    ->decrement('duration');
                 return "successful";
             }
             else{
@@ -93,7 +91,7 @@ class ApiController extends Controller
 
                 }
 
-                return $status = 1;
+                return $status = "";
             } else {
                 return $status = 0;
             }
@@ -105,6 +103,7 @@ class ApiController extends Controller
 
 
     public function login(Request $request){
+
         $email=$request->input('email');
         $password=$request->input('password');
         $data=DB::table('controllers')
@@ -113,7 +112,7 @@ class ApiController extends Controller
         if($data){
             return $data;
         }else{
-            return 'you are not allowed';
+            return 0;
         }
     }
 
@@ -129,14 +128,14 @@ class ApiController extends Controller
                 'entitie_id'       =>9,
                 'dob'        =>'1994-06-28',
                 'gender'  =>'any',
-                'entity_representative	'=>'0 ',
+                'entity_representative	'=>'0',
             ]);
         }
 
         Payment::create([
             'customer_id'       =>DB::table('customers')->where('phone',$customer)
                 ->value('id') ,
-            'receptionist_id'     => 1,
+            'receptionist_id'     => $request->input('receptionist_id'),
             'sport_id'          => $request->input('sport_id'),
             'membership_id'     =>$request->input('membership_id'),
             'categorie_id'       =>$request->input('category_id'),
@@ -159,11 +158,11 @@ class ApiController extends Controller
                                 ->where('customer_id',DB::table('customers')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
-                                ->value('id') ,
+                                ->value('id'),
         ]);
 
 
-        return $client=1;
+        return response()->json($client);
 
     }
 

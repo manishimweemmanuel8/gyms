@@ -13,6 +13,8 @@ class Membership extends Model
 {
     //
     use SoftDeletes;
+    protected $fillable = ['id','name','sport_id','duration'];
+
     public function price(){
     	return $this->hasOne(Price::class);
     }

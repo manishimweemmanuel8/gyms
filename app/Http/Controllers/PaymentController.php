@@ -98,17 +98,17 @@ class PaymentController extends Controller
 
     public function update(Request $request, $id)
     {
-        $payment = Payment::find($id);
-        $payment->customer_id = $request->get('customer_id');
-        $payment->lastName = $request->get('lastName');
-        $customer->gender= $request->get('gender');
-        $customer->phone = $request->get('phone');
-        $customer->email = $request->get('email');
-        $customer->entitie_id = $request->get('entitie_id');
-        $customer->dob = $request->get('dob');
-        //$customer->entity_representative=$request->get('entity_representative');
-        $customer->update();
-        return redirect('/receptionist/payment');
+//        $payment = Payment::find($id);
+//        $payment->customer_id = $request->get('customer_id');
+//        $payment->lastName = $request->get('lastName');
+//        $c->gender= $request->get('gender');
+//        $customer->phone = $request->get('phone');
+//        $customer->email = $request->get('email');
+//        $customer->entitie_id = $request->get('entitie_id');
+//        $customer->dob = $request->get('dob');
+//        //$customer->entity_representative=$request->get('entity_representative');
+//        $customer->update();
+//        return redirect('/receptionist/payment');
     }
 
     public function destroy($id)

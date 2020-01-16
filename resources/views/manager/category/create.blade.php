@@ -8,11 +8,11 @@
             <div class="card card-1">
 
                 <div class="card-body">
-                    <h2 class="title">Customer Registration Info</h2>
+                    <h2 class="title">Category Registration Info</h2>
 
 
   
-  <form class="well form-horizontal" method="post" action="{{url('manager/Entity')}}"  id="contact_form">
+  <form class="well form-horizontal" method="post" action="{{url('manager/category')}}"  id="contact_form">
     {{ csrf_field() }}
 
      <div class="form-group">
@@ -22,16 +22,7 @@
 
     </div>
 
-    <div class="form-group">
-      <label >Email</label> 
 
-        <input type="email" class="form-control" name="email">
-
-    </div>
-
-
-   
-    
     <div class="form-group">
       <div class="col-md-0"></div>
       <input type="submit" class="btn btn-primary">
