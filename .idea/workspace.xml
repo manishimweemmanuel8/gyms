@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd67d72-4590-4193-9e66-67055b788ea2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Manager/EntitiesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/manager/Entity/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/manager/Entity/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/manager/Entity/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/manager/layouts/master-client.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entitie.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entitie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EntitiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EntitiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manager/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manager/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master-client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master-client.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/manager.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -389,12 +375,12 @@
       <workItem from="1579059268087" duration="6990000" />
       <workItem from="1579138981291" duration="7515000" />
       <workItem from="1579166300684" duration="36000" />
-      <workItem from="1579167187335" duration="2920000" />
+      <workItem from="1579167187335" duration="4842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120119000" />
+    <option name="totallyTimeSpent" value="122041000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
