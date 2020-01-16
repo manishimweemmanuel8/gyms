@@ -65,6 +65,7 @@ class RegisterController extends Controller
     {
         return Manager::create([
             'name' => $data['name'],
+
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

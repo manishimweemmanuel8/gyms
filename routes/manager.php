@@ -2,6 +2,8 @@
 
 Route::group(['namespace' => 'Manager'], function() {
     Route::get('/', 'HomeController@index')->name('manager.dashboard');
+    Route::resource('/Entity', 'EntitiesController');
+
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('manager.login');
