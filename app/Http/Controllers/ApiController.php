@@ -44,12 +44,10 @@ class ApiController extends Controller
                 ]);
                 DB::table('payments')->where('id',$ticket)
                     ->decrement('duration');
-               
-                return response()->json(1);
+                return $status=1;
             }
             else{
-             
-                return response()->json(1);
+                return $status=0;
             }
 
         }
@@ -64,10 +62,9 @@ class ApiController extends Controller
                 $attend = DB::table('attendances')
                     ->where('created_at', $todayDate)
                     ->where('payment_id', $client)
-                    ->value('id');
+                    ->get();
                 if ($attend) {
-                    
-                    return response()->json(2);
+                    return $attend;
 
                 } else {
                     Attendance::create([
@@ -91,14 +88,11 @@ class ApiController extends Controller
                             ->where('sport_id', 1)
                             ->value('id'),
                     ]);
-                   
-                    return response()->json(1);
 
                 }
-                
+                return $status =1;
             } else {
-                
-                return response()->json(0);
+                return $status = 0;
             }
         }
 
