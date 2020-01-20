@@ -17,9 +17,11 @@ Route::get('/', function () {
      
 
 });
+Route::get('/receptionist/payment', 'PaymentController@index');
+Route::get('/receptionist/payment/create', 'PaymentController@create');
 
 Route::resource('/receptionist/customer', 'CustomerController');
-Route::resource('/receptionist/payment', 'PaymentController');
+//Route::resource('/receptionist/payment', 'PaymentController');
 Route::resource('/report/report', 'reportController');
 Route::resource('/controller/attendance', 'AttendanceController');
 //Route::resource('/controller/attendance', 'AttendanceController@delete');
@@ -28,13 +30,11 @@ Route::get('dropdownlist','PaymentController@index');
 Route::get('get-sport-list','PaymentController@getSportList');
 Route::get('get-membership-list','PaymentController@getMembershipList');
 Route::get('gym_session_adult','reportController@gymSessionAdult');
-// Route::get('dropdownlist','EntityPaymentController@index');
-// Route::get('get-membership-list','EntityPaymentController@getMembershipList');
 
+//Route::get('dropdownlist','PriceController@index');
+//Route::get('get-sport-list','PriceController@getSportList');
+//Route::get('get-membership-list','PriceController@getMembershipList');
 
-// Route::get('dropdownlists','AttendanceController@index');
-// Route::get('get-sports-list','AttendanceController@getSportList');
-// Route::get('get-memberships-list','AttendanceController@getMembershipList');
 
 //Route::group(['prefix' => 'admin'], function () {
 //    Voyager::routes();

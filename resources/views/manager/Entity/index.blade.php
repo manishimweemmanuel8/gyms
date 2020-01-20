@@ -24,7 +24,7 @@
         <td>{{$entity['id']}}</td>
         <td>{{$entity['name']}}</td>
           <td>{{$entity['email']}}</td>
-        <td>{{$entity['customer_id']}}</td>
+        <td>{{$entity['customer']['firstName']}} {{$entity['customer']['lastName']}}</td>
         <td>{{$entity['created_at']}}</td>
 
 

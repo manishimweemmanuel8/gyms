@@ -79,7 +79,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  \App\Customer  $custsuomer
      * @return \Illuminate\Http\Response
      */
     public function edit($id,$entitie_id=null)

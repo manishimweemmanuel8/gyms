@@ -2,13 +2,13 @@
 @section('content')
         <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
                     <div class="card-body">
-                        <h2 class="title"> Payment List</h2>
+                        <h2 class="title"> Payment Session List</h2>
 
 
                         <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
                                data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                         <thead>
-                        <a href="{{action('Receptionist\PaymentController@create')}}" class="btn btn-warning">Add new</a>
+                        <a href="{{action('Receptionist\SessionController@create')}}" class="btn btn-warning">Add new</a>
 
 
                         <tr>
@@ -21,13 +21,16 @@
         <th>Expiry Date</th>
         <th>duration</th>
         <th>Amount</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Print</th>
+    
       </tr>
     </thead>
     <tbody>
       @foreach($payments as $payment)
       <tr>
+
+      
+
         <td>{{$payment['customer_id']}}</td>
         <td>{{$payment->customer['firstName']}}  {{$payment->customer['lastName']}}</td>
         <td>{{$payment->receptionist['name']}}</td>
@@ -37,17 +40,14 @@
         <td>{{$payment->expiry_date}}</td>
         <td>{{$payment->duration}}</td>
         <td>{{$payment->amount}}</td>
-         {{--<td><a href="{{action('Receptionist\PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td> --}}
+         <td><a href="{{action('Receptionist\SessionController@edit', $payment['id'])}}" class="btn btn-warning">Print</a></td>
 
           <td>
-          <form action="{{action('Receptionist\PaymentController@destroy', $payment['id'])}}" method="post"> 
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-           
-          </form>
+          
         </td>
+         
       </tr>
+     
       @endforeach
     </tbody>
   </table>

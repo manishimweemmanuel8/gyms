@@ -18,7 +18,7 @@ class CreatePricesTable extends Migration
             $table->integer('sport_id');
             $table->integer('membership_id');
             $table->integer('amount');
-            $table->integer('category_id')
+            $table->integer('categorie_id');
             $table->timestamps();
             $table->softDeletes();
 

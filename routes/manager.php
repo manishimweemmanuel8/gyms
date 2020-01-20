@@ -6,6 +6,11 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::resource('/category', 'CategorieController');
     Route::resource('/sport', 'SportController');
     Route::resource('/membership', 'MembershipController');
+    Route::resource('/price', 'PriceController');
+    Route::get('dropdownlist','PriceController@index');
+    Route::get('get-sport-list','PriceController@getSportList');
+    Route::get('get-membership-list','PriceController@getMembershipList');
+
 
 
 

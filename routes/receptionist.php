@@ -3,7 +3,8 @@
 Route::group(['namespace' => 'Receptionist'], function() {
     Route::get('/', 'HomeController@index')->name('receptionist.dashboard');
     // Route::resource('/customer', 'CustomerController');
-    // Route::resource('/payment', 'PaymentController');
+    Route::resource('/payment', 'PaymentController');
+    Route::resource('/session','SessionController');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('receptionist.login');
@@ -24,5 +25,8 @@ Route::group(['namespace' => 'Receptionist'], function() {
     Route::get('email/resend','Auth\VerificationController@resend')->name('receptionist.verification.resend');
     Route::get('email/verify','Auth\VerificationController@show')->name('receptionist.verification.notice');
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('receptionist.verification.verify');
+    Route::post('payment/store','PaymentController@store')->name('payment.store');
+    Route::post('session/store','SessionController@store')->name('session.store');
+
 
 });

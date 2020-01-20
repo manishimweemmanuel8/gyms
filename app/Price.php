@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Payment;
 use App\Sport;
 use App\Membership;
+use App\Categorie;
 
 
 class Price extends Model
 {
     //
+    protected $fillable = ['id','sport_id','categorie_id','membership_id','amount'];
+
     use SoftDeletes;
     public function payment(){
     	return $this->belongsTo(Payment::class);
@@ -22,6 +25,10 @@ class Price extends Model
     }
     public function membership(){
     	return $this->belongsTo(Membership::class);
+    }
+
+    public function categorie(){
+        return $this->belongsTo(Categorie::class);
     }
 
 }

@@ -142,7 +142,7 @@ class ApiController extends Controller
             'amount'        => DB::table("prices")
                 ->where("sport_id",$request->input('sport_id'))
                 ->where("membership_id",$request->input('membership_id'))
-                ->where("category_id",$request->input('category_id'))->value("amount"),
+                ->where("categorie_id",$request->input('category_id'))->value("amount"),
             'duration'      =>1,
             'expiry_date'   =>$todayDate = date("Y-m-d"),
         ]);

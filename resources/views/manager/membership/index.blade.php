@@ -25,7 +25,7 @@
         <td>{{$membership['id']}}</td>
         <td>{{$membership->name}}</td>
         <td>{{$membership->duration}}</td>
-          <td>{{$membership->sport_id}}</td>
+          <td>{{$membership['sport']['name']}}</td>
 
 {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
 

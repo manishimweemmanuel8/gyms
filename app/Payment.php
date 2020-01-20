@@ -15,6 +15,7 @@ use App\Membership;
 class Payment extends Model
 {
     protected $fillable = ['customer_id','receptionist_id','categorie_id','sport_id','membership_id','duration','expiry_date','amount'];
+
     use SoftDeletes; 
     public function customer(){
     	return $this->belongsTo(Customer::class);

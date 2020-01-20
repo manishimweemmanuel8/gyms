@@ -22,6 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('membership_id');
             $table->integer('duration');
             $table->date('expiry_date');
+            $table->integer('amount');
             $table->timestamps();
             $table->softDeletes();
         });

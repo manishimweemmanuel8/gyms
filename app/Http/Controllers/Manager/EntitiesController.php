@@ -45,6 +45,12 @@ class EntitiesController extends Controller
             $customers=DB::table("customers")->where('entitie_id',$id)->get();
         }
         $entity = Entitie::find($id);
+        $customer=DB::table('entities')
+            ->where('id', $id)
+            ->value("customer_id");
+        DB::table('customers')
+            ->where('id', $customer)
+            ->update(['entity_representative' => 0]);
         return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers]);
     }
 
@@ -55,12 +61,17 @@ class EntitiesController extends Controller
             'email'=>'required'
         ]);
 
+
+
         $entity = Entitie::find($id);
         $entity->name = $request->get('name');
         $entity->email = $request->get('email');
         $entity->customer_id = $request->get('customer_id');
 
         $entity->save();
+        DB::table('customers')
+            ->where('id', $request->get('customer_id'))
+            ->update(['entity_representative' => 1]);
         return redirect('/manager/Entity');
     }
 

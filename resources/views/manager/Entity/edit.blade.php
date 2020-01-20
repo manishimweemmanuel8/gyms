@@ -30,9 +30,9 @@
       <label >Customer Name</label>
 
       <select name="customer_id" class="form-control" >
-            <option value="{{$entity->customer_id}}">{{$entity->customer_id}}</option>
+            <option value="{{$entity->customer_id}}">{{$entity->customer['firstName']}}  {{$entity->customer['lastName']}}</option>
             @foreach ($customers as $customer)
-                  <option value="{{ $customer->id }}">{{ $customer->firstName}}</option>
+                  <option value="{{ $customer->id }}">{{ $customer->firstName}} {{ $customer->lastName}}</option>
             @endforeach
       </select>
 

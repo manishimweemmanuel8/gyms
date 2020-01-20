@@ -16,7 +16,7 @@ class SportController extends Controller
 
     public function index()
     {
-        $sports = Sport::all();
+        $sports = Sport::with('categorie')->get();
         return view('manager/sport.index', compact('sports'));
     }
 
@@ -31,11 +31,11 @@ class SportController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'category_id'=>'required'
+            'categorie_id'=>'required'
         ]);
         $sport = new Sport([
             'name' => $request->get('name'),
-            'category_id' => $request->get('category_id'),
+            'categorie_id' => $request->get('category_id'),
 
         ]);
 

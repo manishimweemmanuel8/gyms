@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Payment;
+use App\Sport;
+use Illuminate\Database\Eloquent\Model;
 
 class Categorie extends Model
 {
@@ -12,5 +13,15 @@ class Categorie extends Model
 
     public function payment(){
     	return $this->hasOne(Payment::class);
+    }
+
+    public function sport(){
+        return $this->hasOne(Sport::class);
+
+    }
+
+    public function price(){
+        return $this->hasOne(Price::class);
+
     }
 }

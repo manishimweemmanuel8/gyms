@@ -24,7 +24,7 @@
       <tr>
         <td>{{$sport['id']}}</td>
         <td>{{$sport->name}}</td>
-        <td>{{$sport->category_id}}</td>
+        <td>{{$sport['categorie']['name']}}</td>
 
 {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
 

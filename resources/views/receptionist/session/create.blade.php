@@ -79,7 +79,7 @@
         ============================================ -->
 {{--    <link rel="stylesheet" href="style.css">--}}
 <!-- responsive CSS
-    ============================================ -->
+		============================================ -->
     <link rel="stylesheet" href="{{ asset('template/css/responsive.css')}}">
     <!-- modernizr JS
         ============================================ -->
@@ -206,31 +206,25 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title"> Payment Info</h2>
+                    <h2 class="title"> Payment Session Info</h2>
 
 
 
-                    <form class="well form-horizontal" id="contact_form" method="post" action="{{action('Receptionist\PaymentController@update', $id)}}">
-  {{csrf_field()}}
-     @if($customers !=null)
-    <div class="form-group">
+  <form method="post" action="{{ url('/receptionist/session/store') }}">
+    {{ csrf_field() }}
 
-      
-        
-      <label>customers Name</label>
-      <select name="customer_id" class="form-control">
-            <option value="{{$payment->customer_id}}">{{$payment->customer['firstName']}}  {{$payment->customer['lastName']}}</option>
-                    @foreach ($customers as $customer)
-                    <option value="{{ $customer->id }}">{{ $customer->firstName}} {{ $customer->lastName}}</option>
-                    @endforeach
-                </select>
-  </div>
-    @endif
+   <div class="form-group">
+                <label for="title">Phone:</label>
+                <input type="text" name="phone" id="phone" class="form-control" >
+            </div>
+
+
 
             <div class="form-group">
               <label>select Category</label>
                 <select id="category" name="categorie_id" class="form-control"  >
-<option value="{{$payment->categorie_id}}">{{$payment->categorie['name']}}</option>                  @foreach($categories as $key => $categorie)
+                <option value="" selected disabled>--- Select Category ---</option>
+                  @foreach($categories as $key => $categorie)
                   <option value="{{$key}}"> {{$categorie}}</option>
                   @endforeach
                   </select>
@@ -239,9 +233,7 @@
             <div class="form-group">
 
                 <label for="title">Select Sport</label>
-
                 <select name="sport_id" id="sport" class="form-control" >
-                  <option value="{{$payment->sport_id}}">{{$payment->sport['name']}}</option>
                 </select>
           </div>
          
@@ -250,22 +242,12 @@
       
                 <label for="title">Select Membership</label>
                 <select name="membership_id" id="membership" class="form-control" >
-                   <option value="{{$payment->membership_id}}">{{$payment->membership['name']}}
                 </select>
             </div>
-
-
-
-             <div class="form-group">
-                <label for="title">Expiry Date:</label>
-                        <input type="date" class="form-control" id="lgFormGroupInput" name="expiry_date" value="{{$payment->expiry_date}}">
-
-            </div>
-
-
-    <div class="form-group row">
-      <div class="col-md-2"></div>
-      <button type="submit" class="btn btn-primary">Edit</button>
+  
+   <div class="form-group">
+      <div class="col-md-0"></div>
+      <input type="submit" class="btn btn-primary">
     </div>
   </form>
 </div>

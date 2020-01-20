@@ -48,7 +48,7 @@ class PaymentController extends Controller
         public function getSportList(Request $request)
         {
             $sports = DB::table("sports")
-            ->where("category_id",$request->category_id)
+            ->where("category_id",$request->get('categorie_id'))
             ->pluck("name","id");
             return response()->json($sports);
         }
@@ -57,7 +57,7 @@ class PaymentController extends Controller
         {
             $memberships = DB::table("memberships")
             ->where("sport_id",$request->sport_id)
-            ->pluck("name","id");
+            ->pluck("duration","id");
             return response()->json($memberships);
         }
 
@@ -65,50 +65,50 @@ class PaymentController extends Controller
 
         public function store(Request $request)
     {
-       
+
 
         $payment = new Payment([
             'customer_id' => $request->get('customer_id'),
-            'receptionist_id' => Auth::guard('receptionist')->user()->id,
+            'receptionist_id' => 1,
             'categorie_id' => $request->get('categorie_id'),
             'sport_id' => $request->get('sport_id'),
             'membership_id' => $request->get('membership_id'),
-            // if($request->get('membership_id')==30){
             'duration' =>DB::table("memberships")
             ->where("id",$request->get('membership_id'))->value("duration"),
-            // }
             'expiry_date' =>$request->get('expiry_date'),
             'amount'=>DB::table("prices")
-            ->where("category_id",$request->get('categorie_id'))
+            ->where("categorie_id",$request->get('categorie_id'))
             ->where("sport_id",$request->get('sport_id'))
             ->where("membership_id",$request->get('membership_id'))
             ->value("amount"),
-            
+
           ]);
-  
+
           $payment->save();
-          return redirect('/receptionist/payment')->with('succes', 'Data has been successfully save!');; 
+          return redirect('/receptionist/payment')->with('succes', 'Data has been successfully save!');
     }
 
     public function edit($id)
     {
-
         return view('receptionist.payment.edit');
     }
-
     public function update(Request $request, $id)
     {
-//        $payment = Payment::find($id);
-//        $payment->customer_id = $request->get('customer_id');
-//        $payment->lastName = $request->get('lastName');
-//        $c->gender= $request->get('gender');
-//        $customer->phone = $request->get('phone');
-//        $customer->email = $request->get('email');
-//        $customer->entitie_id = $request->get('entitie_id');
-//        $customer->dob = $request->get('dob');
-//        //$customer->entity_representative=$request->get('entity_representative');
-//        $customer->update();
-//        return redirect('/receptionist/payment');
+        $payment = Payment::find($id);
+        $payment->customer_id = $request->get('customer_id');
+        $payment->categorie_id =$request->get('categorie_id');
+        $payment->sport_id= $request->get('sport_id');
+        $payment->membership_id = $request->get('membership_id');
+        $payment->expiry_date = $request->get('expiry_date');
+        $payment->duration=DB::table("memberships")
+        ->where("id",$request->get('membership_id'))->value("duration");
+        $payment->amount=DB::table("prices")
+        ->where("categorie_id",$request->get('categorie_id'))
+        ->where("sport_id",$request->get('sport_id'))
+        ->where("membership_id",$request->get('membership_id'))
+        ->value("amount");
+        $payment->update();
+        return redirect('/receptionist/payment');
     }
 
     public function destroy($id)

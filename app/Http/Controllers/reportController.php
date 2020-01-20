@@ -24,7 +24,7 @@ class reportController extends Controller
         $gymSessionAdultAmount = DB::table("prices")
             ->where("sport_id", 2)
             ->where("membership_id", 5)
-            ->where("category_id", 3)->value("amount");
+            ->where("categorie_id", 3)->value("amount");
         $cashGymSessionAdult = $gymSessionAdultAmount * $gymSessionAdult;
 
         //gym student
@@ -37,7 +37,7 @@ class reportController extends Controller
         $gymStudentAmount=DB::table("prices")
             ->where("sport_id",6)
             ->where("membership_id",21)
-            ->where("category_id",2)->value("amount");
+            ->where("categorie_id",2)->value("amount");
 
         $cashGymStudent=$gymStudent*$gymStudentAmount;
         //gym Month
@@ -49,7 +49,7 @@ class reportController extends Controller
         $gymMonthAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",6)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymMonth=$gymMonth*$gymMonthAmount;
 
         //GYM YEAR
@@ -62,7 +62,7 @@ class reportController extends Controller
         $gymYearAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",7)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymYear=$gymYear*$gymYearAmount;
 
         //GYM TICKETS
@@ -75,7 +75,7 @@ class reportController extends Controller
         $gymTicketAmount=DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",31)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymTickets=$gymTicket*$gymTicketAmount;
 
         //TOTAL SALES
@@ -99,7 +99,7 @@ class reportController extends Controller
         $massageSessionAdultAmount=DB::table("prices")
             ->where("sport_id",4)
             ->where("membership_id",13)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashMassageSession=$massageSessionAdultAmount*$massageSessionAdult;
 
         //tickets
@@ -111,7 +111,7 @@ class reportController extends Controller
         $massageTicketAmount= DB::table("prices")
             ->where("sport_id",4)
             ->where("membership_id",33)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashMassageTicket=$massageTicketAmount*$massageTicket;
 
         $massageTotalSales=$cashMassageTicket+$cashMassageSession;
@@ -130,7 +130,7 @@ class reportController extends Controller
         $poolSessionAdultAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",1)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
 
         $cashPoolSessionAdult=$poolSessionAdultAmount*$poolSessionAdult;
 
@@ -144,7 +144,7 @@ class reportController extends Controller
         $poolStudentAmount=DB::table("prices")
             ->where("sport_id",7)
             ->where("membership_id",22)
-            ->where("category_id",2)->value("amount");
+            ->where("categorie_id",2)->value("amount");
         $cashPoolStudent=$poolStudent*$poolStudentAmount;
 
         $poolSessionKid= DB::table("attendances")
@@ -156,7 +156,7 @@ class reportController extends Controller
         $poolSessionKidAmount= DB::table("prices")
             ->where("sport_id",5)
             ->where("membership_id",17)
-            ->where("category_id",1)->value("amount");
+            ->where("categorie_id",1)->value("amount");
         $cashPoolSessionKid=$poolSessionKidAmount*$poolSessionKid;
 
         $poolMonthAdult=DB::table("attendances")
@@ -167,7 +167,7 @@ class reportController extends Controller
         $poolMonthAdultAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",2)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolMonthAdult=$poolMonthAdultAmount*$poolMonthAdult;
 
         $poolMonthKid=DB::table("attendances")
@@ -179,7 +179,7 @@ class reportController extends Controller
         $poolMonthKidAmount=DB::table("prices")
             ->where("sport_id",5)
             ->where("membership_id",18)
-            ->where("category_id",1)->value("amount");
+            ->where("categorie_id",1)->value("amount");
         $cashPoolMonthKid=$poolMonthKidAmount*$poolMonthKid;
 
         $poolYear=DB::table("attendances")
@@ -190,7 +190,7 @@ class reportController extends Controller
         $poolYearAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",3)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolYear=$poolYearAmount*$poolYear;
 
         $poolTicket=DB::table("attendances")
@@ -201,7 +201,7 @@ class reportController extends Controller
         $poolTicketAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",30)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolTicket=$poolTicket*$poolTicketAmount;
 
         $poolTotalSales=$cashPoolTicket+$cashPoolYear+$cashPoolMonthKid+$cashPoolMonthAdult+$cashPoolSessionAdult+$cashPoolStudent;
@@ -216,7 +216,7 @@ class reportController extends Controller
         $saunaSessionAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",9)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaSession=$saunaSession*$saunaSessionAmount;
 
         $saunaMonth=DB::table("attendances")
@@ -227,7 +227,7 @@ class reportController extends Controller
         $saunaMonthAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",10)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaMonth=$saunaMonth*$saunaMonthAmount;
 
         $saunaYear=DB::table("attendances")
@@ -239,7 +239,7 @@ class reportController extends Controller
         $saunaYearAmount= DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",11)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaYear=$saunaYear*$saunaYearAmount;
 
         $saunaTicket= DB::table("attendances")
@@ -250,7 +250,7 @@ class reportController extends Controller
         $saunaTicketAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",32)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaTicket=$saunaTicket*$saunaTicketAmount;
 
         $saunaTotalSales=$cashSaunaTicket+$cashSaunaYear+$cashSaunaMonth+$cashSaunaSession;
@@ -268,7 +268,7 @@ class reportController extends Controller
         $gymPoolSessionAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",23)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymPoolSession=$gymPoolSession*$gymPoolSessionAmount;
 
         $gymPoolMonth=DB::table("attendances")
@@ -279,7 +279,7 @@ class reportController extends Controller
         $gymPoolMonthAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",24)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymPoolMonth=$gymPoolMonth*$gymPoolMonthAmount;
 
         $gymSaunaSession=DB::table("attendances")
@@ -290,7 +290,7 @@ class reportController extends Controller
         $gymSaunaSessionAmount=DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",25)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymSaunaSession=$gymSaunaSession*$gymSaunaSessionAmount;
 
         $gymSaunaMonth=DB::table("attendances")
@@ -301,7 +301,7 @@ class reportController extends Controller
         $gymSaunaMonthAmount= DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",26)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymSaunaMonth=$gymSaunaSessionAmount*$gymSaunaMonth;
 
         $saunaMassageSession=DB::table("attendances")
@@ -312,7 +312,7 @@ class reportController extends Controller
         $saunaMassageSessionAmount=DB::table("prices")
             ->where("sport_id",10)
             ->where("membership_id",27)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaMassageSession=$saunaMassageSession*$saunaMassageSessionAmount;
 
         $saunaPoolSession=DB::table("attendances")
@@ -323,7 +323,7 @@ class reportController extends Controller
         $saunaPoolSessionAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",28)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaPoolSession=$saunaPoolSession*$saunaPoolSessionAmount;
 
         $saunaPoolMonth=DB::table("attendances")
@@ -334,7 +334,7 @@ class reportController extends Controller
         $saunaPoolMonthAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",29)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaPoolMonth=$saunaPoolMonth*$saunaPoolMonthAmount;
 
         $combinationTotalSales=$cashSaunaPoolMonth+$cashSaunaPoolSession+$cashSaunaMassageSession+$cashGymSaunaMonth+$cashGymSaunaSession+$cashGymPoolMonth+$cashGymPoolSession;
@@ -385,7 +385,7 @@ class reportController extends Controller
             $gymSessionAdultAmount = DB::table("prices")
                 ->where("sport_id", 2)
                 ->where("membership_id", 5)
-                ->where("category_id", 3)->value("amount");
+                ->where("categorie_id", 3)->value("amount");
             $cashGymSessionAdult = $gymSessionAdultAmount * $gymSessionAdult;
 
            //gym student
@@ -398,7 +398,7 @@ class reportController extends Controller
         $gymStudentAmount=DB::table("prices")
             ->where("sport_id",6)
             ->where("membership_id",21)
-            ->where("category_id",2)->value("amount");
+            ->where("categorie_id",2)->value("amount");
 
         $cashGymStudent=$gymStudent*$gymStudentAmount;
         //gym Month
@@ -410,7 +410,7 @@ class reportController extends Controller
         $gymMonthAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",6)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymMonth=$gymMonth*$gymMonthAmount;
 
         //GYM YEAR
@@ -423,7 +423,7 @@ class reportController extends Controller
         $gymYearAmount= DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",7)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymYear=$gymYear*$gymYearAmount;
 
         //GYM TICKETS
@@ -436,7 +436,7 @@ class reportController extends Controller
         $gymTicketAmount=DB::table("prices")
             ->where("sport_id",2)
             ->where("membership_id",31)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymTickets=$gymTicket*$gymTicketAmount;
 
         //TOTAL SALES
@@ -460,7 +460,7 @@ class reportController extends Controller
         $massageSessionAdultAmount=DB::table("prices")
             ->where("sport_id",4)
             ->where("membership_id",13)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashMassageSession=$massageSessionAdultAmount*$massageSessionAdult;
 
         //tickets
@@ -472,7 +472,7 @@ class reportController extends Controller
         $massageTicketAmount= DB::table("prices")
             ->where("sport_id",4)
             ->where("membership_id",33)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashMassageTicket=$massageTicketAmount*$massageTicket;
 
         $massageTotalSales=$cashMassageTicket+$cashMassageSession;
@@ -491,7 +491,7 @@ class reportController extends Controller
         $poolSessionAdultAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",1)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
 
         $cashPoolSessionAdult=$poolSessionAdultAmount*$poolSessionAdult;
 
@@ -505,7 +505,7 @@ class reportController extends Controller
         $poolStudentAmount=DB::table("prices")
             ->where("sport_id",7)
             ->where("membership_id",22)
-            ->where("category_id",2)->value("amount");
+            ->where("categorie_id",2)->value("amount");
         $cashPoolStudent=$poolStudent*$poolStudentAmount;
 
         $poolSessionKid= DB::table("attendances")
@@ -517,7 +517,7 @@ class reportController extends Controller
         $poolSessionKidAmount= DB::table("prices")
             ->where("sport_id",5)
             ->where("membership_id",17)
-            ->where("category_id",1)->value("amount");
+            ->where("categorie_id",1)->value("amount");
         $cashPoolSessionKid=$poolSessionKidAmount*$poolSessionKid;
 
         $poolMonthAdult=DB::table("attendances")
@@ -528,7 +528,7 @@ class reportController extends Controller
         $poolMonthAdultAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",2)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolMonthAdult=$poolMonthAdultAmount*$poolMonthAdult;
 
         $poolMonthKid=DB::table("attendances")
@@ -540,7 +540,7 @@ class reportController extends Controller
         $poolMonthKidAmount=DB::table("prices")
             ->where("sport_id",5)
             ->where("membership_id",18)
-            ->where("category_id",1)->value("amount");
+            ->where("categorie_id",1)->value("amount");
         $cashPoolMonthKid=$poolMonthKidAmount*$poolMonthKid;
 
         $poolYear=DB::table("attendances")
@@ -551,7 +551,7 @@ class reportController extends Controller
         $poolYearAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",3)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolYear=$poolYearAmount*$poolYear;
 
         $poolTicket=DB::table("attendances")
@@ -562,7 +562,7 @@ class reportController extends Controller
         $poolTicketAmount=DB::table("prices")
             ->where("sport_id",1)
             ->where("membership_id",30)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashPoolTicket=$poolTicket*$poolTicketAmount;
 
         $poolTotalSales=$cashPoolTicket+$cashPoolYear+$cashPoolMonthKid+$cashPoolMonthAdult+$cashPoolSessionAdult+$cashPoolStudent;
@@ -577,7 +577,7 @@ class reportController extends Controller
         $saunaSessionAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",9)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaSession=$saunaSession*$saunaSessionAmount;
 
         $saunaMonth=DB::table("attendances")
@@ -588,7 +588,7 @@ class reportController extends Controller
         $saunaMonthAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",10)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaMonth=$saunaMonth*$saunaMonthAmount;
 
         $saunaYear=DB::table("attendances")
@@ -600,7 +600,7 @@ class reportController extends Controller
         $saunaYearAmount= DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",11)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaYear=$saunaYear*$saunaYearAmount;
 
         $saunaTicket= DB::table("attendances")
@@ -611,7 +611,7 @@ class reportController extends Controller
         $saunaTicketAmount=DB::table("prices")
             ->where("sport_id",3)
             ->where("membership_id",32)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaTicket=$saunaTicket*$saunaTicketAmount;
 
         $saunaTotalSales=$cashSaunaTicket+$cashSaunaYear+$cashSaunaMonth+$cashSaunaSession;
@@ -629,7 +629,7 @@ class reportController extends Controller
         $gymPoolSessionAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",23)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymPoolSession=$gymPoolSession*$gymPoolSessionAmount;
 
         $gymPoolMonth=DB::table("attendances")
@@ -640,7 +640,7 @@ class reportController extends Controller
         $gymPoolMonthAmount=DB::table("prices")
             ->where("sport_id",8)
             ->where("membership_id",24)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymPoolMonth=$gymPoolMonth*$gymPoolMonthAmount;
 
         $gymSaunaSession=DB::table("attendances")
@@ -651,7 +651,7 @@ class reportController extends Controller
         $gymSaunaSessionAmount=DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",25)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymSaunaSession=$gymSaunaSession*$gymSaunaSessionAmount;
 
         $gymSaunaMonth=DB::table("attendances")
@@ -662,7 +662,7 @@ class reportController extends Controller
         $gymSaunaMonthAmount= DB::table("prices")
             ->where("sport_id",9)
             ->where("membership_id",26)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashGymSaunaMonth=$gymSaunaSessionAmount*$gymSaunaMonth;
 
         $saunaMassageSession=DB::table("attendances")
@@ -673,7 +673,7 @@ class reportController extends Controller
         $saunaMassageSessionAmount=DB::table("prices")
             ->where("sport_id",10)
             ->where("membership_id",27)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaMassageSession=$saunaMassageSession*$saunaMassageSessionAmount;
 
         $saunaPoolSession=DB::table("attendances")
@@ -684,7 +684,7 @@ class reportController extends Controller
         $saunaPoolSessionAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",28)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaPoolSession=$saunaPoolSession*$saunaPoolSessionAmount;
 
         $saunaPoolMonth=DB::table("attendances")
@@ -695,7 +695,7 @@ class reportController extends Controller
         $saunaPoolMonthAmount=DB::table("prices")
             ->where("sport_id",11)
             ->where("membership_id",29)
-            ->where("category_id",3)->value("amount");
+            ->where("categorie_id",3)->value("amount");
         $cashSaunaPoolMonth=$saunaPoolMonth*$saunaPoolMonthAmount;
 
         $combinationTotalSales=$cashSaunaPoolMonth+$cashSaunaPoolSession+$cashSaunaMassageSession+$cashGymSaunaMonth+$cashGymSaunaSession+$cashGymPoolMonth+$cashGymPoolSession;

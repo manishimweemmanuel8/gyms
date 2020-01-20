@@ -84,6 +84,18 @@
     <!-- modernizr JS
         ============================================ -->
 {{--    <script src="{{ asset('template/js/vendor/modernizr-2.8.3.min.js')}}"></script>--}}
+
+ <script src='jquery.js'></script>
+    <script src="jQuery.print.js"></script>
+    <script>
+    // here we will write our custom code for printing our div
+    $(function(){
+    $('#print').on('click', function() {
+    //Print ele2 with default options
+    $.print(".print_div");
+    });
+    });
+    </script>
 </head>
 <body class="">
 <div class="wrapper ">
@@ -198,6 +210,7 @@
 
         </div>
         <div class="content">
+             <div class='print_div'>
 
             @include('multiauth::message')
 
@@ -210,12 +223,12 @@
 
 
 
-                    <form class="well form-horizontal" id="contact_form" method="post" action="{{action('Receptionist\PaymentController@update', $id)}}">
+                    <form class="well form-horizontal" id="contact_form" method="" action="">
   {{csrf_field()}}
      @if($customers !=null)
     <div class="form-group">
 
-      
+      <input type="text" name="id" value="{{$id}}" >
         
       <label>customers Name</label>
       <select name="customer_id" class="form-control">
@@ -265,13 +278,15 @@
 
     <div class="form-group row">
       <div class="col-md-2"></div>
-      <button type="submit" class="btn btn-primary">Edit</button>
+      <button id='print' type="submit" class="btn btn-primary">Edit</button>
     </div>
   </form>
 </div>
 </div>
 </div>
+
  </div>
+
 
 
 
