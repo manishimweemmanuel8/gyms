@@ -44,14 +44,16 @@ class ApiController extends Controller
                 ]);
                 DB::table('payments')->where('id',$ticket)
                     ->decrement('duration');
-                return "successful";
+               
+                return response()->json(1);
             }
             else{
-                return "fail";
+             
+                return response()->json(1);
             }
 
         }
-        else {
+        else{
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                 ->where('expiry_date', '>=', $todayDate)
@@ -64,7 +66,8 @@ class ApiController extends Controller
                     ->where('payment_id', $client)
                     ->value('id');
                 if ($attend) {
-                    return $attendance = "you attend to day";
+                    
+                    return response()->json(2);
 
                 } else {
                     Attendance::create([
@@ -88,12 +91,14 @@ class ApiController extends Controller
                             ->where('sport_id', 1)
                             ->value('id'),
                     ]);
+                   
+                    return response()->json(1);
 
                 }
-
-                return $status = "";
+                
             } else {
-                return $status = 0;
+                
+                return response()->json(0);
             }
         }
 

@@ -41,10 +41,6 @@
         <td>{{$payment->duration}}</td>
         <td>{{$payment->amount}}</td>
          <td><a href="{{action('Receptionist\SessionController@edit', $payment['id'])}}" class="btn btn-warning">Print</a></td>
-
-          <td>
-          
-        </td>
          
       </tr>
      

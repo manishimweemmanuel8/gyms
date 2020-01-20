@@ -2,45 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cd67d72-4590-4193-9e66-67055b788ea2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/SessionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/receptionist/session/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/receptionist/session/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/receptionist/session/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Attendance.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Attendance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Categorie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manager/EntitiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manager/EntitiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manager/PriceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manager/PriceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manager/SportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manager/SportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/reportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/reportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Price.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Price.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Sport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Sport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_12_094542_create_payments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_12_094542_create_payments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_23_161036_create_prices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_23_161036_create_prices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master-client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master-client.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/Entity/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/Entity/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/Entity/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/Entity/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/layouts/master-client.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/layouts/master-client.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/membership/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/membership/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/price/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/price/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/price/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/price/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/manager/sport/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/manager/sport/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/layouts/master-client.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/layouts/master-login.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/payment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/payment/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/manager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/receptionist.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/receptionist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/SessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Receptionist/SessionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/session/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/session/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/receptionist/session/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/receptionist/session/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +100,11 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/receptionist/session/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -546,12 +514,12 @@
       <workItem from="1579449270777" duration="4146000" />
       <workItem from="1579524027789" duration="119000" />
       <workItem from="1579526943168" duration="637000" />
-      <workItem from="1579528797745" duration="2410000" />
+      <workItem from="1579528797745" duration="3010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179766000" />
+    <option name="totallyTimeSpent" value="180366000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -564,7 +532,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3698941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -992,7 +959,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/receptionist/session/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

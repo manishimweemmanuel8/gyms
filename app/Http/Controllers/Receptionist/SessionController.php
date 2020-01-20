@@ -166,7 +166,7 @@ class SessionController extends Controller
 
         $categories = DB::table("categories")->pluck("name","id");
 
-        return view('receptionist.payment.edit', compact('payment','id','categories'),['customer_id'=>$customer_id,'customers'=>$customers]);
+        return view('receptionist.session.edit', compact('payment','id','categories'),['customer_id'=>$customer_id,'customers'=>$customers]);
     }
 
         
