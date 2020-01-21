@@ -13,8 +13,33 @@ class ApiController extends Controller
 {
     //
 
-    public function show($payment){
 
+    public function getCustomer($payment){
+        $ticket=DB::table('payments')->where('customer_id',$payment)
+            ->where('sport_id',3)
+            ->where('duration','>',0)
+            ->whereIn('membership_id',[30,31,32,33])
+            ->get();
+            // if($ticket){
+            
+        
+            $todayDate = date("Y-m-d");
+            $client = DB::table('payments')->where('customer_id', $payment)
+                    ->where('expiry_date', '>=', $todayDate)
+                    ->where('sport_id', 3)->get();
+
+                    if($client){
+                    return $client;
+                }else{
+                    return $ticket;
+                }
+            
+
+
+    }
+
+    public function show(Request $request){
+        $payment=$request->input('customer_id');
         $ticket=DB::table('payments')->where('customer_id',$payment)
             ->where('sport_id',3)
             ->whereIn('membership_id',[30,31,32,33])
@@ -44,10 +69,12 @@ class ApiController extends Controller
                 ]);
                 DB::table('payments')->where('id',$ticket)
                     ->decrement('duration');
-                return $status=1;
+                $data['status']="ticket pass";
+                return $data;
             }
             else{
-                return $status=0;
+                    $data['status']="ticket fail";
+                    return $data;
             }
 
         }
@@ -55,7 +82,7 @@ class ApiController extends Controller
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                 ->where('expiry_date', '>=', $todayDate)
-                ->where('sport_id', 1)->value('id');
+                ->where('sport_id', 3)->value('id');
 
             if ($client) {
                 //check if the customer attend multiple time in same date
@@ -64,7 +91,8 @@ class ApiController extends Controller
                     ->where('payment_id', $client)
                     ->get();
                 if ($attend) {
-                    return $attend;
+                    $data['status']="done to attend";
+                    return $data;
 
                 } else {
                     Attendance::create([
@@ -72,27 +100,31 @@ class ApiController extends Controller
                         'controller_id' => 1,
                         'sport_id' => DB::table('payments')->where('customer_id', $payment)
                             ->where('expiry_date', '>=', $todayDate)
-                            ->where('sport_id', 1)
+                            ->where('sport_id', 3)
                             ->value('sport_id'),
                         'membership_id' => DB::table('payments')->where('customer_id', $payment)
                             ->where('expiry_date', '>=', $todayDate)
-                            ->where('sport_id', 1)
+                            ->where('sport_id', 3)
                             ->value('membership_id'),
 
                         'category_id' => DB::table('payments')->where('customer_id', $payment)
                             ->where('expiry_date', '>=', $todayDate)
-                            ->where('sport_id', 1)
+                            ->where('sport_id', 3)
                             ->value('categorie_id'),
                         'payment_id' => DB::table('payments')->where('customer_id', $payment)
                             ->where('expiry_date', '>=', $todayDate)
-                            ->where('sport_id', 1)
+                            ->where('sport_id', 3)
                             ->value('id'),
                     ]);
 
                 }
-                return $status =1;
+                $data['status']="pass sub";
+
+                    return $data;
             } else {
-                return $status = 0;
+                $data['status']="fail sub";
+
+                    return $data;
             }
         }
 

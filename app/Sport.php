@@ -13,7 +13,7 @@ use App\Payment;
 class Sport extends Model
 {
 //    use selfDeletes;
-    protected $fillable = ['id','name','categorie_id'];
+    protected $fillable = ['id','name','category_id'];
 
 
     public function attendance(){
@@ -30,7 +30,7 @@ class Sport extends Model
     	return $this->hasOne(Payment::class);
     }
 
-    public function categorie(){
+    public function category(){
         return $this->belongsTo(Categorie::class);
     }
 

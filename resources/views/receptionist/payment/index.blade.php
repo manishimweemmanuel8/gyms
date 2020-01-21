@@ -21,7 +21,7 @@
         <th>Expiry Date</th>
         <th>duration</th>
         <th>Amount</th>
-        <th>Edit</th>
+        <!-- <th>Edit</th> -->
         <th>Delete</th>
       </tr>
     </thead>

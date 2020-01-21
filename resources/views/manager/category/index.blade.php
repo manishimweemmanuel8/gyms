@@ -11,9 +11,8 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Created on</th>
         <th>Edit</th>
-        <th>Delete</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -21,20 +20,21 @@
       <tr>
         <td>{{$category['id']}}</td>
         <td>{{$category['name']}}</td>
-        <td>{{$category['created_at']}}</td>
+        
 
 
 
         <td><a href="{{action('Manager\CategorieController@edit', $category['id'])}}" class="btn btn-warning">Edit</a></td>
       
-      <td>
+      <!-- <td>
           <form action="{{action('Manager\CategorieController@destroy', $category['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
            
           </form>
-        </td>
+        </td> -->
+        
       </tr>
       @endforeach
     </tbody>

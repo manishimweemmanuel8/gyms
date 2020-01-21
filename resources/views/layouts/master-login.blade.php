@@ -28,9 +28,21 @@
             <!-- Navbar -->
          
             <!-- End Navbar -->
+
             <div class="panel-header panel-header-sm">
+                <div class="col-8">
+                 <a class="navbar-brand" href="{{ url('/receptionist') }}">
+                                Receptionist
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager') }}">
+                                Manager
+                            </a>
+
+                            </div>
+
             </div>
             <div class="content">
+
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="card card-upgrade">

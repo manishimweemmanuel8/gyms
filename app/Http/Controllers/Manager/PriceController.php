@@ -57,7 +57,7 @@ class PriceController extends Controller
 
 
         $price = new Price([
-            'category_id' => $request->get('categorie_id'),
+            'categorie_id' => $request->get('categorie_id'),
             'sport_id' => $request->get('sport_id'),
             'membership_id' => $request->get('membership_id'),
             'amount'=>$request->get('amount')

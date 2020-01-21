@@ -6,7 +6,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title"> Sport Info</h2>
+                    <h2 class="title"> Membership Info</h2>
 
 
 
@@ -20,12 +20,7 @@
 
       </div>
 
-      <div class="form-group">
-          <label >Duration</label>
-
-          <input type="number" class="form-control"  name="duration">
-
-      </div>
+      
 
 
 
@@ -38,6 +33,13 @@
                   @endforeach
                   </select>
           </div>
+
+          <div class="form-group">
+          <label >Duration</label>
+
+          <input type="number" class="form-control"  name="duration">
+
+      </div>
 
   
    <div class="form-group">

@@ -16,7 +16,7 @@
         <th>name </th>
         <th>category </th>
 {{--        <th>Edit</th>--}}
-        <th>Delete</th>
+        <!-- <th>Delete</th> -->
       </tr>
     </thead>
     <tbody>
@@ -24,18 +24,18 @@
       <tr>
         <td>{{$sport['id']}}</td>
         <td>{{$sport->name}}</td>
-        <td>{{$sport['categorie']['name']}}</td>
+        <td>{{$sport['category']['name']}}</td>
 
 {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
 
-          <td>
+         <!--  <td>
           <form action="{{action('Manager\SportController@destroy', $sport['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
            
           </form>
-        </td>
+        </td> -->
       </tr>
       @endforeach
     </tbody>

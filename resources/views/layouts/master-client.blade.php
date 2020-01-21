@@ -124,6 +124,9 @@
                             <a class="navbar-brand" href="{{ url('/report/report') }}">
                                 Report
                             </a>
+                            <a class="navbar-brand" href="{{ url('/receptionist/session/create') }}">
+                                Session
+                            </a>
 
 
                         </div>

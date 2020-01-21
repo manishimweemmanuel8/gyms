@@ -23,6 +23,6 @@
        <h3> Amount :{{$payment['amount']}}</h3>
       thanks for choosing body max
     </div>
-    <center><button id='print' style='margin-top: 10px; padding: 10px; border: none; text-align: center; background: black; border-radius: 4px; color: #fff; font-weight: bold; cursor: pointer;'>PRINT ABOVE DIV</button></center>
+    <center><button id='print' style='margin-top: 10px; padding: 10px; border: none; text-align: center; background: black; border-radius: 4px; color: #fff; font-weight: bold; cursor: pointer;'>PRINT</button></center>
   </body>
 </html>

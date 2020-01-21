@@ -17,8 +17,8 @@
         <th>sport </th>
         <th>Membership</th>
         <th>Amount</th>
-         <th>Created On</th>
-         <th>delete</th>
+        <!--  <th>Created On</th>
+         <th>delete</th> -->
 
       </tr>
     </thead>
@@ -30,19 +30,19 @@
         <td>{{$price['sport']['name']}}</td>
           <td>{{$price['membership']['name']}}</td>
           <td>{{$price->amount}}</td>
-          <td>{{$price->created_at}}</td>
+          <!-- <td>{{$price->created_at}}</td> -->
 
 
           {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
 
-          <td>
+          <!-- <td>
           <form action="{{action('Manager\PriceController@destroy', $price['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
            
           </form>
-        </td>
+        </td> -->
       </tr>
       @endforeach
     </tbody>

@@ -16,7 +16,7 @@
         <th>name </th>
         <th>duration </th>
         <th>sport</th>
-        <th>Delete</th>
+        <!-- <th>Delete</th> -->
       </tr>
     </thead>
     <tbody>
@@ -29,14 +29,14 @@
 
 {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
 
-          <td>
+         <!--  <td>
           <form action="{{action('Manager\MembershipController@destroy', $membership['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
            
           </form>
-        </td>
+        </td> -->
       </tr>
       @endforeach
     </tbody>
