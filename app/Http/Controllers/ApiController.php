@@ -32,10 +32,12 @@ class ApiController extends Controller
                     ->where('sport_id', 3)->value("customer_id");
 
                     if($client){
-                    return $client->toArray();
+                    $data['status']="client pass";
+                return $data;
                         
                 }else{
-                    return $ticket->toArray();
+                    $data['status']="ticket pass";
+                return $data;
 
                 }
             
