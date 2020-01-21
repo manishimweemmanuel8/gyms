@@ -36,14 +36,14 @@ class ApiController extends Controller
                 // return response()->json(
                 //         'customer_id' => 'client pass'
                 //     );
-                    return $client;
+                    return $data;
                                             
                 }else{
                     $data['status']="ticket pass";
                 // return response()->json(
                 //         'customer_id' => 'ticket pass',
                 //     );
-                    return $ticket;
+                    return $data;
 
                 }
             
