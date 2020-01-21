@@ -32,14 +32,14 @@ class ApiController extends Controller
                     ->where('sport_id', 3)->pluck("customer_id")->toArray();
 
                     if($client){
-                    $data['status']="client pass";
+                    $data['customer_id']="client pass";
                 // return response()->json(
                 //         'customer_id' => 'client pass'
                 //     );
                     return response()->json([$data]);
                                             
                 }else{
-                    $data['status']="ticket pass";
+                    $data['customer_id']="ticket pass";
                 // return response()->json(
                 //         'customer_id' => 'ticket pass',
                 //     );
