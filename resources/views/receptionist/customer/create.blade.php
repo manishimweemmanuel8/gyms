@@ -4,22 +4,21 @@
 @section('content')
 
 <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-1">
+<!--         <div class="wrapper wrapper--w680">
+ -->            <div class="card card-1">
 
                 <div class="card-body">
                     <h2 class="title">Customer Registration Info</h2>
 
 
-  
-  <form class="well form-horizontal" method="post" action="{{url('receptionist/customer')}}"  id="contact_form">
+  <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+  <form class="justify-content-center" method="post" action="{{url('receptionist/customer')}}"  id="contact_form">
     {{ csrf_field() }}
 
      <div class="form-group">
       <label >First Name</label>
-
         <input type="text" class="form-control"  name="firstName">
-
     </div>
     <div class="form-group">
       <label >Last Name</label>
@@ -80,5 +79,7 @@
 </div>
 </div>
 </div>
+
+<!-- </div> -->
 
 @endsection

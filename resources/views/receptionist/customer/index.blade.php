@@ -1,15 +1,31 @@
 @extends('layouts.master-client')
 @section('content')
 
-        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+        <div class="page-wrapper bg-blue p-t-120 p-b-120 font-robo">
+        <!-- <div class="wrapper wrapper--w680"> -->
+            <div class="card">
+
+                
+                 <div class="row">
+                   <h2 class="card-header">Customer List</h2>
+                 </div>
+                  <div class="row ">
+                    <div class="col-sm-6">
+                    <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>
+                    </div>
+                 </div>
+                    
+                   
+               
                     <div class="card-body">
-                        <h2 class="title">Customer Registration Info</h2>
-                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+
+                  
+                        <table class="card-table table" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
+                                >
                         <thead>
-                        <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>
+                        
       <tr>
-        <th>ID</th>
+        <th>No</th>
         <th>first name</th>
         <th>last name</th>
         <th>Gender</th>
@@ -25,7 +41,7 @@
     <tbody>
       @foreach($customers as $customer)
       <tr>
-        <td>{{$customer['id']}}</td>
+        <td>{{$loop->iteration}}</td>
         <td>{{$customer['firstName']}}</td>
         <td>{{$customer['lastName']}}</td>
         <td>{{$customer['gender']}}</td>
@@ -56,4 +72,7 @@
   </table>
                     </div>
                 </div>
+              </div>
+            <!-- </div> -->
+
 @endsection

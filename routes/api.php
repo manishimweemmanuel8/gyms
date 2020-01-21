@@ -20,5 +20,5 @@ use Illuminate\Http\Request;
 Route::post('/logs', 'ApiController@login');
 Route::post('/session/{customer}','ApiController@session');
 Route::put('/check','ApiController@show');
-Route::get('/get/{payment}','ApiController@getCustomer');
+Route::get('/get','ApiController@getCustomer');
 
