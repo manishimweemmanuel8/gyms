@@ -22,26 +22,28 @@ class ApiController extends Controller
             ->where('sport_id',3)
             ->where('duration','>',0)
             ->whereIn('membership_id',[30,31,32,33])
-            ->value("customer_id");
+            ->pluck("customer_id")->toArray();;
             // if($ticket){
             
         
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                     ->where('expiry_date', '>=', $todayDate)
-                    ->where('sport_id', 3)->value("customer_id");
+                    ->where('sport_id', 3)->pluck("customer_id")->toArray();
 
                     if($client){
                     $data['status']="client pass";
-                return response()->json(
-                        'customer_id' => 'client pass'
-                    );
+                // return response()->json(
+                //         'customer_id' => 'client pass'
+                //     );
+                    return $client;
                                             
                 }else{
                     $data['status']="ticket pass";
-                return response()->json(
-                        'customer_id' => 'ticket pass',
-                    );
+                // return response()->json(
+                //         'customer_id' => 'ticket pass',
+                //     );
+                    return $ticket;
 
                 }
             
