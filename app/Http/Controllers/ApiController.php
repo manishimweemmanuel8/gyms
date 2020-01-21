@@ -32,10 +32,10 @@ class ApiController extends Controller
                     ->where('sport_id', 3)->get();
 
                     if($client){
-                    return response()->json(['status'=>'ok']);
+                    return response()->json($client);
                         
                 }else{
-                    return response()->json(['status'=>'ok']);
+                    return response()->json($ticket);
 
                 }
             
