@@ -22,7 +22,7 @@ class ApiController extends Controller
             ->where('sport_id',3)
             ->where('duration','>',0)
             ->whereIn('membership_id',[30,31,32,33])
-            ->value("customer_id");
+            ->value("id");
             // if($ticket){
             
         
@@ -91,11 +91,6 @@ class ApiController extends Controller
                 ]);
                 DB::table('payments')->where('id',$ticket)
                     ->decrement('duration');
-
-
-
-
-                    
                     $data['customer_id']="ticket pass";
                     return response()->json([$data]);
 
