@@ -68,7 +68,8 @@ class ApiController extends Controller
                $data['customer_id']="client pass";
                     return response()->json([$data]);
                                             
-                }else{
+                }
+            }else{
                       Attendance::create([
                     'customer_id' => $payment,
                     'controller_id' => 1,
@@ -100,7 +101,7 @@ class ApiController extends Controller
 
                     
 
-                }
+                
             
 
  
