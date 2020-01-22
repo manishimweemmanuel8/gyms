@@ -22,14 +22,14 @@ class ApiController extends Controller
             ->where('sport_id',3)
             ->where('duration','>',0)
             ->whereIn('membership_id',[30,31,32,33])
-            ->pluck("customer_id")->toArray();;
+            ->value("customer_id");
             // if($ticket){
             
         
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                     ->where('expiry_date', '>=', $todayDate)
-                    ->where('sport_id', 3)->pluck("id");
+                    ->where('sport_id', 3)->value("id");
 
                     if($client){
 
