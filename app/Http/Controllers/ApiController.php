@@ -32,40 +32,14 @@ class ApiController extends Controller
                     ->where('sport_id', 3)->pluck("customer_id")->toArray();
 
                     if($client){
-                   
-                     Attendance::create([
-                    'customer_id' => $payment,
-                    'controller_id' => 1,
-                    'sport_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('sport_id'),
-                    'membership_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('membership_id'),
-
-                    'category_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('categorie_id'),
-                    'payment_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('id'),
-                ]);
-                DB::table('payments')->where('id',$ticket)
-                    ->decrement('duration');
-
-               $data['customer_id']="client pass";
-                    return response()->json([$data]);
-                                            
-                }else{
 
                     $attend = DB::table('attendances')
                     ->where('created_at', $todayDate)
                     ->where('payment_id', $client)
                     ->get();
                 if ($attend) {
-                    $data['status']="done to attend";
-                    return $data;
-
+                    $data['customer_id']="client attend";
+                    return response()->json([$data]);
                 } else {
                     Attendance::create([
                         'customer_id' => $payment,
@@ -88,6 +62,36 @@ class ApiController extends Controller
                             ->where('sport_id', 3)
                             ->value('id'),
                     ]);
+                   
+                   
+
+               $data['customer_id']="client pass";
+                    return response()->json([$data]);
+                                            
+                }else{
+                      Attendance::create([
+                    'customer_id' => $payment,
+                    'controller_id' => 1,
+                    'sport_id' => DB::table('payments')->where('customer_id', $payment)
+                        ->where('sport_id', 3)
+                        ->value('sport_id'),
+                    'membership_id' => DB::table('payments')->where('customer_id', $payment)
+                        ->where('sport_id', 3)
+                        ->value('membership_id'),
+
+                    'category_id' => DB::table('payments')->where('customer_id', $payment)
+                        ->where('sport_id', 3)
+                        ->value('categorie_id'),
+                    'payment_id' => DB::table('payments')->where('customer_id', $payment)
+                        ->where('sport_id', 3)
+                        ->value('id'),
+                ]);
+                DB::table('payments')->where('id',$ticket)
+                    ->decrement('duration');
+
+
+
+
                     
                     $data['customer_id']="ticket pass";
                     return response()->json([$data]);
