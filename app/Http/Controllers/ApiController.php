@@ -29,7 +29,7 @@ class ApiController extends Controller
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                     ->where('expiry_date', '>=', $todayDate)
-                    ->where('sport_id', 3)->pluck("customer_id")->toArray();
+                    ->where('sport_id', 3)->pluck("id");
 
                     if($client){
 
@@ -69,7 +69,8 @@ class ApiController extends Controller
                     return response()->json([$data]);
                                             
                 }
-            }else{
+            }
+            else{
                       Attendance::create([
                     'customer_id' => $payment,
                     'controller_id' => 1,
