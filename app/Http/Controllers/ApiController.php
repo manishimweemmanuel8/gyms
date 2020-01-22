@@ -36,7 +36,8 @@ class ApiController extends Controller
                     $attend = DB::table('attendances')
                     ->where('created_at', $todayDate)
                     ->where('payment_id', $client)
-                    ->get();
+                    ->value("payment_id");
+
                 if ($attend) {
                     $data['customer_id']="client attend";
                     return response()->json([$data]);
