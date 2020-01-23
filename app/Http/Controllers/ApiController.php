@@ -18,11 +18,11 @@ class ApiController extends Controller
 
     public function getCustomer(){
         $payment=Input::get('payment');
-        $ticket=DB::table('payments')->where('customer_id',$payment)
-            ->where('sport_id',3)
-            ->where('duration','>',0)
-            ->whereIn('membership_id',[30,31,32,33])
-            ->value("id");
+        // $ticket=DB::table('payments')->where('customer_id',$payment)
+        //     ->where('sport_id',3)
+        //     ->where('duration','>',0)
+        //     ->whereIn('membership_id',[30,31,32,33])
+        //     ->value("id");
             // if($ticket){
             
         
@@ -72,26 +72,29 @@ class ApiController extends Controller
                 }
             }
             else{
-                      Attendance::create([
-                    'customer_id' => $payment,
-                    'controller_id' => 1,
-                    'sport_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('sport_id'),
-                    'membership_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('membership_id'),
+                //       Attendance::create([
+                //     'customer_id' => $payment,
+                //     'controller_id' => 1,
+                //     'sport_id' => DB::table('payments')->where('customer_id', $payment)
+                //         ->where('sport_id', 3)
+                //         ->value('sport_id'),
+                //     'membership_id' => DB::table('payments')->where('customer_id', $payment)
+                //         ->where('sport_id', 3)
+                //         ->value('membership_id'),
 
-                    'category_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('categorie_id'),
-                    'payment_id' => DB::table('payments')->where('customer_id', $payment)
-                        ->where('sport_id', 3)
-                        ->value('id'),
-                ]);
-                DB::table('payments')->where('id',$ticket)
-                    ->decrement('duration');
-                    $data['customer_id']="ticket pass";
+                //     'category_id' => DB::table('payments')->where('customer_id', $payment)
+                //         ->where('sport_id', 3)
+                //         ->value('categorie_id'),
+                //     'payment_id' => DB::table('payments')->where('customer_id', $payment)
+                //         ->where('sport_id', 3)
+                //         ->value('id'),
+                // ]);
+                // DB::table('payments')->where('id',$ticket)
+                //     ->decrement('duration');
+                //     $data['customer_id']="ticket pass";
+                //     return response()->json([$data]);
+
+                 $data['customer_id']="client not allowed";
                     return response()->json([$data]);
 
                 }
