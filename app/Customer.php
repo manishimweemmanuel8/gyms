@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Entitie;
 use App\Payment;
 use App\Membership;
+use DB;
 
 
 class Customer extends Model
@@ -28,5 +29,13 @@ class Customer extends Model
     public function membership(){
         return $this->belongsTo(Membership::class);
     }
+
+     public static function insertData($data){
+
+      $value=DB::table('customers')->where('phone', $data['phone'])->get();
+      if($value->count() == 0){
+         DB::table('customers')->insert($data);
+      }
+   }
 
 }

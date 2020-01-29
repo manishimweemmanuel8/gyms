@@ -29,6 +29,13 @@
 
     </div>
 
+    <div class="form-group">
+      <label >Expiry Date</label> 
+
+        <input type="date" class="form-control" name="expiry_date">
+
+    </div>
+
 
    
     

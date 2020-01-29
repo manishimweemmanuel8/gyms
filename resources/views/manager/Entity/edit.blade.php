@@ -39,6 +39,12 @@
   </div>
     @endif
 
+      <div class="form-group">
+       <input name="_method" type="hidden" value="PATCH">
+      <label>Expiry Date</label>
+        <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->id}}">
+    </div>
+
 
     <div class="form-group row">
       <div class="col-md-0"></div>

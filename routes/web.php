@@ -39,5 +39,7 @@ Route::get('gym_session_adult','reportController@gymSessionAdult');
 //Route::group(['prefix' => 'admin'], function () {
 //    Voyager::routes();
 //});
+Route::get('csv_file', 'CsvFile@index');
 
+Route::post('csv_file/import', 'CsvFile@csv_import')->name('import');
 

@@ -4,20 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Attendance;
 use App\Customer;
-use Illuminate\Http\Request;
 use App\Payment; 
+use App\Controller;
 use App\Http\Resources\PaymentResource;
-use Illuminate\Pagination\Paginator;
 use DB;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Input; 
+use App\Http\Requests\RegisterAuthRequest;
+use App\User;
+use Illuminate\Http\Request;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class ApiController extends Controller
 {
     //
+    public $loginAfterSignUp = true;
 
 
     public function getCustomer(){
         $payment=Input::get('payment');
+        
         // $ticket=DB::table('payments')->where('customer_id',$payment)
         //     ->where('sport_id',3)
         //     ->where('duration','>',0)
@@ -202,19 +209,22 @@ class ApiController extends Controller
 
 
 
-    // public function login(Request $request){
+    public function login(Request $request){
 
-    //     $email=$request->input('email');
-    //     $password=$request->input('password');
-    //     $data=DB::table('controllers')
-    //         ->where('email',$email)
-    //         ->where('password',$password)->get();
-    //     if($data){
-    //         return $data;
-    //     }else{
-    //         return 0;
-    //     }
-    // }
+        $email=$request->input('email');
+        $password=$request->input('password');
+        $hash_password=bcrypt($request->input('hash'));
+        $data=DB::table('receptionists')
+            ->where('email',$email)
+            ->where('password',$password)->get();
+        if($data){
+            $dat['status']="pass sub";
+            return $dat;
+        }else{
+            $dat['status']="not pass sub";
+            return $dat;
+        }
+    }
 
     // public function session($customer,Request $request){
     //     $todayDate = date("Y-m-d");
@@ -265,6 +275,82 @@ class ApiController extends Controller
     //     return response()->json($client);
 
     // }
+
+
+
+     
+ 
+    public function register(RegisterAuthRequest $request)
+    {
+        $controller = new Controller();
+        $controller->name = $request->name;
+        $controller->email = $request->email;
+        $controller->post_id = $request->post_id;
+        $controller->password = bcrypt($request->password);
+        $controller->save();
+ 
+        if ($this->loginAfterSignUp) {
+            return $this->login($request);
+        }
+ 
+        return response()->json([
+            'success' => true,
+            'data' => $controller
+        ], 200);
+    }
+ 
+    public function login(Request $request)
+    {
+        $input = $request->only('email', 'password');
+        // $input=$request->input('email','password');
+        $jwt_token = null;
+ 
+        if (!$jwt_token = JWTAuth::attempt($input)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid Email or Password',
+                'data' => $input,
+
+            ], 401);
+        }
+ 
+        return response()->json([
+            'success' => true,
+            'token' => $jwt_token,
+        ]);
+    }
+ 
+    public function logout(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+ 
+        try {
+            JWTAuth::invalidate($request->token);
+ 
+            return response()->json([
+                'success' => true,
+                'message' => 'Controller logged out successfully'
+            ]);
+        } catch (JWTException $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, the controller cannot be logged out'
+            ], 500);
+        }
+    }
+ 
+    public function getAuthUser(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+ 
+        $user = JWTAuth::authenticate($request->token);
+ 
+        return response()->json(['controller' => $controller]);
+    }
 
 
 }

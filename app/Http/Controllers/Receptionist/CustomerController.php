@@ -128,4 +128,6 @@ class CustomerController extends Controller
         customer::destroy($id);
         return redirect('/receptionist/customer');
     }
+
+    
 }

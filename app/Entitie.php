@@ -11,7 +11,7 @@ class Entitie extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name','customer_id','email'];
+    protected $fillable = ['name','customer_id','email','expiry_date'];
 	public function customer(){
 		return $this->belongsTo(Customer::class);
 	}

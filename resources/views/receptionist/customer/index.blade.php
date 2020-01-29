@@ -9,6 +9,19 @@
                  <div class="row">
                    <h2 class="card-header">Customer List</h2>
                  </div>
+
+                 <!-- Message -->
+     @if(Session::has('message'))
+        <p >{{ Session::get('message') }}</p>
+     @endif
+
+     <!-- Form -->
+     <form method='post' action='/uploadFile' enctype='multipart/form-data' >
+       {{ csrf_field() }}
+       <input type='file' name='file' >
+       <input type='submit' name='submit' value='Import'>
+     </form>
+     
                   <div class="row ">
                     <div class="col-sm-6">
                     <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>
@@ -26,6 +39,7 @@
                         
       <tr>
         <th>No</th>
+        <th>ID</th>
         <th>first name</th>
         <th>last name</th>
         <th>Gender</th>
@@ -42,6 +56,7 @@
       @foreach($customers as $customer)
       <tr>
         <td>{{$loop->iteration}}</td>
+          <td>{{$customer->id}}</td>
         <td>{{$customer['firstName']}}</td>
         <td>{{$customer['lastName']}}</td>
         <td>{{$customer['gender']}}</td>

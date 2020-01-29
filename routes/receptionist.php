@@ -5,6 +5,8 @@ Route::group(['namespace' => 'Receptionist'], function() {
     // Route::resource('/customer', 'CustomerController');
     Route::resource('/payment', 'PaymentController');
     Route::resource('/session','SessionController');
+    Route::get('/', 'CustomerController@index'); // localhost:8000/
+    Route::post('/uploadFile', 'CustomerController@uploadFile');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('receptionist.login');

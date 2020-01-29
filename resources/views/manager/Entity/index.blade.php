@@ -12,7 +12,8 @@
         <th>ID</th>
         <th>Name</th>
           <th>Email</th>
-        <th>Represtative</th>
+        <th>Customer</th>
+        <th>expiry date</th>
         <th>Created on</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -25,6 +26,7 @@
         <td>{{$entity['name']}}</td>
           <td>{{$entity['email']}}</td>
         <td>{{$entity['customer']['firstName']}} {{$entity['customer']['lastName']}}</td>
+        <td>{{$entity['expiry_date']}}</td>
         <td>{{$entity['created_at']}}</td>
 
 
