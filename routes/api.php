@@ -34,7 +34,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('products/{id}', 'ProductController@show');
     Route::post('products', 'ProductController@store');
     Route::put('products/{id}', 'ProductController@update');
-    Route::delete('products/{id}', 'ProductController@destroy');
- 
+    Route::delete('products/{id}', 'ProductController@destroy'); 
 });
 
