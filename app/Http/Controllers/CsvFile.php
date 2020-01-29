@@ -36,11 +36,11 @@ class CsvFile extends Controller
 
         if($data->count()){
             foreach ($data as $key => $value) {
-                $arr[] = ['name' => $value->name, 'email' => $value->email, 'password'=> $value->password];
+                $arr[] = ['first_name' => $value->first_name, 'last_name' => $value->last_name, 'phone'=> $value->phone,'email' => $value->email, 'entity_id' => $value->entity_id, 'dob'=> $value->dob,'gender' => $value->gender, 'entity_responsibility'=> $value->entity_responsibility];
             }
 
             if(!empty($arr)){
-                User::insert($arr);
+                Customer::insert($arr);
             }
         }
 
