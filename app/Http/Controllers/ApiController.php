@@ -299,58 +299,58 @@ class ApiController extends Controller
         ], 200);
     }
  
-    public function login(Request $request)
-    {
-        $input = $request->only('email', 'password');
-        // $input=$request->input('email','password');
-        $jwt_token = null;
+    // public function login(Request $request)
+    // {
+    //     $input = $request->only('email', 'password');
+    //     // $input=$request->input('email','password');
+    //     $jwt_token = null;
  
-        if (!$jwt_token = JWTAuth::attempt($input)) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid Email or Password',
-                'data' => $input,
+    //     if (!$jwt_token = JWTAuth::attempt($input)) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Invalid Email or Password',
+    //             'data' => $input,
 
-            ], 401);
-        }
+    //         ], 401);
+    //     }
  
-        return response()->json([
-            'success' => true,
-            'token' => $jwt_token,
-        ]);
-    }
+    //     return response()->json([
+    //         'success' => true,
+    //         'token' => $jwt_token,
+    //     ]);
+    // }
  
-    public function logout(Request $request)
-    {
-        $this->validate($request, [
-            'token' => 'required'
-        ]);
+    // public function logout(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'token' => 'required'
+    //     ]);
  
-        try {
-            JWTAuth::invalidate($request->token);
+    //     try {
+    //         JWTAuth::invalidate($request->token);
  
-            return response()->json([
-                'success' => true,
-                'message' => 'Controller logged out successfully'
-            ]);
-        } catch (JWTException $exception) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Sorry, the controller cannot be logged out'
-            ], 500);
-        }
-    }
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Controller logged out successfully'
+    //         ]);
+    //     } catch (JWTException $exception) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Sorry, the controller cannot be logged out'
+    //         ], 500);
+    //     }
+    // }
  
-    public function getAuthUser(Request $request)
-    {
-        $this->validate($request, [
-            'token' => 'required'
-        ]);
+    // public function getAuthUser(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'token' => 'required'
+    //     ]);
  
-        $user = JWTAuth::authenticate($request->token);
+    //     $user = JWTAuth::authenticate($request->token);
  
-        return response()->json(['controller' => $controller]);
-    }
+    //     return response()->json(['controller' => $controller]);
+    // }
 
 
 }
