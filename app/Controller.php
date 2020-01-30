@@ -13,7 +13,6 @@ class Controller extends Model
 {
     //
     use Notifiable;
-
     public function attendance(){
     	return $this->hasMany(Attendance::class);
     }
