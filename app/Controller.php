@@ -9,7 +9,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use App\Attendance;
 
-class Controller extends Authenticatable implements JWTSubject
+class Controller extends Model
 {
     //
         use Notifiable;

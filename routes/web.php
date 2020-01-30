@@ -43,3 +43,7 @@ Route::get('csv_file', 'CsvFile@index');
 
 Route::post('csv_file/import', 'CsvFile@csv_import')->name('import');
 
+
+Route::get('/', 'PagesController@index');
+Route::post('/uploadFile', 'PagesController@uploadFile');
+

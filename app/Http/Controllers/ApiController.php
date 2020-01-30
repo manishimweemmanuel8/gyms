@@ -14,6 +14,7 @@ use App\User;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Response;
 
 
 class ApiController extends Controller
@@ -209,17 +210,18 @@ class ApiController extends Controller
 
 
 
-    public function login(Request $request){
+    public function login(){
 
-        $email=$request->input('email');
-        $password=$request->input('password');
-        $hash_password=bcrypt($request->input('hash'));
-        $data=DB::table('receptionists')
+         $email=Input::get('email');
+        
+        $password=Input::get('password');
+        // $hash_password=bcrypt($request->input('hash'));
+        $data=DB::table('controllers')
             ->where('email',$email)
-            ->where('password',$password)->get();
+            ->where('password',$password)->first();
         if($data){
-            $dat['status']="pass sub";
-            return $dat;
+            // $dat['status']=$data->value;
+            return response()->json($data);
         }else{
             $dat['status']="not pass sub";
             return $dat;
@@ -285,7 +287,7 @@ class ApiController extends Controller
         $controller = new Controller();
         $controller->name = $request->name;
         $controller->email = $request->email;
-        $controller->post_id = $request->post_id;
+       
         $controller->password = bcrypt($request->password);
         $controller->save();
  
