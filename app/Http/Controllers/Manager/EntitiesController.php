@@ -125,6 +125,8 @@ class EntitiesController extends Controller
         return redirect('/manager/Entity');
     }
 
+  
+
      public function uploadFile(Request $request){
 
     if ($request->input('submit') != null ){
@@ -209,6 +211,7 @@ class EntitiesController extends Controller
     }
 
     // Redirect to index
-    return redirect('/receptionist/customer');
+    $categories = DB::table("categories")->pluck("name","id");
+        return view('manager/Entity.create',compact('categories'));
   }
 }
