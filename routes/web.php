@@ -48,6 +48,6 @@ Route::get('gym_session_adult','reportController@gymSessionAdult');
 // Route::post('/uploadFile', 'PagesController@uploadFile');
 
 
-Route::get('/import_excel', 'PagesController@index');
-Route::post('/import_excel/import', 'PagesController@import');
+// Route::get('/import_excel', 'PagesController@index');
+// Route::post('/import_excel/import', 'PagesController@import');
 
