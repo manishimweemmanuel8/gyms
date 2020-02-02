@@ -96,12 +96,8 @@ class ApiController extends Controller
 
                 }
 
-                    
-
                     }else{
 
-            
-        
             $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $entitie_id)
                     ->where('expiry_date', '>=', $todayDate)
@@ -282,18 +278,14 @@ class ApiController extends Controller
          $email = Input::get('email');
         $password = Input::get('password');
         $receptionist = Receptionist::where('email', $email)->first();
+        $data=DB::table('receptionists')
+            ->where('email',$email)
+            ->first();
         if ($receptionist && \Hash::check($password, $receptionist->password)) {
             // TODO : check if deployment is full to sector level
             return response()
                 ->json(
-                    [
-                        'status' => 0,
-                        'receptionist' => [
-                            'id' => $receptionist->id,
-                            'name' => $receptionist->name,
-                            'Email' => $receptionist->email
-                        ]
-                    ]
+                   $data
                 );
         }
         return response()

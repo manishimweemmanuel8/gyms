@@ -68,8 +68,7 @@
         @else
         <td>Yes</td>
         @endif
-        <td>{{$customer->entitie->name}}</td>
-
+      
 
         <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
       

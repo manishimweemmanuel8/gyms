@@ -11,7 +11,7 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::get('get-sport-list','PriceController@getSportList');
     Route::get('get-membership-list','PriceController@getMembershipList');
     Route::post('/uploadFile', 'EntitiesController@uploadFile');
-    Route::get('/', 'EntitiesController@message'); // localhost:8000/
+    // Route::get('/', 'EntitiesController@message'); // localhost:8000/
 
 
 
