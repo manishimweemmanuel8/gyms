@@ -6,6 +6,7 @@ use App\Attendance;
 use App\Customer;
 use App\Payment; 
 use App\Controller;
+use App\Receptionist;
 use App\Http\Resources\PaymentResource;
 use DB;
 use Illuminate\Support\Facades\Input; 
@@ -20,6 +21,11 @@ use Response;
 class ApiController extends Controller
 {
     //
+
+    public function getCategories(){
+        $categories = DB::table("categories")->get();
+        return $categories;
+    }
     public $loginAfterSignUp = true;
 
 
@@ -32,9 +38,13 @@ class ApiController extends Controller
         //     ->whereIn('membership_id',[30,31,32,33])
         //     ->value("id");
             // if($ticket){
-            
-        
-            $todayDate = date("Y-m-d");
+
+        $entitie_id=DB::table('customers')->where('id', $payment)
+                    ->value("entitie_id");
+
+                    if ($entitie_id==1) {
+                        # code...
+                          $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                     ->where('expiry_date', '>=', $todayDate)
                     ->where('sport_id', 3)->value("id");
@@ -80,32 +90,72 @@ class ApiController extends Controller
                 }
             }
             else{
-                //       Attendance::create([
-                //     'customer_id' => $payment,
-                //     'controller_id' => 1,
-                //     'sport_id' => DB::table('payments')->where('customer_id', $payment)
-                //         ->where('sport_id', 3)
-                //         ->value('sport_id'),
-                //     'membership_id' => DB::table('payments')->where('customer_id', $payment)
-                //         ->where('sport_id', 3)
-                //         ->value('membership_id'),
-
-                //     'category_id' => DB::table('payments')->where('customer_id', $payment)
-                //         ->where('sport_id', 3)
-                //         ->value('categorie_id'),
-                //     'payment_id' => DB::table('payments')->where('customer_id', $payment)
-                //         ->where('sport_id', 3)
-                //         ->value('id'),
-                // ]);
-                // DB::table('payments')->where('id',$ticket)
-                //     ->decrement('duration');
-                //     $data['customer_id']="ticket pass";
-                //     return response()->json([$data]);
-
+               
                  $data['customer_id']="client not allowed";
                     return response()->json([$data]);
 
                 }
+
+                    
+
+                    }else{
+
+            
+        
+            $todayDate = date("Y-m-d");
+            $client = DB::table('payments')->where('customer_id', $entitie_id)
+                    ->where('expiry_date', '>=', $todayDate)
+                    ->where('sport_id', 3)->value("id");
+
+                    if($client){
+
+                    $attend = DB::table('attendances')
+                    ->where('created_at', $todayDate)
+                    ->where('customer_id', $payment)
+                    ->value("id");
+
+                if ($attend) {
+                    $data['customer_id']="client attend";
+                    return response()->json([$data]);
+                } else {
+                    Attendance::create([
+                        'customer_id' => $payment,
+                        'controller_id' => 1,
+                        'sport_id' => DB::table('payments')->where('customer_id', $entitie_id)
+                            ->where('expiry_date', '>=', $todayDate)
+                            ->where('sport_id', 3)
+                            ->value('sport_id'),
+                        'membership_id' => DB::table('payments')->where('customer_id', $entitie_id)
+                            ->where('expiry_date', '>=', $todayDate)
+                            ->where('sport_id', 3)
+                            ->value('membership_id'),
+
+                        'category_id' => DB::table('payments')->where('customer_id', $entitie_id)
+                            ->where('expiry_date', '>=', $todayDate)
+                            ->where('sport_id', 3)
+                            ->value('categorie_id'),
+                        'payment_id' => DB::table('payments')->where('customer_id', $entitie_id)
+                            ->where('expiry_date', '>=', $todayDate)
+                            ->where('sport_id', 3)
+                            ->value('id'),
+                    ]);
+                   
+                   
+
+               $data['customer_id']="client pass";
+                    return response()->json([$data]);
+                                            
+                }
+            }
+            else{
+            
+
+                 $data['customer_id']="client not allowed";
+                    return response()->json([$data]);
+
+
+                }
+            }
 
                     
 
@@ -226,6 +276,28 @@ class ApiController extends Controller
             $dat['status']="not pass sub";
             return $dat;
         }
+    }
+
+    public function loginReceptionist(){
+         $email = Input::get('email');
+        $password = Input::get('password');
+        $receptionist = Receptionist::where('email', $email)->first();
+        if ($receptionist && \Hash::check($password, $receptionist->password)) {
+            // TODO : check if deployment is full to sector level
+            return response()
+                ->json(
+                    [
+                        'status' => 0,
+                        'receptionist' => [
+                            'id' => $receptionist->id,
+                            'name' => $receptionist->name,
+                            'Email' => $receptionist->email
+                        ]
+                    ]
+                );
+        }
+        return response()
+            ->json(['status' => 2, 'message' => 'Ntitubashije kubamenya!']);
     }
 
     // public function session($customer,Request $request){

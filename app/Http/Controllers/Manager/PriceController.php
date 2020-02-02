@@ -18,7 +18,7 @@ class PriceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
         //
         $prices = Price::with('categorie')->get();

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Categorie;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,13 @@ use Illuminate\Http\Request;
 // });
 Route::apiResource('/payment', 'ApiController');
 Route::post('/logs', 'ApiController@login');
+Route::post('/loginReceptionist', 'ApiController@loginReceptionist');
 Route::post('/session/{customer}','ApiController@session');
 Route::put('/check','ApiController@show');
 Route::get('/get','ApiController@getCustomer');
+Route::get('categories', function() {
+    return $categories=Categorie::all();
+});
 
 Route::post('login', 'ApiController@login');
 Route::post('register', 'ApiController@register');

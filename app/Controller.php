@@ -9,10 +9,11 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Model;
 use App\Attendance;
 
-class Controller extends Model
+class Controller extends Authenticatable implements JWTSubject
 {
     //
-    use Notifiable;
+        use Notifiable;
+
     public function attendance(){
     	return $this->hasMany(Attendance::class);
     }

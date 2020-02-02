@@ -39,11 +39,15 @@ Route::get('gym_session_adult','reportController@gymSessionAdult');
 //Route::group(['prefix' => 'admin'], function () {
 //    Voyager::routes();
 //});
-Route::get('csv_file', 'CsvFile@index');
+// Route::get('csv_file', 'CsvFile@index');
 
-Route::post('csv_file/import', 'CsvFile@csv_import')->name('import');
+// Route::post('csv_file/import', 'CsvFile@csv_import')->name('import');
 
 
-Route::get('/', 'PagesController@index');
-Route::post('/uploadFile', 'PagesController@uploadFile');
+// Route::get('/', 'PagesController@index');
+// Route::post('/uploadFile', 'PagesController@uploadFile');
+
+
+Route::get('/import_excel', 'PagesController@index');
+Route::post('/import_excel/import', 'PagesController@import');
 

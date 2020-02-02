@@ -8,6 +8,7 @@ use App\Entitie;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use App\Payment;
 
 class EntitiesController extends Controller
 {
@@ -21,7 +22,24 @@ class EntitiesController extends Controller
 
     public function create()
     {
-        return view('manager/Entity.create');
+        $categories = DB::table("categories")->pluck("name","id");
+        return view('manager/Entity.create',compact('categories'));
+    }
+
+      public function getSportList(Request $request)
+    {
+        $sports = DB::table("sports")
+            ->where("categorie_id",$request->category_id)
+            ->pluck("name","id");
+        return response()->json($sports);
+    }
+
+    public function getMembershipList(Request $request)
+    {
+        $memberships = DB::table("memberships")
+            ->where("sport_id",$request->sport_id)
+            ->pluck("name","id");
+        return response()->json($memberships);
     }
 
     public function store(Request $request)
@@ -37,8 +55,29 @@ class EntitiesController extends Controller
             'expiry_date'=>$request->get('expiry_date'),
 
         ]);
-
         $entity->save();
+
+           $payment = new Payment([
+            'customer_id' => DB::table("entities")->where('email',$request->get('email'))->value("id"),
+            'receptionist_id' => 1,
+            'categorie_id' => $request->get('categorie_id'),
+            'sport_id' => $request->get('sport_id'),
+             'membership_id' => $request->get('membership_id'),
+             'amount' => DB::table("prices")
+            ->where("categorie_id",$request->get('categorie_id'))
+            ->where("sport_id",$request->get('sport_id'))
+            ->where("membership_id",$request->get('membership_id'))
+            ->value("amount"),
+             'duration' => 0,
+             'expiry_date'=>$request->get('expiry_date'),
+
+        ]);
+
+
+
+        
+        $payment->save();
+
         return redirect('/manager/Entity')->with('succes', 'Data has been successfully save!');
     }
     public function edit($id,$customer_id=null)
@@ -51,7 +90,7 @@ class EntitiesController extends Controller
         $customer=DB::table('entities')
             ->where('id', $id)
             ->value("customer_id");
-        DB::table('customers')
+        DB::table('customers') 
             ->where('id', $customer)
             ->update(['entity_representative' => 0]);
         return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers]);
@@ -86,89 +125,89 @@ class EntitiesController extends Controller
         return redirect('/manager/Entity');
     }
 
-     public function uploadFile(Request $request){
+  //    public function uploadFile(Request $request){
 
-    if ($request->input('submit') != null ){
+  //   if ($request->input('submit') != null ){
 
-      $file = $request->file('file');
+  //     $file = $request->file('file');
 
-      // File Details 
-      $filename = $file->getClientOriginalName();
-      $extension = $file->getClientOriginalExtension();
-      $tempPath = $file->getRealPath();
-      $fileSize = $file->getSize();
-      $mimeType = $file->getMimeType();
+  //     // File Details 
+  //     $filename = $file->getClientOriginalName();
+  //     $extension = $file->getClientOriginalExtension();
+  //     $tempPath = $file->getRealPath();
+  //     $fileSize = $file->getSize();
+  //     $mimeType = $file->getMimeType();
 
-      // Valid File Extensions
-      $valid_extension = array("csv");
+  //     // Valid File Extensions
+  //     $valid_extension = array("csv");
 
-      // 2MB in Bytes
-      $maxFileSize = 2097152; 
+  //     // 2MB in Bytes
+  //     $maxFileSize = 2097152; 
 
-      // Check file extension
-      if(in_array(strtolower($extension),$valid_extension)){
+  //     // Check file extension
+  //     if(in_array(strtolower($extension),$valid_extension)){
 
-        // Check file size
-        if($fileSize <= $maxFileSize){
+  //       // Check file size
+  //       if($fileSize <= $maxFileSize){
 
-          // File upload location
-          $location = 'uploads';
+  //         // File upload location
+  //         $location = 'uploads';
 
-          // Upload file
-          $file->move($location,$filename);
+  //         // Upload file
+  //         $file->move($location,$filename);
 
-          // Import CSV to Database
-          $filepath = public_path($location."/".$filename);
+  //         // Import CSV to Database
+  //         $filepath = public_path($location."/".$filename);
 
-          // Reading file
-          $file = fopen($filepath,"r");
+  //         // Reading file
+  //         $file = fopen($filepath,"r");
 
-          $importData_arr = array();
-          $i = 0;
+  //         $importData_arr = array();
+  //         $i = 0;
 
-          while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
-             $num = count($filedata );
+  //         while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+  //            $num = count($filedata );
              
-             // Skip first row (Remove below comment if you want to skip the first row)
-             if($i == 0){
-                $i++;
-                continue; 
-             }
-             for ($c=0; $c < $num; $c++) {
-                $importData_arr[$i][] = $filedata [$c];
-             }
-             $i++;
-          }
-          fclose($file);
+  //            // Skip first row (Remove below comment if you want to skip the first row)
+  //            if($i == 0){
+  //               $i++;
+  //               continue; 
+  //            }
+  //            for ($c=0; $c < $num; $c++) {
+  //               $importData_arr[$i][] = $filedata [$c];
+  //            }
+  //            $i++;
+  //         }
+  //         fclose($file);
 
-          // Insert to MySQL database
-          foreach($importData_arr as $importData){
+  //         // Insert to MySQL database
+  //         foreach($importData_arr as $importData){
 
-            $insertData = array(
-               "firstName"=>$importData[1],
-               "lastName"=>$importData[2],
-               "phone"=>$importData[3],
-               "email"=>$importData[4]);
-               "entitie_id"=>$importData[5],
-               "dob"=>$importData[6],
-               "gender"=>$importData[7],
-               "entity_representative"=>$importData[8]);
-            Page::insertData($insertData);
+  //           $insertData = array(
+  //              "firstName"=>$importData[1],
+  //              "lastName"=>$importData[2],
+  //              "phone"=>$importData[3],
+  //              "email"=>$importData[4]);
+  //              "entitie_id"=>$importData[5],
+  //              "dob"=>$importData[6],
+  //              "gender"=>$importData[7],
+  //              "entity_representative"=>$importData[8]);
+  //           Page::insertData($insertData);
 
-          }
+  //         }
 
-          Session::flash('message','Import Successful.');
-        }else{
-          Session::flash('message','File too large. File must be less than 2MB.');
-        }
+  //         Session::flash('message','Import Successful.');
+  //       }else{
+  //         Session::flash('message','File too large. File must be less than 2MB.');
+  //       }
 
-      }else{
-         Session::flash('message','Invalid File Extension.');
-      }
+  //     }else{
+  //        Session::flash('message','Invalid File Extension.');
+  //     }
 
-    }
+  //   }
 
-    // Redirect to index
-    return redirect('/receptionist/customer');
-  }
+  //   // Redirect to index
+  //   return redirect('/receptionist/customer');
+  // }
 }
