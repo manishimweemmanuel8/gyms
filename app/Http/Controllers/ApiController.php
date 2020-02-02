@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Attendance;
 use App\Customer;
 use App\Payment; 
-use App\Controller;
+use App\Control;
 use App\Receptionist;
 use App\Http\Resources\PaymentResource;
 use DB;
@@ -300,7 +300,7 @@ class ApiController extends Controller
         $data=DB::table('controls')
             ->where('email',$email)
             ->first();
-        if ($controller && \Hash::check($password, $receptionist->password)) {
+        if ($controller && \Hash::check($password, $controller->password)) {
             // TODO : check if deployment is full to sector level
             return response()
                 ->json(
