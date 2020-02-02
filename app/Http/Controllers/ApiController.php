@@ -47,7 +47,7 @@ class ApiController extends Controller
                           $todayDate = date("Y-m-d");
             $client = DB::table('payments')->where('customer_id', $payment)
                     ->where('expiry_date', '>=', $todayDate)
-                    ->where('sport_id', 3)->value("id");
+                    ->where('sport_id', Input::get('sport_id'))->value("id");
 
                     if($client){
 
@@ -282,6 +282,25 @@ class ApiController extends Controller
             ->where('email',$email)
             ->first();
         if ($receptionist && \Hash::check($password, $receptionist->password)) {
+            // TODO : check if deployment is full to sector level
+            return response()
+                ->json(
+                   $data
+                );
+        }
+        return response()
+            ->json(['status' => 2, 'message' => 'Ntitubashije kubamenya!']);
+    }
+
+
+    public function loginController(){
+         $email = Input::get('email');
+        $password = Input::get('password');
+        $controller = Control::where('email', $email)->first();
+        $data=DB::table('controls')
+            ->where('email',$email)
+            ->first();
+        if ($controller && \Hash::check($password, $receptionist->password)) {
             // TODO : check if deployment is full to sector level
             return response()
                 ->json(

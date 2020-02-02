@@ -36,6 +36,15 @@ return [
     */
 
     'guards' => [
+        'control' => [
+            'driver'   => 'session',
+            'provider' => 'controls',
+        ],
+
+        
+
+        
+
         'manager' => [
             'driver'   => 'session',
             'provider' => 'managers',
@@ -95,6 +104,15 @@ return [
     */
 
     'providers' => [
+        'controls' => [
+            'driver' => 'eloquent',
+            'model'  => App\Control::class,
+        ],
+
+        
+
+        
+
         'managers' => [
             'driver' => 'eloquent',
             'model'  => App\Manager::class,
@@ -151,6 +169,16 @@ return [
     */
 
     'passwords' => [
+        'controls' => [
+            'provider' => 'controls',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        
+
+        
+
         'managers' => [
             'provider' => 'managers',
             'table'    => 'password_resets',

@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Notifications\Controller\ControllerResetPassword;
-use App\Notifications\Controller\ControllerVerifyEmail;
+use App\Notifications\Control\ControlResetPassword;
+use App\Notifications\Control\ControlVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Controller extends Authenticatable
+class Control extends Authenticatable
 {
     use Notifiable;
 
@@ -17,7 +17,7 @@ class Controller extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','post_id',
     ];
 
     /**
@@ -46,7 +46,7 @@ class Controller extends Authenticatable
      */
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new ControllerResetPassword($token));
+        $this->notify(new ControlResetPassword($token));
     }
 
     /**
@@ -56,7 +56,7 @@ class Controller extends Authenticatable
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new ControllerVerifyEmail);
+        $this->notify(new ControlVerifyEmail);
     }
 
 }

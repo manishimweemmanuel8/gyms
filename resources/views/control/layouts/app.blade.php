@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} :: Controller</title>
+    <title>{{ config('app.name', 'Laravel') }} :: Control</title>
 
     <!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}" defer></script>
@@ -40,27 +40,27 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @if (Auth::guard('controller')->guest())
+                    @if (Auth::guard('control')->guest())
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('controller.login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('control.login') }}">{{ __('Login') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('controller.register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('control.register') }}">{{ __('Register') }}</a>
                         </li>
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('controller')->user()->name }} <span class="caret"></span>
+                                {{ Auth::guard('control')->user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('controller.logout') }}"
+                                <a class="dropdown-item" href="{{ route('control.logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('controller.logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('control.logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
