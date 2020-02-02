@@ -10,6 +10,7 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::get('dropdownlist','PriceController@index');
     Route::get('get-sport-list','PriceController@getSportList');
     Route::get('get-membership-list','PriceController@getMembershipList');
+    Route::post('/uploadFile', 'EntitiesController@uploadFile');
 
 
 

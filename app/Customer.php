@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Entitie;
 use App\Payment;
 use App\Membership;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 class Customer extends Model

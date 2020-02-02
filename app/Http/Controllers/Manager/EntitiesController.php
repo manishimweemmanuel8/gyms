@@ -125,89 +125,90 @@ class EntitiesController extends Controller
         return redirect('/manager/Entity');
     }
 
-  //    public function uploadFile(Request $request){
+     public function uploadFile(Request $request){
 
-  //   if ($request->input('submit') != null ){
+    if ($request->input('submit') != null ){
 
-  //     $file = $request->file('file');
+      $file = $request->file('file');
 
-  //     // File Details 
-  //     $filename = $file->getClientOriginalName();
-  //     $extension = $file->getClientOriginalExtension();
-  //     $tempPath = $file->getRealPath();
-  //     $fileSize = $file->getSize();
-  //     $mimeType = $file->getMimeType();
+      // File Details 
+      $filename = $file->getClientOriginalName();
+      $extension = $file->getClientOriginalExtension();
+      $tempPath = $file->getRealPath();
+      $fileSize = $file->getSize();
+      $mimeType = $file->getMimeType();
 
-  //     // Valid File Extensions
-  //     $valid_extension = array("csv");
+      // Valid File Extensions
+      $valid_extension = array("csv");
 
-  //     // 2MB in Bytes
-  //     $maxFileSize = 2097152; 
+      // 2MB in Bytes
+      $maxFileSize = 2097152; 
 
-  //     // Check file extension
-  //     if(in_array(strtolower($extension),$valid_extension)){
+      // Check file extension
+      if(in_array(strtolower($extension),$valid_extension)){
 
-  //       // Check file size
-  //       if($fileSize <= $maxFileSize){
+        // Check file size
+        if($fileSize <= $maxFileSize){
 
-  //         // File upload location
-  //         $location = 'uploads';
+          // File upload location
+          $location = 'uploads';
 
-  //         // Upload file
-  //         $file->move($location,$filename);
+          // Upload file
+          $file->move($location,$filename);
 
-  //         // Import CSV to Database
-  //         $filepath = public_path($location."/".$filename);
+          // Import CSV to Database
+          $filepath = public_path($location."/".$filename);
 
-  //         // Reading file
-  //         $file = fopen($filepath,"r");
+          // Reading file
+          $file = fopen($filepath,"r");
 
-  //         $importData_arr = array();
-  //         $i = 0;
+          $importData_arr = array();
+          $i = 0;
 
-  //         while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
-  //            $num = count($filedata );
+          while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+             $num = count($filedata );
              
-  //            // Skip first row (Remove below comment if you want to skip the first row)
-  //            if($i == 0){
-  //               $i++;
-  //               continue; 
-  //            }
-  //            for ($c=0; $c < $num; $c++) {
-  //               $importData_arr[$i][] = $filedata [$c];
-  //            }
-  //            $i++;
-  //         }
-  //         fclose($file);
+             // Skip first row (Remove below comment if you want to skip the first row)
+             if($i == 0){
+                $i++;
+                continue; 
+             }
+             for ($c=0; $c < $num; $c++) {
+                $importData_arr[$i][] = $filedata [$c];
+             }
+             $i++;
+          }
+          fclose($file);
 
-  //         // Insert to MySQL database
-  //         foreach($importData_arr as $importData){
+          // Insert to MySQL database
+          foreach($importData_arr as $importData){
 
-  //           $insertData = array(
-  //              "firstName"=>$importData[1],
-  //              "lastName"=>$importData[2],
-  //              "phone"=>$importData[3],
-  //              "email"=>$importData[4]);
-  //              "entitie_id"=>$importData[5],
-  //              "dob"=>$importData[6],
-  //              "gender"=>$importData[7],
-  //              "entity_representative"=>$importData[8]);
-  //           Page::insertData($insertData);
+            $insertData = array(
+               "firstName"=>$importData[0],
+               "lastName"=>$importData[1],
+               "phone"=>$importData[2],
+               "email"=>$importData[3],
+               "entitie_id"=>$importData[4],
+               "dob"=>$importData[5],
+               "gender"=>$importData[6]
+               // "entity_representative"=>$importData[7]
+             );
+            Customer::insertData($insertData);
 
-  //         }
+          }
 
-  //         Session::flash('message','Import Successful.');
-  //       }else{
-  //         Session::flash('message','File too large. File must be less than 2MB.');
-  //       }
+          Session::flash('message','Import Successful.');
+        }else{
+          Session::flash('message','File too large. File must be less than 2MB.');
+        }
 
-  //     }else{
-  //        Session::flash('message','Invalid File Extension.');
-  //     }
+      }else{
+         Session::flash('message','Invalid File Extension.');
+      }
 
-  //   }
+    }
 
-  //   // Redirect to index
-  //   return redirect('/receptionist/customer');
-  // }
+    // Redirect to index
+    return redirect('/receptionist/customer');
+  }
 }
