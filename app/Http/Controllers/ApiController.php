@@ -448,7 +448,7 @@ class ApiController extends Controller
     $category=Input::get('category_id');
     $sport=Input::get('sport_id');
     $membership=Input::get('membership_id');
-    $receptionist=Input::get('id')
+    $receptionist=Input::get('id');
        
 
         $todayDate = date("Y-m-d");
@@ -536,5 +536,6 @@ class ApiController extends Controller
                 return response()->json([$data]);
          
 
+}
 }
 
