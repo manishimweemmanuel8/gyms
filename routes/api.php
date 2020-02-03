@@ -21,7 +21,7 @@ Route::apiResource('/payment', 'ApiController');
 Route::post('/logs', 'ApiController@login');
 Route::post('/loginReceptionist', 'ApiController@loginReceptionist');
 Route::post('/loginController', 'ApiController@loginController');
-Route::post('/session/{customer}','ApiController@session');
+Route::post('/session','ApiController@session');
 Route::put('/check','ApiController@show');
 Route::get('/get','ApiController@getCustomer');
 Route::get('categories', function() {

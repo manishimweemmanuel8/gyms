@@ -215,16 +215,7 @@
                     <h2 class="title"> Enitty Info</h2>
 
                      <!-- Message -->
-     @if(Session::has('message'))
-        <p >{{ Session::get('message') }}</p>
-     @endif
-
-     <!-- Form -->
-     <form method='post' action="{{url('manager/uploadFile')}}" enctype='multipart/form-data' >
-       {{ csrf_field() }}
-       <input type='file' name='file' >
-       <input type='submit' name='submit' value='Import'>
-     </form>
+    
 
 
 

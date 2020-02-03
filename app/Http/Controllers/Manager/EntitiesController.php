@@ -26,6 +26,16 @@ class EntitiesController extends Controller
         return view('manager/Entity.create',compact('categories'));
     }
 
+    public function import()
+    {
+        return view('manager/Entity.import');
+    }
+
+        public function show()
+    {
+        //
+    }
+
       public function getSportList(Request $request)
     {
         $sports = DB::table("sports")
@@ -78,7 +88,7 @@ class EntitiesController extends Controller
         
         $payment->save();
 
-        return redirect('/manager/Entity')->with('succes', 'Data has been successfully save!');
+        return redirect('/manager/Entity/import')->with('succes', 'Data has been successfully save!');
     }
     public function edit($id,$customer_id=null)
     {
@@ -211,7 +221,6 @@ class EntitiesController extends Controller
     }
 
     // Redirect to index
-    $categories = DB::table("categories")->pluck("name","id");
-        return view('manager/Entity.create',compact('categories'));
+        return view('manager/Entity');
   }
 }

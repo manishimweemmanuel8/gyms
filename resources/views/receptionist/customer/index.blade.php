@@ -10,17 +10,7 @@
                    <h2 class="card-header">Customer List</h2>
                  </div>
 
-                 <!-- Message -->
-     @if(Session::has('message'))
-        <p >{{ Session::get('message') }}</p>
-     @endif
-
-     <!-- Form -->
-     <form method='post' action='/uploadFile' enctype='multipart/form-data' >
-       {{ csrf_field() }}
-       <input type='file' name='file' >
-       <input type='submit' name='submit' value='Import'>
-     </form>
+              
      
                   <div class="row ">
                     <div class="col-sm-6">
