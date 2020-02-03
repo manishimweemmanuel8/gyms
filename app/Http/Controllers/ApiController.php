@@ -32,7 +32,7 @@ class ApiController extends Controller
     public function getCustomer(){
         $payment=Input::get('payment');
         $post=Input::get('sport');
-        1=>gym,2=>pool,3=>sauna,4>massage
+        // 1=>gym,2=>pool,3=>sauna,4>massage
         
         // $ticket=DB::table('payments')->where('customer_id',$payment)
         //     ->where('sport_id',3)
