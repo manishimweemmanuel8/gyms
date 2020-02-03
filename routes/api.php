@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use App\Categorie;
+use App\Sport;
+use App\Membership;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,13 @@ Route::get('/get','ApiController@getCustomer');
 Route::get('categories', function() {
     return $categories=Categorie::all();
 });
+Route::get('sports', function() {
+    return $sports=Sport::all();
+});
+Route::get('memberships', function() {
+    return $memberships=Membership::all();
+});
+
 
 Route::post('login', 'ApiController@login');
 Route::post('register', 'ApiController@register');
