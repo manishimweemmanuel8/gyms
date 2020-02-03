@@ -31,6 +31,8 @@ class ApiController extends Controller
 
     public function getCustomer(){
         $payment=Input::get('payment');
+        $post=Input::get('sport');
+        1=>gym,2=>pool,3=>sauna,4>massage
         
         // $ticket=DB::table('payments')->where('customer_id',$payment)
         //     ->where('sport_id',3)
@@ -139,7 +141,7 @@ class ApiController extends Controller
                    
 
                $data['customer_id']="client pass";
-                    return response()->json([$data]);
+                return response()->json([$data]);
                                             
                 }
             }
@@ -253,39 +255,15 @@ class ApiController extends Controller
 
     // }
 
-
-
-
-    public function login(){
-
-         $email=Input::get('email');
-        
-        $password=Input::get('password');
-        // $hash_password=bcrypt($request->input('hash'));
-        $data=DB::table('controllers')
-            ->where('email',$email)
-            ->where('password',$password)->first();
-        if($data){
-            // $dat['status']=$data->value;
-            return response()->json($data);
-        }else{
-            $dat['status']="not pass sub";
-            return $dat;
-        }
-    }
-
     public function loginReceptionist(){
          $email = Input::get('email');
         $password = Input::get('password');
         $receptionist = Receptionist::where('email', $email)->first();
-          DB::table('receptionists')
-            ->where('email', $email)
-            ->update(['post_id' => Input::get('sport')]);
+    
         $data=DB::table('receptionists')
             ->where('email',$email)
             ->first();
         if ($receptionist && \Hash::check($password, $receptionist->password)) {
-            // TODO : check if deployment is full to sector level
             return response()
                 ->json(
                    $data
@@ -301,9 +279,6 @@ class ApiController extends Controller
          $email = Input::get('email');
         $password = Input::get('password');
         $controller = Control::where('email', $email)->first();
-       
-          //    App\Control::where('email', $email)
-          // ->update(['post_id' => Input::get('sport']);
             DB::table('controls')
             ->where('email', $email)
             ->update(['post_id' => Input::get('sport')]);
@@ -468,4 +443,98 @@ class ApiController extends Controller
     // }
 
 
+    public function session(){
+    $customer=Input::get('phone');
+    $category=Input::get('category_id');
+    $sport=Input::get('sport_id');
+    $membership=Input::get('membership_id');
+    $receptionist=Input::get('id')
+       
+
+        $todayDate = date("Y-m-d");
+        $client=DB::table('customers')->where('phone',$customer)->value('phone');
+        if(!$client){
+            Customer::create([
+                'firstName'       => 'client',
+                'lastName'     => 'client',
+                'phone'          =>$customer,
+                'email'     =>'email',
+                'entitie_id'       =>1,
+                'dob'        =>'1994-06-28',
+                'gender'  =>'any',
+                'entity_representative  '=>'0',
+            ]);
+
+            Payment::create([
+            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+                ->value('id') ,
+            'receptionist_id'     => $receptionist,
+            'sport_id'          => $sport,
+            'membership_id'     =>$membership,
+            'categorie_id'       =>$category,
+            'amount'        => DB::table("prices")
+                ->where("sport_id",$sport)
+                ->where("membership_id",$membership)
+                ->where("categorie_id",$category)->value("amount"),
+            'duration'      =>1,
+            'expiry_date'   =>$todayDate = date("Y-m-d"),
+        ]);
+        $mytime = date('Y-m-d H:i:s');
+
+        Attendance::create([
+            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+                                     ->value('id') ,
+            'controller_id'     => $receptionist,
+            'sport_id'          =>$sport ,
+            'membership_id'     =>$membership,
+            'category_id'       =>$category,
+            'payment_id'        =>DB::table('payments')
+                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->value('id'))
+                                 ->where('created_at',$mytime)
+                                ->value('id'),
+        ]);
+           $data['customer_id']="client pass";
+                return response()->json([$data]);
+
+
+        }
+
+        Payment::create([
+            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+                ->value('id') ,
+            'receptionist_id'     => $receptionist,
+            'sport_id'          => $sport,
+            'membership_id'     =>$membership,
+            'categorie_id'       =>$category,
+            'amount'        => DB::table("prices")
+                ->where("sport_id",$sport)
+                ->where("membership_id",$membership)
+                ->where("categorie_id",$category)->value("amount"),
+            'duration'      =>1,
+            'expiry_date'   =>$todayDate = date("Y-m-d"),
+        ]);
+        $mytime = date('Y-m-d H:i:s');
+
+        Attendance::create([
+            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+                                     ->value('id') ,
+            'controller_id'     => $receptionist,
+            'sport_id'          =>$sport,
+            'membership_id'     =>$membership,
+            'category_id'       =>$category,
+            'payment_id'        =>DB::table('payments')
+                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->value('id'))
+                                 ->where('created_at',$mytime)
+                                ->value('id'),
+        ]);
+
+
+    
+               $data['customer_id']="client pass";
+                return response()->json([$data]);
+         
+
 }
+
