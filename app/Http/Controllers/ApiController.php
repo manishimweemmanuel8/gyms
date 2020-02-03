@@ -278,6 +278,9 @@ class ApiController extends Controller
          $email = Input::get('email');
         $password = Input::get('password');
         $receptionist = Receptionist::where('email', $email)->first();
+          DB::table('receptionists')
+            ->where('email', $email)
+            ->update(['post_id' => Input::get('sport')]);
         $data=DB::table('receptionists')
             ->where('email',$email)
             ->first();
@@ -294,10 +297,17 @@ class ApiController extends Controller
 
 
     public function loginController(){
+       
          $email = Input::get('email');
         $password = Input::get('password');
         $controller = Control::where('email', $email)->first();
-        $data=DB::table('controls')
+       
+          //    App\Control::where('email', $email)
+          // ->update(['post_id' => Input::get('sport']);
+            DB::table('controls')
+            ->where('email', $email)
+            ->update(['post_id' => Input::get('sport')]);
+             $data=DB::table('controls')
             ->where('email',$email)
             ->first();
         if ($controller && \Hash::check($password, $controller->password)) {
@@ -310,6 +320,26 @@ class ApiController extends Controller
         return response()
             ->json(['status' => 2, 'message' => 'Ntitubashije kubamenya!']);
     }
+
+
+    //     public function loginController(){
+      
+
+    //     $password = Input::get('password');
+    //     $controller = Control::where('email', $email)->first();
+    //     $data=DB::table('controls')
+    //         ->where('email',$email)
+    //         ->first();
+    //     if ($controller && \Hash::check($password, $controller->password)) {
+    //         // TODO : check if deployment is full to sector level
+    //         return response()
+    //             ->json(
+    //                $data
+    //             );
+    //     }
+    //     return response()
+    //         ->json(['status' => 2, 'message' => 'Ntitubashije kubamenya!']);
+    // }
 
     // public function session($customer,Request $request){
     //     $todayDate = date("Y-m-d");
