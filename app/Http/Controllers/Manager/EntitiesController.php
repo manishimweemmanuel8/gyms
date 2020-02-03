@@ -88,7 +88,7 @@ class EntitiesController extends Controller
         
         $payment->save();
 
-        return redirect('/manager/Entity/import')->with('succes', 'Data has been successfully save!');
+        return view('/manager/Entity.import');
     }
     public function edit($id,$customer_id=null)
     {
@@ -113,9 +113,6 @@ class EntitiesController extends Controller
             'email'=>'required',
             'expiry_date'=>'required'
         ]);
-
-
-
         $entity = Entitie::find($id);
         $entity->name = $request->get('name');
         $entity->email = $request->get('email');
@@ -126,6 +123,10 @@ class EntitiesController extends Controller
         DB::table('customers')
             ->where('id', $request->get('customer_id'))
             ->update(['entity_representative' => 1]);
+             DB::table('payments')
+            ->where('customer_id', $id)
+            ->update(['expiry_date' => $request->get('expiry_date')]);
+
         return redirect('/manager/Entity');
     }
 
@@ -200,7 +201,8 @@ class EntitiesController extends Controller
                "lastName"=>$importData[1],
                "phone"=>$importData[2],
                "email"=>$importData[3],
-               "entitie_id"=>$importData[4],
+               "entitie_id"=>DB::table('entities')->orderBy('id', 'desc')
+                            ->pluck('id')->first(),
                "dob"=>$importData[5],
                "gender"=>$importData[6]
                // "entity_representative"=>$importData[7]
@@ -221,6 +223,6 @@ class EntitiesController extends Controller
     }
 
     // Redirect to index
-        return view('manager/Entity');
+        return redirect('/manager/Entity');
   }
 }

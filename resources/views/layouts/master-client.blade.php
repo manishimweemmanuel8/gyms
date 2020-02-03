@@ -124,9 +124,7 @@
                             <a class="navbar-brand" href="{{ url('/report/report') }}">
                                 Report
                             </a>
-                            <a class="navbar-brand" href="{{ url('/receptionist/session/create') }}">
-                                Session
-                            </a>
+                          
 
 
                         </div>
@@ -136,14 +134,14 @@
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                            <form>
+                           <!--  <form>
                                 <div class="input-group no-border">
                                     <input type="text" value="" class="form-control" placeholder="Search...">
                                     <span class="input-group-addon">
                                         <i class="now-ui-icons ui-1_zoom-bold"></i>
                                     </span>
                                 </div>
-                            </form>
+                            </form> -->
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#pablo">

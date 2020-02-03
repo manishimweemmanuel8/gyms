@@ -42,7 +42,7 @@
       <div class="form-group">
        <input name="_method" type="hidden" value="PATCH">
       <label>Expiry Date</label>
-        <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->id}}">
+        <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->expiry_date}}">
     </div>
 
 
