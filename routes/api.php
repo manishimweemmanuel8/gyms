@@ -23,7 +23,7 @@ Route::apiResource('/payment', 'ApiController');
 Route::post('/logs', 'ApiController@login');
 Route::post('/loginReceptionist', 'ApiController@loginReceptionist');
 Route::post('/loginController', 'ApiController@loginController');
-Route::post('/session','ApiController@session');
+Route::post('/session','ApiSession@session');
 Route::put('/check','ApiController@show');
 Route::get('/get','ApiSubscribe@getCustomer');
 Route::get('categories', function() {
