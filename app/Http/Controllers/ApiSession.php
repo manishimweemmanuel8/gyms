@@ -68,9 +68,27 @@ class ApiSession extends Controller
                                  ->where('created_at',$mytime)
                                 ->value('id'),
         ]);
-           $data['customer_id']="client pass";
-                return response()->json([$data]);
+               $payment = Payment::where('id', DB::table('payments')
+                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->value('id'))
+                                 ->where('created_at',$mytime)
+                                ->value('id'))->first();
 
+            
+                  return response()
+                ->json(
+                    [
+                      
+                        'Payment' => [
+                        	'category' => $payment->categorie->name,
+                            'sport' => $payment->sport->name,
+                            'membership' => $payment->membership->name,
+                            'amount' => $payment->amount,
+                            'telephone' => $customer
+                        ]
+                    ]
+                );
+    
 
         }
 
@@ -106,22 +124,14 @@ class ApiSession extends Controller
 
 
     
-               $data['customer_id']="client pass";
+             
                $payment = Payment::where('id', DB::table('payments')
                                 ->where('customer_id',DB::table('customers')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
                                 ->value('id'))->first();
 
-               // $payments=DB::table('payments')->where('id',DB::table('payments')
-               //                  ->where('customer_id',DB::table('customers')->where('phone',$customer)
-               //                  ->value('id'))
-               //                   ->where('created_at',$mytime))
-               //                  ->first();
-
-               // $payment = Payment::where('id', $username)->first();
-               $spor=DB::table('sports')->where('id',$sport)->value("name");
-                // return response()->json([$spor]);
+            
                   return response()
                 ->json(
                     [
