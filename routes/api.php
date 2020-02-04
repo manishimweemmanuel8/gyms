@@ -25,16 +25,12 @@ Route::post('/loginReceptionist', 'ApiController@loginReceptionist');
 Route::post('/loginController', 'ApiController@loginController');
 Route::post('/session','ApiController@session');
 Route::put('/check','ApiController@show');
-Route::get('/get','ApiController@getCustomer');
+Route::get('/get','ApiSubscribe@getCustomer');
 Route::get('categories', function() {
     return $categories=Categorie::all();
 });
-Route::get('sports', function() {
-    return $sports=Sport::all();
-});
-Route::get('memberships', function() {
-    return $memberships=Membership::all();
-});
+Route::get('/sports','ApiController@sports');
+Route::get('/memberships','ApiController@memberships');
 
 
 Route::post('login', 'ApiController@login');

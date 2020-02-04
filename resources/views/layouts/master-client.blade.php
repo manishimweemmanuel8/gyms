@@ -16,7 +16,7 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="{{ asset('assets/demo/demo.css')}}" rel="stylesheet" />
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
         <!-- favicon
             ============================================ -->
         <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
@@ -25,7 +25,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
         <!-- Bootstrap CSS
             ============================================ -->
-       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+       <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
         <link rel="stylesheet"  href="{{ asset('template/css/bootstrap.min.css')}}">
         <!-- Bootstrap CSS
             ============================================ -->
@@ -112,7 +112,14 @@
                                 </button>
                             </div>
 
+                            @if (Auth::guard('control'))
+                             <a class="navbar-brand" href="#pablo">For Controller</a>
+                            <a class="navbar-brand" href="{{ url('/control/attendance') }}">
+                                Attendance
+                            </a>
 
+                          
+                            @else
 
                             <a class="navbar-brand" href="#pablo">For receptionists</a>
                             <a class="navbar-brand" href="{{ url('/receptionist/customer') }}">
@@ -124,70 +131,23 @@
                             <a class="navbar-brand" href="{{ url('/report/report') }}">
                                 Report
                             </a>
+                            @endif
                           
 
 
                         </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                           <!--  <form>
-                                <div class="input-group no-border">
-                                    <input type="text" value="" class="form-control" placeholder="Search...">
-                                    <span class="input-group-addon">
-                                        <i class="now-ui-icons ui-1_zoom-bold"></i>
-                                    </span>
-                                </div>
-                            </form> -->
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons media-2_sound-wave"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Stats</span>
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="now-ui-icons location_world"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="{{ route('receptionist.logout') }}"
-              onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-              <i class="icon-logout menu-icon"></i> {{ __('Logout') }}
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-
-            <form id="logout-form" action="{{ route('receptionist.logout') }}" method="POST" style="display: none;">
-              @csrf
-
-            </form>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#pablo">
-                                        <i class="now-ui-icons users_single-02"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Account</span>
-                                        </p>
-                                    </a>
-
-                                </li>
-                            </ul>
+                       
+                           
                         </div>
                     </div>
                 </nav>
+                            
                 <!-- End Navbar -->
 
                 <div class="panel-header panel-header-sm">

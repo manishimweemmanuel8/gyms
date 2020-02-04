@@ -2,6 +2,7 @@
 
 Route::group(['namespace' => 'Control'], function() {
     Route::get('/', 'HomeController@index')->name('control.dashboard');
+    Route::resource('/attendance', 'AttendanceController');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('control.login');

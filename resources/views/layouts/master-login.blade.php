@@ -37,6 +37,10 @@
                             <a class="navbar-brand" href="{{ url('/manager') }}">
                                 Manager
                             </a>
+                              <a class="navbar-brand" href="{{ url('/control') }}">
+                                Controller
+                            </a>
+
 
                             </div>
 
