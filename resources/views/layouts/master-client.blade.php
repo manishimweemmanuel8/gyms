@@ -112,14 +112,14 @@
                                 </button>
                             </div>
 
-                            @if (Auth::guard('control'))
+                          
                              <a class="navbar-brand" href="#pablo">For Controller</a>
                             <a class="navbar-brand" href="{{ url('/control/attendance') }}">
                                 Attendance
                             </a>
 
                           
-                            @else
+                           
 
                             <a class="navbar-brand" href="#pablo">For receptionists</a>
                             <a class="navbar-brand" href="{{ url('/receptionist/customer') }}">
@@ -131,7 +131,7 @@
                             <a class="navbar-brand" href="{{ url('/report/report') }}">
                                 Report
                             </a>
-                            @endif
+                          
                           
 
 

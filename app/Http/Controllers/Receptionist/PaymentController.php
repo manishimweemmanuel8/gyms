@@ -24,7 +24,7 @@ class PaymentController extends Controller
         {
             $customers=null;
         if(!$customer_id){
-            $customers=Customer::all();
+            $customers=DB::table('customers')->where('entitie_id',1)->get();
         }
         $receptionists= null;
         if(!$receptionist_id){
@@ -75,6 +75,7 @@ class PaymentController extends Controller
                 ->where("sport_id",$request->get('sport_id'))
                 ->where("membership_id",$request->get('membership_id'))
                 ->value("amount"),
+                'location' => $request->get('location'),
 
               ]);
 

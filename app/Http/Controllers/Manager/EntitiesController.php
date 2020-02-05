@@ -78,9 +78,10 @@ class EntitiesController extends Controller
             ->where("sport_id",$request->get('sport_id'))
             ->where("membership_id",$request->get('membership_id'))
             ->value("amount"),
-             'duration' => 0,
+             'duration' => DB::table("memberships")
+                ->where("id",$request->get('membership_id'))->value("duration"),
              'expiry_date'=>$request->get('expiry_date'),
-
+             'location' => $request->get('location'),
         ]);
 
 

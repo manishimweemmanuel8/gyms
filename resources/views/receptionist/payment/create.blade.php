@@ -241,6 +241,18 @@
                 <select name="sport_id" id="sport" class="form-control" >
                 </select>
           </div>
+              <div class="form-group">
+       <label >Location</label>
+
+        <select name="location" class="form-control">
+          <option value="">---- select location  -----</option>
+          <option value="1">Gym</option>
+          <option value="2">Pool</option>
+        <option value="3">Sauna</option>
+          <option value="4">Massage</option>
+        </select>
+
+    </div>
          
             <div class="form-group">
             
