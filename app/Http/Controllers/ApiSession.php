@@ -52,6 +52,7 @@ class ApiSession extends Controller
                 ->where("categorie_id",$category)->value("amount"),
             'duration'      =>1,
             'expiry_date'   =>$todayDate = date("Y-m-d"),
+            'location'=>$receptionist,
         ]);
         $mytime = date('Y-m-d H:i:s');
 
@@ -105,6 +106,7 @@ class ApiSession extends Controller
                 ->where("categorie_id",$category)->value("amount"),
             'duration'      =>1,
             'expiry_date'   =>$todayDate = date("Y-m-d"),
+            'location' =>$receptionist,
         ]);
         $mytime = date('Y-m-d H:i:s');
 
