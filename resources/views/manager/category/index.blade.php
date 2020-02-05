@@ -4,10 +4,11 @@
         <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
                     <div class="card-body">
                         <h2 class="title">Category Registration Info</h2>
-                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                                <a href="{{action('Manager\CategorieController@create')}}" class="btn btn-warning">Add new</a>
+
+                       <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
+                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
                         <thead>
-                        <a href="{{action('Manager\CategorieController@create')}}" class="btn btn-warning">Add new</a>
       <tr>
         <th>ID</th>
         <th>Name</th>

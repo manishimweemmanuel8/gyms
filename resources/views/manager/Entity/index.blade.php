@@ -4,14 +4,15 @@
       
             <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
         <div class="wrapper wrapper--w680">
-            <div class="card card-1">
+            <div class="card">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title"> Enitty List</h2>
+                     <a href="{{action('Manager\EntitiesController@create')}}" class="btn btn-warning">Add new</a>
                         <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
                                data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
-                               <a href="{{action('Manager\EntitiesController@create')}}" class="btn btn-warning">Add new</a>
-                               </div>
+                              
+                               
                        
                         
                         <thead class="thead-dark">
@@ -57,5 +58,6 @@
                     </div>
                 </div>
               </div>
-              
+
+
 @endsection

@@ -11,24 +11,25 @@
                     <h2 class="title">Customer Registration Info</h2>
 
 
-  <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-10 col-md-8 col-lg-6">
+  
   <form class="justify-content-center" method="post" action="{{url('receptionist/customer')}}"  id="contact_form">
     {{ csrf_field() }}
 
-     <div class="form-group">
+     <div class="row">
+      <div class="col">
       <label >First Name</label>
         <input type="text" class="form-control"  name="firstName">
     </div>
-    <div class="form-group">
+    <div class="col">
       <label >Last Name</label>
 
         <input type="text" class="form-control"  name="lastName">
 
     </div>
-      <div class="form-group">
+  </div>
+      <div class="row">
+        <div class="col">
        <label >Gender</label>
-
         <select name="gender" class="form-control">
           <option value="">---- select Gender  -----</option>
           <option value="Male">Male</option>
@@ -36,20 +37,22 @@
         </select>
 
     </div>
-    <div class="form-group">
+    <div class="col">
       <label >Telephone</label>
 
         <input type="text" class="form-control "  name="phone">
 
     </div>
-    <div class="form-group">
+  </div>
+    <div class="row">
+      <div class="col">
       <label >Email</label> 
 
         <input type="email" class="form-control" name="email">
 
     </div>
        @if($entities !=null)
-    <div class="form-group">
+    <div class="col">
       <label >Entity Name</label>
       <select name="entitie_id" class="form-control" >
             <option value="">--- Select Entity ---</option>
@@ -58,10 +61,12 @@
             @endforeach
       </select>
     </div>
+  </div>
     @endif
 
     
-    <div class="form-group">
+    <div class="row">
+      <div class="col">
       <label >Date of Birth</label>
 
         <input type="date" class="form-control " name="dob">
@@ -69,13 +74,13 @@
     </div>
    
     
-    <div class="form-group">
+    <div class="col">
       <div class="col-md-0"></div>
       <input type="submit" class="btn btn-primary">
     </div>
+  </div>
   </form>
-</div>
-</div>
+
 </div>
 </div>
 </div>

@@ -23,8 +23,8 @@
                     <div class="card-body">
 
                   
-                        <table class="card-table table" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                                >
+                        <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
+                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
                         <thead>
                         
       <tr>
@@ -46,7 +46,7 @@
       @foreach($customers as $customer)
       <tr>
         <td>{{$loop->iteration}}</td>
-          <td>{{$customer->id}}</td>
+        <td>{{$customer->id}}</td>
         <td>{{$customer['firstName']}}</td>
         <td>{{$customer['lastName']}}</td>
         <td>{{$customer['gender']}}</td>
@@ -58,10 +58,8 @@
         @else
         <td>Yes</td>
         @endif
-      
         <td>{{$customer['entitie']['name']}}</td>
         <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
-      
       <td>
           <form action="{{action('CustomerController@destroy', $customer['id'])}}" method="post">
             {{csrf_field()}}
