@@ -140,12 +140,12 @@
 
 
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>
                     <span class="navbar-toggler-bar navbar-kebab"></span>
                     <span class="navbar-toggler-bar navbar-kebab"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                </button> -->
+                <!-- <div class="collapse navbar-collapse justify-content-end" id="navigation">
                     <form>
                         <div class="input-group no-border">
                             <input type="text" value="" class="form-control" placeholder="Search...">
@@ -197,7 +197,7 @@
 
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </nav>
         <!-- End Navbar -->
@@ -210,7 +210,7 @@
             @include('multiauth::message')
 
 
-            <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+            <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
         <div class="wrapper wrapper--w680">
             <div class="card card-1">
                 <div class="card-heading"></div>
@@ -227,23 +227,26 @@
     {{ csrf_field() }}
 
 
-     <div class="form-group">
+     <div class="row">
+        <div class="col">
       <label >Name</label>
 
         <input type="text" class="form-control"  name="name">
 
     </div>
 
-    <div class="form-group">
+    <div class="col">
       <label >Email</label> 
 
         <input type="email" class="form-control" name="email">
 
     </div>
+</div>
 
    
 
-            <div class="form-group">
+            <div class="row">
+                <div class ="col">
               <label>select Category</label>
                 <select id="category" name="categorie_id" class="form-control"  >
                 <option value="" selected disabled>--- Select Category ---</option>
@@ -253,14 +256,16 @@
                   </select>
           </div>
 
-            <div class="form-group">
+            <div class="col">
 
                 <label for="title">Select Sport</label>
                 <select name="sport_id" id="sport" class="form-control" >
                 </select>
           </div>
+      </div>
 
-           <div class="form-group">
+           <div class="row">
+            <div class="col">
        <label >Location</label>
 
         <select name="location" class="form-control">
@@ -273,26 +278,31 @@
 
     </div>
          
-            <div class="form-group"> 
+            <div class="col"> 
             
       
                 <label for="title">Select Membership</label>
                 <select name="membership_id" id="membership" class="form-control" >
                 </select>
             </div>
+        </div>
+
+        
 
 
- <div class="form-group">
+ <div class="row">
+    <div class="col">
       <label >Expiry Date</label> 
 
         <input type="date" class="form-control" name="expiry_date">
 
     </div>
   
-   <div class="form-group">
-      <div class="col-md-0"></div>
+   <div class="col">
+     <label ></label> 
       <input type="submit" class="btn btn-primary">
     </div>
+</div>
   </form>
 </div>
 </div>

@@ -78,15 +78,15 @@ class ApiSession extends Controller
             
                   return response()
                 ->json(
-                    [
+                    
                       
-                        'Payment' => [
+                       [
                         	'category' => $payment->categorie->name,
                             'sport' => $payment->sport->name,
                             'membership' => $payment->membership->name,
                             'amount' => $payment->amount,
                             'telephone' => $customer
-                        ]
+                        
                     ]
                 );
     
@@ -138,13 +138,13 @@ class ApiSession extends Controller
                 ->json(
                     [
                       
-                        'Payment' => [
+                      
                         	'category' => $payment->categorie->name,
                             'sport' => $payment->sport->name,
                             'membership' => $payment->membership->name,
                             'amount' => $payment->amount,
                             'telephone' => $customer
-                        ]
+                        
                     ]
                 );
     

@@ -29,7 +29,11 @@
       @foreach($payments as $payment)
       <tr>
         <td>{{$payment['customer_id']}}</td>
+        @if($payment->customer['entitie_id']==1)
         <td>{{$payment->customer['firstName']}}  {{$payment->customer['lastName']}}</td>
+        @else
+        <td>{{$payment->customer['entitie_id']}}</td>
+        @endif
         <td>{{$payment->receptionist['name']}}</td>
         <td>{{$payment->categorie->name}}</td>
         <td>{{$payment->sport->name}}</td>

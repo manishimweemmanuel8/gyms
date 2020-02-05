@@ -15,6 +15,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Customer</th>
+                                            <th>Phone</th>
                                             <!-- <th>Controller</th> -->
                                             <th>sport </th>
                                             <th>Membership</th>
@@ -30,6 +31,7 @@
                                             <tr>
                                                 <td>{{$attendance->id}}</td>
                                                 <td>{{$attendance->payment['customer']['firstName']}}  {{$attendance->payment['customer']['lastName']}}</td>
+                                                <td>{{$attendance->payment['customer']['phone']}}</td>
                                                 <td>{{$attendance->payment['sport']['name']}}</td>
                                                 <td>{{$attendance->payment['membership']['name']}}</td>
                                                 <td>{{$attendance->payment['categorie']['name']}}</td>

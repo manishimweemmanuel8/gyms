@@ -99,14 +99,11 @@
     </nav>
 
 
-    <div class='print_div' >
-  <div class="content-wrapper">
+    
    
-       <button id='print'>PRINT</button>
-
-        <div class='print_div'>
-
-            <form method="post" action="{{url('report/report')}}">
+      
+              <div class="card">
+            <form method="post" class="form-inline" action="{{url('report/report')}}">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -131,9 +128,16 @@
                     <input type="submit" class="btn btn-primary">
                 </div>
             </form>
+            </div>
 
 
     <!-- Content Header (Page header) -->
+    <button id='print'>PRINT</button>
+    <div class='print_div' >
+  <div class="content-wrapper">
+     
+
+        <div class='print_div'>
 
     <section class="content-header">
       <div class="container-fluid">
