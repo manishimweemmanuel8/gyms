@@ -6,6 +6,7 @@ use App\Customer;
 use App\Entitie;
 use App\Membership;
 use Illuminate\Http\Request;
+use App\commited;
 
 class CustomerController extends Controller
 {
@@ -16,7 +17,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::with('membership')->get();
+        $customers = commited::all();
         return view('receptionist/customer.index', compact('customers'));
     }
 
@@ -50,18 +51,18 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = new Customer([
+        $commited = new commited([
             'firstName' => $request->get('firstName'),
             'lastName' => $request->get('lastName'),
             'gender' =>$request->get('gender'),
             'phone' => $request->get('phone'),
             'email' => $request->get('email'),
-            'entitie_id' => $request->get('entitie_id'),
+            'discount' => $request->get('discount'),
             'dob' => $request->get('dob'),
             // 'entity_representative' => $request->get('entity_representative')
           ]);
   
-          $customer->save();
+          $commited->save();
           return redirect('/receptionist/customer')->with('succes', 'Data has been successfully save!');
     }
 
@@ -88,7 +89,7 @@ class CustomerController extends Controller
         if(!$entitie_id){
             $entities=Entitie::all();
         }
-        $customer = Customer::find($id);
+        $customer = commited::find($id);
         return view('receptionist.customer.edit', compact('customer','id'),['entitie_id'=>$entitie_id,'entities'=>$entities]);
     }
 
@@ -101,13 +102,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer = Customer::find($id);
+        $customer = commited::find($id);
         $customer->firstName = $request->get('firstName');
         $customer->lastName = $request->get('lastName');
         $customer->gender= $request->get('gender');
         $customer->phone = $request->get('phone');
         $customer->email = $request->get('email');
-        $customer->entitie_id = $request->get('entitie_id');
+        $customer->discount = $request->get('discount');
         $customer->dob = $request->get('dob');
         //$customer->entity_representative=$request->get('entity_representative');
         $customer->update();
@@ -122,7 +123,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        customer::destroy($id);
+        commited::destroy($id);
         return redirect('/receptionist/customer');
     }
 }

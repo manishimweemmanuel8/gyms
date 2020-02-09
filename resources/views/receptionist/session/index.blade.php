@@ -5,10 +5,9 @@
                         <h2 class="title"> Payment Session List</h2>
 
 
-                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                               data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                     <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
+                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
                         <thead>
-                        <a href="{{action('Receptionist\SessionController@create')}}" class="btn btn-warning">Add new</a>
 
 
                         <tr>
@@ -18,10 +17,8 @@
         <th>Category</th>
         <th>sport</th>
         <th>membership</th>
-        <th>Expiry Date</th>
-        <th>duration</th>
         <th>Amount</th>
-        <th>Print</th>
+        <th>Done at</th>
     
       </tr>
     </thead>
@@ -32,15 +29,13 @@
       
 
         <td>{{$payment['customer_id']}}</td>
-        <td>{{$payment->customer['firstName']}}  {{$payment->customer['lastName']}}</td>
+        <td>{{$payment['session']}}</td>
         <td>{{$payment->receptionist['name']}}</td>
         <td>{{$payment->categorie->name}}</td>
         <td>{{$payment->sport->name}}</td>
         <td>{{$payment->membership->name}}</td>
-        <td>{{$payment->expiry_date}}</td>
-        <td>{{$payment->duration}}</td>
         <td>{{$payment->amount}}</td>
-         <td><a href="{{action('Receptionist\SessionController@edit', $payment['id'])}}" class="btn btn-warning">Print</a></td>
+        <td>{{$payment->created_at}}</td>
          
       </tr>
      

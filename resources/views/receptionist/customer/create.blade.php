@@ -51,18 +51,14 @@
         <input type="email" class="form-control" name="email">
 
     </div>
-       @if($entities !=null)
+    
     <div class="col">
-      <label >Entity Name</label>
-      <select name="entitie_id" class="form-control" >
-            <option value="">--- Select Entity ---</option>
-            @foreach ($entities as $entity)
-                  <option value="{{ $entity->id }}">{{ $entity->name}}</option>
-            @endforeach
-      </select>
+      <label >Discount</label> 
+
+        <input type="number" class="form-control" name="discount">
     </div>
   </div>
-    @endif
+ 
 
     
     <div class="row">

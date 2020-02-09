@@ -210,7 +210,7 @@
   <form method="post" action="{{ url('/receptionist/payment/store') }}">
     {{ csrf_field() }}
 
-    @if($customers !=null)
+    @if($commiteds !=null)
     <div class="row">
         <div class="col">
 
@@ -218,8 +218,8 @@
       <label>customers Name</label>
       <select name="customer_id" class="form-control">
                     <option value="">--- Select Customer ---</option>
-                    @foreach ($customers as $customer)
-                    <option value="{{ $customer->id }}">{{ $customer->firstName}} {{ $customer->lastName}}</option>
+                    @foreach ($commiteds as $commited)
+                    <option value="{{ $commited->id }}">{{ $commited->firstName}} {{ $commited->lastName}}</option>
                     @endforeach
                 </select>
   </div>

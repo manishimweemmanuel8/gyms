@@ -156,7 +156,7 @@
                 @include('multiauth::message')
 
                     @yield('content')
-
+                    
                      </div>
              <footer class="footer">
                 <div class="container-fluid">

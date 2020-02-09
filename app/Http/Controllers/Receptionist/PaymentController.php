@@ -20,11 +20,11 @@ class PaymentController extends Controller
          return view('receptionist/payment.index', compact('payments'));
     }
     
-     public function create( $customer_id=null,$receptionist_id=null, $membership_id=null)
+     public function create( $commited_id=null,$receptionist_id=null, $membership_id=null)
         {
-            $customers=null;
-        if(!$customer_id){
-            $customers=DB::table('customers')->where('entitie_id',1)->get();
+            $commiteds=null;
+        if(!$commited_id){
+            $commiteds=DB::table('commiteds')->get();
         }
         $receptionists= null;
         if(!$receptionist_id){
@@ -34,7 +34,7 @@ class PaymentController extends Controller
       
 
             $categories = DB::table("categories")->pluck("name","id");
-            return view('receptionist/payment.create',compact('categories'),[ 'customer_id'=>$customer_id, 'customers'=>$customers,'receptionist_id'=>$receptionist_id, 'receptionists'=>$receptionists
+            return view('receptionist/payment.create',compact('categories'),[ 'commited_id'=>$commited_id, 'commiteds'=>$commiteds,'receptionist_id'=>$receptionist_id, 'receptionists'=>$receptionists
             // ,'membership_id'=>$membership_id,'memberships'=>$memberships
             ]);
         }

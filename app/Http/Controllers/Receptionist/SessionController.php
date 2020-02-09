@@ -21,10 +21,10 @@ class SessionController extends Controller
      public function index()
     {
     	// $session=DB::table()
-        $current_date_time = Carbon::now()->toDateTimeString();
-        $payments = Payment::with('categorie')->where('created_at',$current_date_time)->get();
+        $payments = Payment::with('session')->where('duration',1)->get();
 
          return view('receptionist/session.index', compact('payments'));
+        // return $payments;
     }
     
      public function create( $customer_id=null,$receptionist_id=null, $membership_id=null)

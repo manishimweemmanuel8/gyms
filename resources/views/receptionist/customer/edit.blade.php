@@ -44,19 +44,12 @@
         <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" name="email" value="{{$customer->email}}">
     </div>
 
-       @if($entities !=null)
     <div class="form-group">
-      <label >Entity Name</label>
+       <input name="_method" type="hidden" value="PATCH">
+      <label>Discount</label>
+        <input type="number" class="form-control form-control-lg" id="lgFormGroupInput" name="discount" value="{{$customer->discount}}">
+    </div>
 
-      <select name="entitie_id" class="form-control" >
-            <option value="{{$customer->entitie_id}}">{{$customer->entitie->name}}</option>
-            @foreach ($entities as $entity)
-                  <option value="{{ $entity->id }}">{{ $entity->name}}</option>
-            @endforeach
-      </select>
-
-  </div>
-    @endif
 
     <div class="form-group">
        <input name="_method" type="hidden" value="PATCH">

@@ -230,16 +230,11 @@
      <div class="row">
         <div class="col">
       <label >Name</label>
-
         <input type="text" class="form-control"  name="name">
-
     </div>
-
     <div class="col">
       <label >Email</label> 
-
         <input type="email" class="form-control" name="email">
-
     </div>
 </div>
 
@@ -277,32 +272,30 @@
         </select>
 
     </div>
-         
             <div class="col"> 
-            
-      
                 <label for="title">Select Membership</label>
                 <select name="membership_id" id="membership" class="form-control" >
                 </select>
             </div>
         </div>
 
-        
-
-
  <div class="row">
     <div class="col">
       <label >Expiry Date</label> 
-
         <input type="date" class="form-control" name="expiry_date">
-
     </div>
-  
    <div class="col">
-     <label ></label> 
-      <input type="submit" class="btn btn-primary">
+        <label >Payment Type</label>
+        <select name="type" class="form-control">
+          <option value="">---- select payment type  -----</option>
+          <option value="person">Per person</option>
+          <option value="flat">flat</option>
+        </select>
     </div>
 </div>
+
+      <input type="submit" class="btn btn-primary">
+ 
   </form>
 </div>
 </div>

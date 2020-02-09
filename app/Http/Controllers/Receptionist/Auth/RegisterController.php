@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:receptionists',
             'password' => 'required|min:6|confirmed',
+            'card_code' => 'required',
         ]);
     }
 
@@ -66,6 +67,7 @@ class RegisterController extends Controller
         return Receptionist::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'card_code' =>$data['card_code'],
             'password' => bcrypt($data['password']),
         ]);
     }

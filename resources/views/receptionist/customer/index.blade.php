@@ -36,8 +36,7 @@
         <th>phone</th>
         <th>email</th>
         <th>date of birth</th>
-        <th>entity responsibility</th>
-        <th>entity name</th>
+        <th>Discount</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -53,12 +52,7 @@
         <td>{{$customer['phone']}}</td>
         <td>{{$customer['email']}}</td>
         <td>{{$customer['dob']}}</td>
-        @if($customer->entity_representative==0)
-        <td>No</td>
-        @else
-        <td>Yes</td>
-        @endif
-        <td>{{$customer['entitie']['name']}}</td>
+        <td>{{$customer['discount']}}</td>
         <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
       <td>
           <form action="{{action('CustomerController@destroy', $customer['id'])}}" method="post">

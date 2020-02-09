@@ -39,6 +39,24 @@
                             </div>
                         </div>
 
+
+                           <div class="form-group row">
+                            <label for="card_code" class="col-md-4 col-form-label text-md-right">{{ __('Card Code') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ode" type="number" class="form-control{{ $errors->has('card_code') ? ' is-invalid' : '' }}" name="card_code" value="{{ old('card_code') }}" required>
+
+                                @if ($errors->has('card_code'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('card_code') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

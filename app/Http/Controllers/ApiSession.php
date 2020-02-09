@@ -8,6 +8,7 @@ use App\Customer;
 use App\Payment; 
 use App\Control;
 use App\Receptionist;
+use App\Session;
 use App\Http\Resources\PaymentResource;
 use DB;
 use Illuminate\Support\Facades\Input; 
@@ -26,21 +27,16 @@ class ApiSession extends Controller
        
 
         $todayDate = date("Y-m-d");
-        $client=DB::table('customers')->where('phone',$customer)->value('phone');
+        $client=DB::table('sessions')->where('phone',$customer)->value('phone');
         if(!$client){
-            Customer::create([
-                'firstName'       => 'client',
-                'lastName'     => 'client',
+            Session::create([
+              
                 'phone'          =>$customer,
-                'email'     =>'email',
-                'entitie_id'       =>1,
-                'dob'        =>'1994-06-28',
-                'gender'  =>'any',
-                'entity_representative  '=>'0',
+            
             ]);
 
             Payment::create([
-            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+            'customer_id'       =>DB::table('sessions')->where('phone',$customer)
                 ->value('id') ,
             'receptionist_id'     => $receptionist,
             'sport_id'          => $sport,
@@ -57,20 +53,20 @@ class ApiSession extends Controller
         $mytime = date('Y-m-d H:i:s');
 
         Attendance::create([
-            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+            'customer_id'       =>DB::table('sessions')->where('phone',$customer)
                                      ->value('id') ,
             'controller_id'     => $receptionist,
             'sport_id'          =>$sport ,
             'membership_id'     =>$membership,
             'category_id'       =>$category,
             'payment_id'        =>DB::table('payments')
-                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->where('customer_id',DB::table('sessions')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
                                 ->value('id'),
         ]);
                $payment = Payment::where('id', DB::table('payments')
-                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->where('customer_id',DB::table('sessions')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
                                 ->value('id'))->first();
@@ -94,7 +90,7 @@ class ApiSession extends Controller
         }
 
         Payment::create([
-            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+            'customer_id'       =>DB::table('sessions')->where('phone',$customer)
                 ->value('id') ,
             'receptionist_id'     => $receptionist,
             'sport_id'          => $sport,
@@ -111,14 +107,14 @@ class ApiSession extends Controller
         $mytime = date('Y-m-d H:i:s');
 
         Attendance::create([
-            'customer_id'       =>DB::table('customers')->where('phone',$customer)
+            'customer_id'       =>DB::table('sessions')->where('phone',$customer)
                                      ->value('id') ,
             'controller_id'     => $receptionist,
             'sport_id'          =>$sport,
             'membership_id'     =>$membership,
             'category_id'       =>$category,
             'payment_id'        =>DB::table('payments')
-                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->where('customer_id',DB::table('sessions')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
                                 ->value('id'),
@@ -128,7 +124,7 @@ class ApiSession extends Controller
     
              
                $payment = Payment::where('id', DB::table('payments')
-                                ->where('customer_id',DB::table('customers')->where('phone',$customer)
+                                ->where('customer_id',DB::table('sessions')->where('phone',$customer)
                                 ->value('id'))
                                  ->where('created_at',$mytime)
                                 ->value('id'))->first();

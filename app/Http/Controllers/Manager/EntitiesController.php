@@ -57,16 +57,21 @@ class EntitiesController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'expiry_date'=>'required'
+            'expiry_date'=>'required',
+            'payment_type'=>'required'
         ]);
         $entity = new Entitie([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
+            'payment_type' => $request->get('type'),
             'expiry_date'=>$request->get('expiry_date'),
 
         ]);
+      $value=DB::table('entities')->where('name', $request->get('name'))->get();
+      if($value->count() == 0){
         $entity->save();
-
+      }
+        
            $payment = new Payment([
             'customer_id' => DB::table("entities")->where('email',$request->get('email'))->value("id"),
             'receptionist_id' => 1,

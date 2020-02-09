@@ -10,6 +10,8 @@ use App\Categorie;
 use App\Attendance;
 use App\Sport;
 use App\Membership;
+use App\customerSession;
+use App\Session;
 
 
 class Payment extends Model
@@ -19,6 +21,10 @@ class Payment extends Model
     use SoftDeletes; 
     public function customer(){
     	return $this->belongsTo(Customer::class);
+    }
+
+    public function session(){
+        return $this->belongsTo(Session::class);
     }
 
     public function sport(){

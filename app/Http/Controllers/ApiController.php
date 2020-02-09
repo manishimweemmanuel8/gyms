@@ -33,19 +33,36 @@ class ApiController extends Controller
     }
 
 public function loginReceptionist(){
-         $email = Input::get('email');
-        $password = Input::get('password');
-        $receptionist = Receptionist::where('email', $email)->first();
+         // $email = Input::get('email');
+        // $password = Input::get('password');
+        // $receptionist = Receptionist::where('email', $email)->first();
     
-        $data=DB::table('receptionists')
-            ->where('email',$email)
-            ->first();
-        if ($receptionist && \Hash::check($password, $receptionist->password)) {
+        // $data=DB::table('receptionists')
+        //     ->where('email',$email)
+        //     ->first();
+        // if ($receptionist && \Hash::check($password, $receptionist->password)) {
+        //     return response()
+        //         ->json(
+        //            $data
+        //         );
+        // }
+
+
+
+        $card_code=Input::get('id');
+        $receptionist=Receptionist::where('card_code', $card_code)->first();
+        if($receptionist){
+
             return response()
                 ->json(
-                   $data
+                   $receptionist
                 );
-        }else{
+
+
+        }
+
+
+         else{
         return response()
             ->json(['status' => 2, 'message' => 'Ntitubashije kubamenya!']);
     }
