@@ -28,8 +28,32 @@ Route::get('/get','ApiSubscribe@getCustomer');
 Route::get('categories', function() {
     return $categories=Categorie::all();
 });
+
+
+
 Route::get('/sports','ApiController@sports');
 Route::get('/memberships','ApiController@memberships');
+
+//corporate
+
+Route::get('entities', function() {
+    return $entities=DB::table('entities')->get();
+});
+
+Route::get('/corporateEntitie' , 'apicorporate@customer');
+Route::get('/corporateSport' , 'apicorporate@sport');
+Route::post('/corporate' , 'apicorporate@corporateCustomer');
+
+
+//committed
+
+Route::get('committed', function() {
+    return $committed=DB::table('commiteds')->get();
+});
+Route::get('/committedSport' , 'apicommitted@sport');
+Route::post('/committed', 'apicommitted@committedCustomer');
+
+
 
 
 

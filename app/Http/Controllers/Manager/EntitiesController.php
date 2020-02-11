@@ -58,12 +58,12 @@ class EntitiesController extends Controller
             'name'=>'required',
             'email'=>'required',
             'expiry_date'=>'required',
-            'payment_type'=>'required'
+            'type'=>'required'
         ]);
         $entity = new Entitie([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'payment_type' => $request->get('type'),
+            'organisation' => "flat",
             'expiry_date'=>$request->get('expiry_date'),
 
         ]);

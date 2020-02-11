@@ -286,7 +286,7 @@
     </div>
    <div class="col">
         <label >Payment Type</label>
-        <select name="type" class="form-control">
+        <select name="payment_type" class="form-control">
           <option value="">---- select payment type  -----</option>
           <option value="person">Per person</option>
           <option value="flat">flat</option>
