@@ -25,54 +25,54 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
         <!-- Bootstrap CSS
             ============================================ -->
-{{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-        <link rel="stylesheet"  href="{{ asset('template/css/bootstrap.min.css')}}">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <!-- <link rel="stylesheet"  href="{{ asset('template/css/bootstrap.min.css')}}"> -->
         <!-- Bootstrap CSS
             ============================================ -->
         <link rel="stylesheet"  href="{{ asset('template/css/font-awesome.min.css')}}">
         <!-- owl.carousel CSS
             ============================================ -->
-        <link rel="stylesheet"  href="{{ asset('template/css/owl.carousel.css')}}">
+     <!--    <link rel="stylesheet"  href="{{ asset('template/css/owl.carousel.css')}}">
         <link rel="stylesheet"  href="{{ asset('template/css/owl.theme.css')}}">
-        <link rel="stylesheet"  href="{{ asset('template/css/owl.transitions.css')}}">
+        <link rel="stylesheet"  href="{{ asset('template/css/owl.transitions.css')}}"> -->
         <!-- animate CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/animate.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/animate.css')}}"> -->
         <!-- normalize CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/normalize.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/normalize.css')}}"> -->
         <!-- meanmenu icon CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/meanmenu.min.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/meanmenu.min.css')}}"> -->
         <!-- main CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/main.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/main.css')}}"> -->
         <!-- educate icon CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/educate-custon-icon.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/educate-custon-icon.css')}}"> -->
         <!-- morrisjs CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/morrisjs/morris.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/morrisjs/morris.css')}}"> -->
         <!-- mCustomScrollbar CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/scrollbar/jquery.mCustomScrollbar.min.css')}}">
+        <!-- <link rel="stylesheet" href="{{ asset('template/css/scrollbar/jquery.mCustomScrollbar.min.css')}}"> -->
         <!-- metisMenu CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/metisMenu/metisMenu.min.css')}}">
-        <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css')}}">
+      <!--   <link rel="stylesheet" href="{{ asset('template/css/metisMenu/metisMenu.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css')}}"> -->
         <!-- calendar CSS
             ============================================ -->
 
         <!-- x-editor CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/editor/select2.css')}}">
+     <!--    <link rel="stylesheet" href="{{ asset('template/css/editor/select2.css')}}">
         <link rel="stylesheet" href="{{ asset('template/css/editor/datetimepicker.css')}}">
         <link rel="stylesheet" href="{{ asset('template/css/editor/bootstrap-editable.css')}}">
-        <link rel="stylesheet" href="{{ asset('template/css/editor/x-editor-style.css')}}">
+        <link rel="stylesheet" href="{{ asset('template/css/editor/x-editor-style.css')}}"> -->
         <!-- normalize CSS
             ============================================ -->
-        <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-table.css')}}">
-        <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-editable.css')}}">
+   <!--      <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-table.css')}}">
+        <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-editable.css')}}"> -->
         <!-- style CSS
             ============================================ -->
     {{--    <link rel="stylesheet" href="style.css">--}}
@@ -133,12 +133,12 @@
 
 
                         </div>
-                        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
-                        </button> -->
-                       <!--  <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
                             <form>
                                 <div class="input-group no-border">
                                     <input type="text" value="" class="form-control" placeholder="Search...">
@@ -190,7 +190,7 @@
 
                                 </li>
                             </ul>
-                        </div> -->
+                        </div>
                     </div>
                 </nav>
                 <!-- End Navbar -->
@@ -220,90 +220,90 @@
     </div>
 </body>
 <!--   Core JS Files   -->
-<script src="{{ asset('assets/js/core/jquery.min.js')}}"></script>
+<!-- <script src="{{ asset('assets/js/core/jquery.min.js')}}"></script>
 <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
 <script src="{{ asset('assets/js/core/bootstrap.min.js')}}"></script>
-<script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> -->
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
-<script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
+<!-- <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script> -->
 <!--  Notifications Plugin    -->
-<script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
+<!-- <script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script> -->
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset('assets/js/now-ui-dashboard.js?v=1.0.1')}}"></script>
+<!-- <script src="{{ asset('assets/js/now-ui-dashboard.js?v=1.0.1')}}"></script> -->
 <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ asset('assets/demo/demo.js')}}"></script>
+<!-- <script src="{{ asset('assets/demo/demo.js')}}"></script> -->
 
 
     <!-- jquery
         ============================================ -->
-    <script src="{{ asset('template/js/vendor/jquery-1.12.4.min.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/vendor/jquery-1.12.4.min.js')}}"></script> -->
     <!-- bootstrap JS
         ============================================ -->
-    <script src="{{ asset('template/js/bootstrap.min.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/bootstrap.min.js')}}"></script> -->
     <!-- wow JS
         ============================================ -->
-    <script src="{{ asset('template/js/wow.min.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/wow.min.js')}}"></script> -->
     <!-- price-slider JS
         ============================================ -->
-    <script src="{{ asset('template/js/jquery-price-slider.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/jquery-price-slider.js')}}"></script> -->
     <!-- meanmenu JS
         ============================================ -->
-    <script src="{{ asset('template/js/jquery.meanmenu.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/jquery.meanmenu.js')}}"></script> -->
     <!-- owl.carousel JS
         ============================================ -->
-    <script src="{{ asset('template/js/owl.carousel.min.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/owl.carousel.min.js')}}"></script> -->
     <!-- sticky JS
         ============================================ -->
-    <script src="{{ asset('template/js/jquery.sticky.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/jquery.sticky.js')}}"></script> -->
     <!-- scrollUp JS
         ============================================ -->
 
-    <script src="{{ asset('template/js/jquery.scrollUp.min.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/jquery.scrollUp.min.js')}}"></script> -->
     <!-- mCustomScrollbar JS
         ============================================ -->
-    <script src="{{ asset('template/js/scrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script src="{{ asset('template/js/scrollbar/mCustomScrollbar-active.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/scrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{ asset('template/js/scrollbar/mCustomScrollbar-active.js')}}"></script> -->
     <!-- metisMenu JS
         ============================================ -->
-    <script src="{{ asset('template/js/metisMenu/metisMenu.min.js')}}"></script>
-    <script src="{{ asset('template/js/metisMenu/metisMenu-active.js')}}"></script>
+   <!--  <script src="{{ asset('template/js/metisMenu/metisMenu.min.js')}}"></script>
+    <script src="{{ asset('template/js/metisMenu/metisMenu-active.js')}}"></script> -->
     <!-- data table JS
         ============================================ -->
-    <script src="{{ asset('template/js/data-table/bootstrap-table.js')}}"></script>
+ <!--    <script src="{{ asset('template/js/data-table/bootstrap-table.js')}}"></script>
     <script src="{{ asset('template/js/data-table/tableExport.js')}}"></script>
     <script src="{{ asset('template/template/js/data-table/data-table-active.js')}}"></script>
     <script src="{{ asset('template/js/data-table/bootstrap-table-editable.js')}}"></script>
     <script src="{{ asset('template/js/data-table/bootstrap-editable.js')}}"></script>
     <script src="{{ asset('template/js/data-table/bootstrap-table-resizable.js')}}"></script>
     <script src="{{ asset('template/js/data-table/colResizable-1.5.source.js')}}"></script>
-    <script src="{{ asset('template/js/data-table/bootstrap-table-export.js')}}"></script>
+    <script src="{{ asset('template/js/data-table/bootstrap-table-export.js')}}"></script> -->
     <!--  editable JS
         ============================================ -->
-    <script src="{{ asset('template/js/editable/jquery.mockjax.js')}}"></script>
+   <!--  <script src="{{ asset('template/js/editable/jquery.mockjax.js')}}"></script>
     <script src="{{ asset('template/js/editable/mock-active.js')}}"></script>
     <script src="{{ asset('template/js/editable/select2.js')}}"></script>
     <script src="{{ asset('template/js/editable/moment.min.js')}}"></script>
     <script src="{{ asset('template/js/editable/bootstrap-datetimepicker.js')}}"></script>
     <script src="{{ asset('template/js/editable/bootstrap-editable.js')}}"></script>
-    <script src="{{ asset('template/js/editable/xediable-active.js')}}"></script>
+    <script src="{{ asset('template/js/editable/xediable-active.js')}}"></script> -->
     <!-- Chart JS
         ============================================ -->
-    <script src="{{ asset('template/js/chart/jquery.peity.min.js')}}"></script>
-    <script src="{{ asset('template/js/peity/peity-active.js')}}"></script>
+   <!--  <script src="{{ asset('template/js/chart/jquery.peity.min.js')}}"></script>
+    <script src="{{ asset('template/js/peity/peity-active.js')}}"></script> -->
     <!-- tab JS
         ============================================ -->
-    <script src="{{ asset('template/js/tab.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/tab.js')}}"></script> -->
     <!-- plugins JS
         ============================================ -->
-    <script src="{{ asset('template/js/plugins.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/plugins.js')}}"></script> -->
     <!-- main JS
         ============================================ -->
-    <script src="{{ asset('template/js/main.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/main.js')}}"></script> -->
     <!-- tawk chat JS
         ============================================ -->
-    <script src="{{ asset('template/js/tawk-chat.js')}}"></script>
+    <!-- <script src="{{ asset('template/js/tawk-chat.js')}}"></script> -->
 
 </html>
 

@@ -26,8 +26,10 @@ class apicorporate extends Controller
    public function corporateCustomer(){
    $payment=Input::get('payment');
 
+
        $entitie_id=DB::table('customers')->where('id', $payment)
                     ->value("entitie_id");
+                     $sport_id = DB::table('payments')->where('customer_id', $entitie_id)->value("sport_id");
 
 
             $todayDate = date("Y-m-d");
@@ -43,8 +45,19 @@ class apicorporate extends Controller
                     ->value("id");
 
                 if ($attend) {
-                    $data['customer_id']="client attend";
-                    return response()->json([$data]);
+                      return response()
+                ->json(
+                    [
+                      
+                      
+                            'sport' => DB::table('sports')->where('id',$sport_id)->value('name'),
+                            'name' => DB::table('customers')->where('id',$payment)->value('firstName'),
+                            'expiration date' =>DB::table('payments')->where('customer_id',$entitie_id)->value('expiry_date'),
+                            'message'=> 'you are already attended'
+                  
+                        
+                    ]
+                );
                 } else{
                     Attendance::create([
                         'customer_id' => $payment,
@@ -65,7 +78,6 @@ class apicorporate extends Controller
                     ]);
                    
 
-               // $data['customer_id']="client pass";
                $sport_id = DB::table('payments')->where('customer_id', $entitie_id)->value("sport_id");
 
             
@@ -74,11 +86,10 @@ class apicorporate extends Controller
                     [
                       
                       
-                        	// 'category' => $payment->categorie->name,
                             'sport' => DB::table('sports')->where('id',$sport_id)->value('name'),
-                         //    'membership' => $payment->membership->name,
                             'name' => DB::table('customers')->where('id',$payment)->value('firstName'),
-                            'expiration date' =>DB::table('payments')->where('customer_id',$entitie_id)->value('expiry_date')
+                            'expiration date' =>DB::table('payments')->where('customer_id',$entitie_id)->value('expiry_date'),
+                              'message'=> 'you allow to attend'
                   
                         
                     ]
