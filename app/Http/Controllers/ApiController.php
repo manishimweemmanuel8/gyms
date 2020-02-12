@@ -59,7 +59,7 @@ public function loginReceptionist(){
                 );
 
 
-        }
+        } 
 
 
          else{
