@@ -29,7 +29,7 @@ class ApiController extends Controller
 
       public function memberships(){
         $sport_id=Input::get('id');
-        return DB::table('memberships')->where('sport_id',$sport_id)->get();
+        return DB::table('memberships')->where('sport_id',$sport_id)->where('duration','<', 20)->get();
     }
 
 public function loginReceptionist(){
