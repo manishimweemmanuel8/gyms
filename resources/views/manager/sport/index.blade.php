@@ -1,13 +1,25 @@
 @extends('manager.layouts.master-client')
 @section('content')
-        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-                    <div class="card-body">
-                        <h2 class="title"> Sport List</h2>
+        <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card">
+                <div class="card-heading"></div>
+                <div class="card-body">
+
+                  <div class='row'>
+                    <div class="col-md-10">
+                    <h2 class="title"> Sport List</h2>
+                  </div>
+                  <div class ="col-md-2">  
 
                          <a href="{{action('Manager\SportController@create')}}" class="btn btn-warning">Add new</a>
-                       <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
-                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
-                        <thead>
+                       </div>
+                     </div>
+                       
+<table id="example" class="display" style="width:100%">                               
+                       
+                        
+                        <thead class="btn-light">
                        
 
 
@@ -38,11 +50,15 @@
         </td> -->
       </tr>
       @endforeach
-    </tbody>
+     </tbody>
+
   </table>
-  </div>
+</div>
+                    </div>
                 </div>
+              </div>
 
 
+ 
 
 @endsection

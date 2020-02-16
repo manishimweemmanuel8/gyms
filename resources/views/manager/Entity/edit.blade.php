@@ -9,24 +9,28 @@
 
   <form class="well form-horizontal" id="contact_form" method="post" action="{{action('Manager\EntitiesController@update', $id)}}">
   {{csrf_field()}}
-    <div class="form-group">
+   <div class="row">
+        <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label>Name</label>
+
 
         <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" name="name" value="{{$entity->name}}">
 
     </div>
+       <div class="col">
 
-
-
-    <div class="form-group">
        <input name="_method" type="hidden" value="PATCH">
       <label>Email</label>
         <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" name="email" value="{{$entity->email}}">
     </div>
+  </div>
+
+   <div class="row">
+        <div class="col">
 
        @if($customers !=null)
-    <div class="form-group">
+   
       <label >Customer Name</label>
 
       <select name="customer_id" class="form-control" >
@@ -37,13 +41,15 @@
       </select>
 
   </div>
+  <div class="col">
     @endif
 
-      <div class="form-group">
+      
        <input name="_method" type="hidden" value="PATCH">
       <label>Expiry Date</label>
         <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->expiry_date}}">
     </div>
+  </div>
 
 
     <div class="form-group row">

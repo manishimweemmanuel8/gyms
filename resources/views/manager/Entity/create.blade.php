@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Gym receptionist</title>
+    <title>Gym Manager</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -30,62 +30,17 @@
     <!-- Bootstrap CSS
         ============================================ -->
     {{--        <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-    <link rel="stylesheet"  href="{{ asset('template/css/bootstrap.min.css')}}">
-    <!-- Bootstrap CSS
-        ============================================ -->
-    <link rel="stylesheet"  href="{{ asset('template/css/font-awesome.min.css')}}">
-    <!-- owl.carousel CSS
-        ============================================ -->
-    <link rel="stylesheet"  href="{{ asset('template/css/owl.carousel.css')}}">
-    <link rel="stylesheet"  href="{{ asset('template/css/owl.theme.css')}}">
-    <link rel="stylesheet"  href="{{ asset('template/css/owl.transitions.css')}}">
-    <!-- animate CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/animate.css')}}">
-    <!-- normalize CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/normalize.css')}}">
-    <!-- meanmenu icon CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/meanmenu.min.css')}}">
-    <!-- main CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/main.css')}}">
-    <!-- educate icon CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/educate-custon-icon.css')}}">
-    <!-- morrisjs CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/morrisjs/morris.css')}}">
-    <!-- mCustomScrollbar CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/scrollbar/jquery.mCustomScrollbar.min.css')}}">
-    <!-- metisMenu CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/metisMenu/metisMenu.min.css')}}">
+ 
+ 
     <link rel="stylesheet" href="{{ asset('css/metisMenu/metisMenu-vertical.css')}}">
     <!-- calendar CSS
         ============================================ -->
 
-    <!-- x-editor CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/editor/select2.css')}}">
-    <link rel="stylesheet" href="{{ asset('template/css/editor/datetimepicker.css')}}">
-    <link rel="stylesheet" href="{{ asset('template/css/editor/bootstrap-editable.css')}}">
-    <link rel="stylesheet" href="{{ asset('template/css/editor/x-editor-style.css')}}">
-    <!-- normalize CSS
-        ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-table.css')}}">
-    <link rel="stylesheet" href="{{ asset('template/css/data-table/bootstrap-editable.css')}}">
+  
     <!-- style CSS
         ============================================ -->
     {{--    <link rel="stylesheet" href="style.css">--}}
-<!-- responsive CSS
-    ============================================ -->
-    <link rel="stylesheet" href="{{ asset('template/css/responsive.css')}}">
-    <!-- modernizr JS
-        ============================================ -->
-    {{--    <script src="{{ asset('template/js/vendor/modernizr-2.8.3.min.js')}}"></script>--}}
+
 </head>
 <body class="">
 <div class="wrapper ">
@@ -106,100 +61,81 @@
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-wrapper">
-                    <div class="navbar-toggle">
-                        <button type="button" class="navbar-toggler">
-                            <span class="navbar-toggler-bar bar1"></span>
-                            <span class="navbar-toggler-bar bar2"></span>
-                            <span class="navbar-toggler-bar bar3"></span>
+                    <div class="container-fluid">
+                        <div class="navbar-wrapper">
+                            <div class="navbar-toggle">
+                                <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                                </button>
+                            </div>
+
+
+
+                            <a class="navbar-brand" href="#pablo">For Manager</a>
+                            <a class="navbar-brand" href="{{ url('/manager/Entity') }}">
+                                Entity
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/category') }}">
+                                Category
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/sport') }}">
+                                Sport
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/membership') }}">
+                                Membership
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/price') }}">
+                                Price
+                            </a>
+
+
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
+                        <span class="navbar-toggler-bar navbar-kebab"></span>
                         </button>
-                    </div>
-
-
-
-                    <a class="navbar-brand" href="#pablo">For Manager</a>
-                    <a class="navbar-brand" href="{{ url('/manager/Entity') }}">
-                        Entity
-                    </a>
-                    <a class="navbar-brand" href="{{ url('/manager/category') }}">
-                        Category
-                    </a>
-                    <a class="navbar-brand" href="{{ url('/manager/sport') }}">
-                        Sport
-                    </a>
-                    <a class="navbar-brand" href="{{ url('/manager/membership') }}">
-                        Membership
-                    </a>
-                    <a class="navbar-brand" href="{{ url('/manager/price') }}">
-                        Price
-                    </a>
-                    <a class="navbar-brand" href="{{ url('/report/report') }}">
-                        Report
-                    </a>
-
-
-                </div>
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                </button> -->
-                <!-- <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                    <form>
-                        <div class="input-group no-border">
-                            <input type="text" value="" class="form-control" placeholder="Search...">
-                            <span class="input-group-addon">
+                        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                          <!--   <form>
+                                <div class="input-group no-border">
+                                    <input type="text" value="" class="form-control" placeholder="Search...">
+                                    <span class="input-group-addon">
                                         <i class="now-ui-icons ui-1_zoom-bold"></i>
                                     </span>
-                        </div>
-                    </form>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pablo">
-                                <i class="now-ui-icons media-2_sound-wave"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">Stats</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="now-ui-icons location_world"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">Some Actions</span>
-                                </p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="{{ route('receptionist.logout') }}"
-                                   onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-                                    <i class="icon-logout menu-icon"></i> {{ __('Logout') }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-
-                                    <form id="logout-form" action="{{ route('receptionist.logout') }}" method="POST" style="display: none;">
-                                        @csrf
-
-                                    </form>
                                 </div>
-                        </li>
+                            </form> -->
+                            <ul class="navbar-nav">
+                             
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="now-ui-icons location_world"></i>
+                                        <p>
+                                            <span class="d-lg-none d-md-block">Some Actions</span>
+                                        </p>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="{{ route('manager.logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              <i class="icon-logout menu-icon"></i> {{ __('Logout') }}
+            </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pablo">
-                                <i class="now-ui-icons users_single-02"></i>
-                                <p>
-                                    <span class="d-lg-none d-md-block">Account</span>
-                                </p>
-                            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                        </li>
-                    </ul>
-                </div> -->
-            </div>
-        </nav>
+
+            <form id="logout-form" action="{{ route('manager.logout') }}" method="POST" style="display: none;">
+              @csrf
+
+            </form>
+                                    </div>
+                                </li>
+
+                                                      </ul>
+                        </div>
+                    </div>
+                </nav>
         <!-- End Navbar -->
 
         <div class="panel-header panel-header-sm">
@@ -215,7 +151,7 @@
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title"> Enitty Info</h2>
+                    <h2 class="title"> Entity Info</h2>
 
                      <!-- Message -->
     

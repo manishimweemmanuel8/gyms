@@ -60,16 +60,17 @@ class EntitiesController extends Controller
             'expiry_date'=>'required',
             'payment_type'=>'required'
         ]);
-        $entity = new Entitie([
+       
+       
+      $value=DB::table('entities')->where('name', $request->get('name'))->get();
+      if($value->count() == 0){
+         DB::table('entities')->insert([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            // 'organisation' => "flat",
+            'payment_type' =>$request->get('payment_type'),
             'expiry_date'=>$request->get('expiry_date'),
 
         ]);
-      $value=DB::table('entities')->where('name', $request->get('name'))->get();
-      if($value->count() == 0){
-        $entity->save();
       }
         
            $payment = new Payment([
@@ -87,6 +88,7 @@ class EntitiesController extends Controller
                 ->where("id",$request->get('membership_id'))->value("duration"),
              'expiry_date'=>$request->get('expiry_date'),
              'location' => $request->get('location'),
+             'status'=>'No',
         ]);
 
 

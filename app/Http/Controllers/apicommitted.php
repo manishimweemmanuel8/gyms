@@ -17,23 +17,27 @@ class apicommitted extends Controller
     }
 
    public function committedCustomer(){
-   $payment=Input::get('payment');
-   $sport_id = DB::table('payments')->where('customer_id', $payment)->value("sport_id");
+   $card_code=Input::get('card_code');
+   $payment=DB::table('commiteds')->where('card_code',$card_code)->value('id');
+   if ($payment) {
+       # code...
+    $sport_id = DB::table('payments')->where('customer_id', $payment)->value("sport_id");
 
        // $entitie_id=DB::table('customers')->where('id', $payment)
        //              ->value("entitie_id");
 
 
             $todayDate = date("Y-m-d");
-            $client = DB::table('payments')->where('customer_id', $payment)
-                    ->where('expiry_date', '>=', $todayDate)
-                    ;
+            $payment_id = DB::table('payments')->where('customer_id', $payment)
+                    ->where('expiry_date', '>=', $todayDate)->value('id');
+                    
 
-                    if($client){
+                    if($payment_id){
+
 
                     $attend = DB::table('attendances')
                     ->where('created_at', $todayDate)
-                    ->where('customer_id', $payment)
+                    ->where('payment_id', $payment_id)
                     ->value("id");
 
                 if ($attend) {
@@ -81,7 +85,7 @@ class apicommitted extends Controller
                     [
                       
                       
-                        	// 'category' => $payment->categorie->name,
+                            // 'category' => $payment->categorie->name,
                             'sport' => DB::table('sports')->where('id',$sport_id)->value('name'),
                          //    'membership' => $payment->membership->name,
                             'name' => DB::table('commiteds')->where('id',$payment)->value('firstName'),
@@ -103,9 +107,13 @@ class apicommitted extends Controller
                 }
 
                     
-                
+   }else{
+      $data['customer_id']="Invalid card_code on committed";
+      return response()->json([$data]);
+    
+   }
 
-
+   
 }
 }
 

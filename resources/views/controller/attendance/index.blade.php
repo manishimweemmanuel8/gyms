@@ -1,17 +1,23 @@
 @extends('layouts.master-client')
 @section('content')
 
-        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-            <div class="wrapper wrapper--w100">
-                <div class="card card-1">
+         <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card">
+                <div class="card-heading"></div>
+                <div class="card-body">
 
-                    <div class="card-body">
-                        <h2 class="title"> Attendance List</h2>
+                  <div class='row'>
+                    <div class="col-md-10">
+                    <h2 class="title"> Attendance List</h2>
+                  </div>
+              </div>
+                 
 
-                                <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
-                                       data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-
-                                        <thead>
+                              <table id="example" class="display" style="width:100%">                               
+                       
+                        
+                        <thead class="btn-light">
                                         <tr>
                                             <th>ID</th>
                                             <th>Customer</th>
@@ -37,12 +43,15 @@
                                                 <td>{{$attendance->created_at}}</td>
                                             </tr>
                                         @endforeach
-                                        </tbody>
-                                    </table>
+          </tbody>
+
+
+  </table>
+</div>
                     </div>
                 </div>
-            </div>
-        </div>
+              </div>
+              
 
 
 

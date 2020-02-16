@@ -12,6 +12,7 @@ use App\Sport;
 use App\Membership;
 use App\customerSession;
 use App\Session;
+use App\commited;
 
 
 class Payment extends Model
@@ -21,6 +22,10 @@ class Payment extends Model
     use SoftDeletes; 
     public function customer(){
     	return $this->belongsTo(Customer::class);
+    }
+
+     public function committed(){
+        return $this->belongsTo(commited::class);
     }
 
     public function session(){

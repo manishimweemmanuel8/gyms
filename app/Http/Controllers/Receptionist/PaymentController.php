@@ -16,8 +16,9 @@ class PaymentController extends Controller
 {
      public function index()
     {
-        $payments = Payment::all();
+        $payments = Payment::with('committed')->where('status','Yes')->get();
          return view('receptionist/payment.index', compact('payments'));
+        // return $payments;
     }
     
      public function create( $commited_id=null,$receptionist_id=null, $membership_id=null)
@@ -76,6 +77,7 @@ class PaymentController extends Controller
                 ->where("membership_id",$request->get('membership_id'))
                 ->value("amount"),
                 'location' => $request->get('location'),
+                'status'=>'Yes',
 
               ]);
 

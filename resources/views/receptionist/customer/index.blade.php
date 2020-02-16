@@ -1,31 +1,27 @@
 @extends('layouts.master-client')
 @section('content')
 
-        <div class="page-wrapper bg-blue p-t-120 p-b-120 font-robo">
-        <!-- <div class="wrapper wrapper--w680"> -->
-            <div class="card">
-
-                
-                 <div class="row">
-                   <h2 class="card-header">Customer List</h2>
-                 </div>
-
-              
      
-                  <div class="row ">
-                    <div class="col-sm-6">
+        <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card">
+                <div class="card-heading"></div>
+                <div class="card-body">
+
+                  <div class='row'>
+                    <div class="col-md-10">
+                    <h2 class="title"> Customer List</h2>
+                  </div>
+                  <div class ="col-md-2"> 
                     <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>
                     </div>
                  </div>
-                    
-                   
-               
-                    <div class="card-body">
 
                   
-                        <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
-                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
-                        <thead>
+<table id="example" class="display" style="width:100%">                               
+                       
+                        
+                        <thead class="btn-light">
                         
       <tr>
         <th>No</th>
@@ -64,8 +60,10 @@
         </td>
       </tr>
       @endforeach
-    </tbody>
+   </tbody>
+
   </table>
+</div>
                     </div>
                 </div>
               </div>
