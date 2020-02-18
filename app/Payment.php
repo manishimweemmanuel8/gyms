@@ -13,11 +13,12 @@ use App\Membership;
 use App\customerSession;
 use App\Session;
 use App\commited;
+use App\Entitie;
 
 
 class Payment extends Model
 {
-    protected $fillable = ['customer_id','receptionist_id','categorie_id','sport_id','membership_id','duration','expiry_date','amount','location'];
+    protected $fillable = ['customer_id','receptionist_id','categorie_id','sport_id','membership_id','duration','expiry_date','amount','location','client_type','status'];
 
     use SoftDeletes; 
     public function customer(){
@@ -34,6 +35,11 @@ class Payment extends Model
 
     public function sport(){
     	return $this->belongsTo(Sport::class);
+    }
+
+
+    public function entitie(){
+        return $this->belongsTo(Entitie::class);
     }
 
     public function membership(){

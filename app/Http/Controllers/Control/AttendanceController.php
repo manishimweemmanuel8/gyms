@@ -18,10 +18,9 @@ class AttendanceController extends Controller
         //
 
 
-            $attendances = Attendance::with('payment')->get();
-
-        
+        $attendances = Attendance::with('payment')->get();
          return view('control/attendance.index', compact('attendances'));
+         // return $attendances;
     }
 
     public function destroy($id)

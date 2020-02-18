@@ -26,6 +26,7 @@ class Customer extends Model
     	return $this->hasOne(Payment::class);
     } 
 
+
     public function membership(){
         return $this->belongsTo(Membership::class);
     }

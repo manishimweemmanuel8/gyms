@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Customer;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Payment;
 
 
 class Entitie extends Model
@@ -21,5 +22,8 @@ class Entitie extends Model
 		return $this->hasMany(Customer::class);
 	
 	}
+	public function payment(){
+    	return $this->hasOne(Payment::class);
+    }
     
 }

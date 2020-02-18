@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Input; 
 use DB;
 use App\Attendance;
+use App\Customer;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class apicorporate extends Controller
     public function customer(){
 
     	$id=Input::get('id');
-    	return $customers=DB::table('customers')->where('entitie_id',$id)->get();
+        return $customers = Customer::orderBy('firstName')->where('entitie_id',$id)->get(); 
+    	// return $customers=DB::table('customers')->where('entitie_id',$id)->get();
 
     }
 

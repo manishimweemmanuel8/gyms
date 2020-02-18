@@ -23,8 +23,8 @@ class AttendanceController extends Controller
 
             $attendances = Attendance::with('payment')->get();
 
-        
-         return view('controller/attendance.index', compact('attendances'));
+        return $attendances;
+         // return view('controller/attendance.index', compact('attendances'));
     }
 
     /**

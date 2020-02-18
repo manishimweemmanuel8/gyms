@@ -89,6 +89,7 @@ class EntitiesController extends Controller
              'expiry_date'=>$request->get('expiry_date'),
              'location' => $request->get('location'),
              'status'=>'No',
+             'client_type'=>'CORPORATE',
         ]);
 
 

@@ -1,42 +1,46 @@
 @extends('layouts.master-client')
 @section('content')
 
-        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-            <div class="wrapper wrapper--w100">
-                <div class="card card-1">
+         <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card">
+                <div class="card-heading"></div>
+                <div class="card-body">
 
-                    <div class="card-body">
-                        <h2 class="title"> Attendance List</h2>
-
-                               <table id="table" class="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="false" data-show-pagination-switch="false" data-show-refresh="false" data-key-events="false" data-show-toggle="false" data-resizable="false" data-cookie="false"
-                               data-cookie-id-table="saveId" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar">
-
-                                        <thead>
+                  <div class='row'>
+                    <div class="col-md-10">
+                    <h2 class="title"> Attendance List</h2>
+                  </div>
+              </div>
+ <table id="example" class="display" style="width:100%">                               
+                       
+                        
+                        <thead class="btn-light">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Customer</th>
-                                            <th>Phone</th>
-                                            <!-- <th>Controller</th> -->
-                                            <th>sport </th>
-                                            <th>Membership</th>
-                                            <th>Category</th>
-                                            <th>Entity</th>
-                                            <th>Done At</th>
-                                            {{--        <th>Edit</th>--}}
-                                                 <th>Delete</th>
+                                            <th>Event Time</th>
+                                            <th>Client Name</th>
+                                            <th>CLient Type</th>
+                                            <th>Packege Offered </th>
+                                            <th>Subscr_Plan</th>
+                                            <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($attendances as $attendance)
                                             <tr>
-                                                <td>{{$attendance->id}}</td>
-                                                <td>{{$attendance->payment['customer']['firstName']}}  {{$attendance->payment['customer']['lastName']}}</td>
-                                                <td>{{$attendance->payment['customer']['phone']}}</td>
+                                                <td>{{$attendance->updated_at}}</td>
+                                                @if($attendance->payment['client_type']=='CORPORATE')
+                                                <td>{{$attendance->payment['entitie']}}</td>
+                                                @elseif($attendance->payment['client_type']=='INDIVIDUAL')
+                                                <td>INDIVIDUAL</td>
+                                                @else
+                                                <td>MEMBER</td>
+                                                @endif
+                                                <td>{{$attendance->payment['client_type']}}</td>
                                                 <td>{{$attendance->payment['sport']['name']}}</td>
                                                 <td>{{$attendance->payment['membership']['name']}}</td>
-                                                <td>{{$attendance->payment['categorie']['name']}}</td>
-                                                <td>{{$attendance->payment['customer']['entitie']['name']}}</td>
-                                                <td>{{$attendance->created_at}}</td>
+                                               
+
 
                                                   <td>
                                                       <form action="{{action('Control\AttendanceController@destroy', $attendance['id'])}}" method="post">
@@ -48,12 +52,14 @@
                                                     </td>
                                             </tr>
                                         @endforeach
-                                        </tbody>
-                                    </table>
+           </tbody>
+
+
+  </table>
+</div>
                     </div>
                 </div>
-            </div>
-        </div>
+              </div>
 
 
 
