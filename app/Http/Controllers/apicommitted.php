@@ -104,16 +104,30 @@ class apicommitted extends Controller
             }
             else{
             
-                 $data['customer_id']="client not allow";
-                    return response()->json([$data]);
+                 return response()
+                ->json(
+                    [
+                      
+                      
+                            // 'category' => $payment->categorie->name,
+                            'sport' => DB::table('sports')->where('id',$sport_id)->value('name'),
+                         //    'membership' => $payment->membership->name,
+                            'First name' => DB::table('commiteds')->where('id',$payment)->value('firstName'),
+                            'Last name' => DB::table('commiteds')->where('id',$payment)->value('lastName'),
+                            'expiration date' =>DB::table('payments')->where('customer_id',$payment)->value('expiry_date'),
+                            'message'=> 'client to allowed'
+                  
+                        
+                    ]
+                );
 
 
                 }
 
                     
    }else{
-      $data['customer_id']="Invalid card_code on committed";
-      return response()->json([$data]);
+      // $data['customer_id']="Invalid card_code on committed";
+      return response()->json(['message'=> 'Invalid card_code on committed']);
     
    }
 
