@@ -11,9 +11,8 @@ class apicommitted extends Controller
 {
 
     public function sport(){
-    	$id=Input::get('id');
-    	$sport_id=DB::table('payments')->where('customer_id',$id)->value('sport_id');
-    	return $sport=DB::table('sports')->where('id',$sport_id)->get();
+    
+    	return $sport=DB::table('sports')->get();
     }
 
    public function committedCustomer(){
