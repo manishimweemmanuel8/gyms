@@ -49,6 +49,8 @@ class ApiSession extends Controller
             'duration'      =>1,
             'expiry_date'   =>$todayDate = date("Y-m-d"),
             'location'=>$receptionist,
+            'client_type'=>'MEMBER',
+            'status'=>'Yes',
         ]);
         $mytime = date('Y-m-d H:i:s');
 
@@ -103,6 +105,8 @@ class ApiSession extends Controller
             'duration'      =>1,
             'expiry_date'   =>$todayDate = date("Y-m-d"),
             'location' =>$receptionist,
+            'client_type'=>'MEMBER',
+            'status'=>'Yes',
         ]);
         $mytime = date('Y-m-d H:i:s');
 

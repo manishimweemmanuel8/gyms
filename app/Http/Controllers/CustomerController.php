@@ -59,6 +59,7 @@ class CustomerController extends Controller
             'email' => $request->get('email'),
             'discount' => $request->get('discount'),
             'dob' => $request->get('dob'),
+            'card_code' => $request->get('card_code'),
             // 'entity_representative' => $request->get('entity_representative')
           ]);
   
@@ -110,6 +111,7 @@ class CustomerController extends Controller
         $customer->email = $request->get('email');
         $customer->discount = $request->get('discount');
         $customer->dob = $request->get('dob');
+        $customer->card_code = $request->get('card_code');
         //$customer->entity_representative=$request->get('entity_representative');
         $customer->update();
         return redirect('/receptionist/customer');

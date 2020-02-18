@@ -26,12 +26,14 @@ class Payment extends Model
     }
 
      public function committed(){
-        return $this->belongsTo(commited::class);
+        return $this->belongsTo(commited::class,'customer_id','id');
     }
 
-    public function session(){
-        return $this->belongsTo(Session::class);
+     public function session(){
+        return $this->belongsTo(Session::class,'customer_id','id');
     }
+
+ 
 
     public function sport(){
     	return $this->belongsTo(Sport::class);

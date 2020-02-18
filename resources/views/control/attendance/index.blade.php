@@ -30,11 +30,11 @@
                                             <tr>
                                                 <td>{{$attendance->updated_at}}</td>
                                                 @if($attendance->payment['client_type']=='CORPORATE')
-                                                <td>{{$attendance->payment['entitie']}}</td>
+                                                <td>{{$attendance->customer['firstName']}}  {{$attendance->customer['lastName']}}</td>
                                                 @elseif($attendance->payment['client_type']=='INDIVIDUAL')
-                                                <td>INDIVIDUAL</td>
+                                                <td>{{$attendance->payment['committed']['firstName']}} {{$attendance->payment['committed']['lastName']}}</td>
                                                 @else
-                                                <td>MEMBER</td>
+                                                <td>{{$attendance->payment['session']['phone']}}</td>
                                                 @endif
                                                 <td>{{$attendance->payment['client_type']}}</td>
                                                 <td>{{$attendance->payment['sport']['name']}}</td>

@@ -24,14 +24,15 @@
                         <thead class="btn-light">
                         
       <tr>
-        <th>No</th>
+        <!-- <th>No</th> -->
         <th>ID</th>
-        <th>first name</th>
-        <th>last name</th>
-        <th>Gender</th>
+        <th>Card code</th>
+        <th>Name</th>
+        <!-- <th>last name</th> -->
+        <!-- <th>Gender</th> -->
         <th>phone</th>
         <th>email</th>
-        <th>date of birth</th>
+        <!-- <th>date of birth</th> -->
         <th>Discount</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -40,14 +41,15 @@
     <tbody>
       @foreach($customers as $customer)
       <tr>
-        <td>{{$loop->iteration}}</td>
+        <!-- <td>{{$loop->iteration}}</td> -->
         <td>{{$customer->id}}</td>
-        <td>{{$customer['firstName']}}</td>
-        <td>{{$customer['lastName']}}</td>
-        <td>{{$customer['gender']}}</td>
+        <td>{{$customer->card_code}}</td>
+        <td>{{$customer['firstName']}} {{$customer['lastName']}}</td>
+        <!-- <td>{{$customer['lastName']}}</td> -->
+        <!-- <td>{{$customer['gender']}}</td> -->
         <td>{{$customer['phone']}}</td>
         <td>{{$customer['email']}}</td>
-        <td>{{$customer['dob']}}</td>
+        <!-- <td>{{$customer['dob']}}</td> -->
         <td>{{$customer['discount']}}</td>
         <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
       <td>

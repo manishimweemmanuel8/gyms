@@ -71,9 +71,15 @@
    
     
     <div class="col">
+      <label >Card code</label>
+
+        <input type="number" class="form-control " name="card_code">
+      </div>
+    </div>
+
       <div class="col-md-0"></div>
       <input type="submit" class="btn btn-primary">
-    </div>
+    
   </div>
   </form>
 

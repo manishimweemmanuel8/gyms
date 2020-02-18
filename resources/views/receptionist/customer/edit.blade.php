@@ -9,7 +9,8 @@
 
   <form class="well form-horizontal" id="contact_form" method="post" action="{{action('CustomerController@update', $id)}}">
   {{csrf_field()}}
-    <div class="form-group">
+    <div class="row">
+      <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label>First name</label>
 
@@ -17,12 +18,14 @@
 
     </div>
 
-    <div class="form-group">
+    <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label >last name</label>
         <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" name="lastName" value="{{$customer->lastName}}">
     </div>
-      <div class="form-group">
+  </div>
+      <div class="row">
+         <div class="col">
      <label >Gender</label>
         <select name="gender" class="form-control">
           <option value="{{$customer->gender}}">{{$customer->gender}}</option>
@@ -32,30 +35,41 @@
     </div>
 
 
-    <div class="form-group">
+    <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label >Phone</label>
         <input type="text" class="form-control form-control-lg" id="lgFormGroupInput" name="phone" value="{{$customer->phone}}">
     </div>
+  </div>
 
-    <div class="form-group">
+    <div class="row">
+      <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label>Email</label>
         <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" name="email" value="{{$customer->email}}">
     </div>
 
-    <div class="form-group">
+    <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label>Discount</label>
         <input type="number" class="form-control form-control-lg" id="lgFormGroupInput" name="discount" value="{{$customer->discount}}">
     </div>
+  </div>
 
 
-    <div class="form-group">
+    <div class="row">
+      <div class="col">
        <input name="_method" type="hidden" value="PATCH">
       <label>Date of Birth</label>
         <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="dob" value="{{$customer->dob}}">
     </div>
+    <div class="col">
+       <input name="_method" type="hidden" value="PATCH">
+      <label>Date of Birth</label>
+        <input type="number" class="form-control form-control-lg" id="lgFormGroupInput" name="card_code" value="{{$customer->card_code}}">
+    </div>
+  </div>
+
     <div class="form-group row">
       <div class="col-md-0"></div>
       <button type="submit" class="btn btn-primary">Edit</button>

@@ -31,6 +31,10 @@ class Customer extends Model
         return $this->belongsTo(Membership::class);
     }
 
+      public function attendance(){
+        return $this->hasOne(Attendance::class);
+    }
+
      public static function insertData($data){
 
       $value=DB::table('customers')->where('phone', $data['phone'])->get();

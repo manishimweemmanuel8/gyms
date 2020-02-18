@@ -78,6 +78,7 @@ class PaymentController extends Controller
                 ->value("amount"),
                 'location' => $request->get('location'),
                 'status'=>'Yes',
+                'client_type'=>'INDIVIDUAL',
 
               ]);
 
