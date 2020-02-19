@@ -99,12 +99,19 @@ class EntitiesController extends Controller
 
         return view('/manager/Entity.import');
     }
-    public function edit($id,$customer_id=null)
+    public function edit($id,$customer_id=null,$payment_id=null)
     {
         $customers=null;
         if(!$customer_id){
             $customers=DB::table("customers")->where('entitie_id',$id)->get();
         }
+
+        $payments=null;
+        if(!$payment_id){
+            $payments=DB::table("payments")->where('customer_id',$id)->get();
+        }
+
+
         $entity = Entitie::find($id);
         $customer=DB::table('entities')
             ->where('id', $id)
@@ -112,7 +119,7 @@ class EntitiesController extends Controller
         DB::table('customers') 
             ->where('id', $customer)
             ->update(['entity_representative' => 0]);
-        return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers]);
+        return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers,'payment_id'=>$payment_id, 'payments'=>$payments]);
     }
 
     public function update(Request $request, $id)
@@ -142,6 +149,15 @@ class EntitiesController extends Controller
     public function destroy($id)
     {
         entitie::destroy($id);
+        return redirect('/manager/Entity');
+    }
+
+      public function approvePayment($id)
+    {
+         
+             DB::table('payments')
+            ->where('customer_id', $id)
+            ->update(['status' => 'Yes']);
         return redirect('/manager/Entity');
     }
 

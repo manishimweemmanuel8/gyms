@@ -22,8 +22,11 @@ class Entitie extends Model
 		return $this->hasMany(Customer::class);
 	
 	}
-	public function payment(){
-    	return $this->hasOne(Payment::class);
-    }
+	// public function payment(){
+ //    	return $this->hasOne(Payment::class);
+ //    }
+    public function payment(){
+    	return $this->hasOne(Payment::class,'id','customer_id');
+    } 
     
 }

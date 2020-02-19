@@ -41,8 +41,9 @@
       </select>
 
   </div>
-  <div class="col">
+  
     @endif
+    <div class="col">
 
       
        <input name="_method" type="hidden" value="PATCH">
@@ -50,6 +51,8 @@
         <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->expiry_date}}">
     </div>
   </div>
+
+  
 
 
     <div class="form-group row">

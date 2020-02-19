@@ -92,6 +92,16 @@
                             <a class="navbar-brand" href="{{ url('/manager/price') }}">
                                 Price
                             </a>
+                             <a class="navbar-brand" href="{{ url('/manager/report/daily') }}">
+                                Daily report
+                            </a>
+                              <a class="navbar-brand" href="{{ url('/manager/report/summary') }}">
+                                summary report
+                            </a>
+
+                             <a class="navbar-brand" href="{{ url('/manager/report/attendance') }}">
+                                Attendance
+                            </a>
 
 
                         </div>

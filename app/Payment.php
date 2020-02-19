@@ -33,6 +33,10 @@ class Payment extends Model
         return $this->belongsTo(Session::class,'customer_id','id');
     }
 
+       public function entitie(){
+        return $this->belongsTo(Entitie::class,'customer_id','id');
+    }
+
  
 
     public function sport(){
@@ -40,9 +44,9 @@ class Payment extends Model
     }
 
 
-    public function entitie(){
-        return $this->belongsTo(Entitie::class);
-    }
+    // public function entitie(){
+    //     return $this->belongsTo(Entitie::class);
+    // }
 
     public function membership(){
     	return $this->belongsTo(Membership::class);

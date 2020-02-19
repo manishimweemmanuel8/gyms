@@ -34,6 +34,7 @@
         <th>Created on</th>
         <th>Edit</th>
         <th>Delete</th>
+          <th>Approve payment</th>
       </tr>
     </thead>
     <tbody>
@@ -58,6 +59,7 @@
            
           </form>
         </td>
+        <td><a href="{{route('entity.approve',['id'=>$entity->id])}}" class = "btn btn-info">Approve</a></td>
       </tr>
       @endforeach
     </tbody>

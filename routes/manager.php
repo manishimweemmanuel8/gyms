@@ -11,7 +11,15 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::get('get-sport-list','PriceController@getSportList');
     Route::get('get-membership-list','PriceController@getMembershipList');
     Route::post('/uploadFile', 'EntitiesController@uploadFile');
+    Route::get('/report/daily', 'managerReportController@dailySalesReport')->name('report.daily');
+    Route::get('/report/summary', 'managerReportController@summarySalesReport')->name('report.summary');
+    Route::get('/report/attendance', 'managerReportController@attendance')->name('report.attendance');
+
+    Route::get('/Entity/{id}/approve','EntitiesController@approvePayment')->name('entity.approve');
+
     // Route::get('/', 'EntitiesController@message'); // localhost:8000/
+
+
 
 
 
