@@ -1,7 +1,7 @@
 @extends('manager.layouts.master-client')
 @section('content') 
 
-      <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+      <div class="page-wrapper bg-blue p-t-5 p-b-5 font-robo" >
         <div class="wrapper wrapper--w680">
             <div class="card">
                 <div class="card-heading"></div>

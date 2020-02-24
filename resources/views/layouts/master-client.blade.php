@@ -78,7 +78,7 @@
 
 
                             
-                            <a class="navbar-brand" href="#pablo">For receptionists</a>
+                        
                             <a class="navbar-brand" href="{{ url('/receptionist/customer') }}">
                                 Committed
                             </a>
@@ -88,9 +88,9 @@
                             <a class="navbar-brand" href="{{ url('/control/attendance') }}">
                                 Attendance
                             </a>
-                            <a class="navbar-brand" href="{{ url('/report/report') }}">
+                          <!--   <a class="navbar-brand" href="{{ url('/report/report') }}">
                                 Report
-                            </a>
+                            </a> -->
 
 
                         </div>
@@ -110,14 +110,7 @@
                             </form> -->
                             <ul class="navbar-nav">
                              
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="now-ui-icons location_world"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                               
                                         <a class="dropdown-item" href="{{ route('receptionist.logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
@@ -125,14 +118,13 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+s
 
             <form id="logout-form" action="{{ route('receptionist.logout') }}" method="POST" style="display: none;">
               @csrf
 
             </form>
-                                    </div>
-                                </li>
+                              
 
                                                       </ul>
                         </div>

@@ -1,18 +1,17 @@
 <!-- create.blade.php -->
 
-@extends('layouts.master-client')
+@extends('manager.layouts.master-client')
 @section('content')
-
-<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-<!--         <div class="wrapper wrapper--w680">
- -->            <div class="card card-1">
-
+ <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Customer Registration Info</h2>
+                    <h2 class="title"> Entity Info</h2>
 
 
-  
-  <form class="justify-content-center" method="post" action="{{url('receptionist/customer')}}"  id="contact_form">
+ 
+  <form class="justify-content-center" method="post" action="{{route('corporate.store')}}"  id="contact_form">
     {{ csrf_field() }}
 
      <div class="row">
@@ -28,8 +27,9 @@
     </div>
   </div>
       <div class="row">
-        <div class="col">
+         <div class="col">
        <label >Gender</label>
+
         <select name="gender" class="form-control">
           <option value="">---- select Gender  -----</option>
           <option value="Male">Male</option>
@@ -44,6 +44,7 @@
 
     </div>
   </div>
+
     <div class="row">
       <div class="col">
       <label >Email</label> 
@@ -51,14 +52,19 @@
         <input type="email" class="form-control" name="email">
 
     </div>
-    
     <div class="col">
-      <label >Discount</label> 
-
-        <input type="number" class="form-control" name="discount">
+       @if($entities !=null)
+ 
+      <label >Entity Name</label>
+      <select name="entitie_id" class="form-control" >
+            <option value="">--- Select Entity ---</option>
+            @foreach ($entities as $entity)
+                  <option value="{{ $entity->id }}">{{ $entity->name}}</option>
+            @endforeach
+      </select>
     </div>
   </div>
- 
+    @endif
 
     
     <div class="row">
@@ -71,26 +77,20 @@
    
     
     <div class="col">
-      <label >Card code</label>
-
-        <input type="number" class="form-control " name="card_code">
-      </div>
-    </div>
-
-      <div class="row">
-        <div class="col">
+      </br>
       <input type="submit" class="btn btn-primary">
     </div>
     <div class="col">
-      <a href="{{ url('/receptionist/customer') }}" class="btn btn-primary">Back</a>
+      <a href="{{ url('/manager/corporate') }}" class="btn btn-primary">Back</a>
     </div>
-    
   </div>
   </form>
+</div>
+</div>
+</div>
+ </div>
 
-</div>
-</div>
-</div>
+
 
 <!-- </div> -->
 

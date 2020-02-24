@@ -24,7 +24,6 @@
                         <tr>
         <th>ID</th>
         <th>name </th>
-        <th>duration </th>
         <th>sport</th>
         <!-- <th>Delete</th> -->
       </tr>
@@ -34,7 +33,6 @@
       <tr>
         <td>{{$membership['id']}}</td>
         <td>{{$membership->name}}</td>
-        <td>{{$membership->duration}}</td>
           <td>{{$membership['sport']['name']}}</td>
 
 {{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}

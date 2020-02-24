@@ -67,7 +67,6 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-
         $this->guard()->logout();
 
         $request->session()->flush();
@@ -75,6 +74,8 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         return redirect($this->redirectTo);
+
+       
     }
 
 }

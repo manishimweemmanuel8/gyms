@@ -55,10 +55,14 @@
   
 
 
-    <div class="form-group row">
-      <div class="col-md-0"></div>
+    <div class="row">
+      <div class="col">
       <button type="submit" class="btn btn-primary">Edit</button>
     </div>
+     <div class="col">
+      <a href="{{ url('/manager/Entity') }}" class="btn btn-primary">Back</a>
+    </div>
+  </div>
   </form>
 </div>
 </div>

@@ -13,7 +13,8 @@
   <form method="post" action="{{url('manager/membership')}}">
     {{ csrf_field() }}
 
-      <div class="form-group">
+      <div class="row">
+        <div class="col">
           <label >Name</label>
 
           <input type="text" class="form-control"  name="name">
@@ -24,7 +25,7 @@
 
 
 
-            <div class="form-group">
+            <div class="col">
               <label>select Sport</label>
                 <select id="sport" name="sport_id" class="form-control"  >
                 <option value="" selected disabled>--- Select Sport ---</option>
@@ -33,8 +34,10 @@
                   @endforeach
                   </select>
           </div>
+        </div>
 
-          <div class="form-group">
+          <div class="row">
+            <div class="col">
           <label >Duration</label>
 
           <input type="number" class="form-control"  name="duration">
@@ -42,10 +45,14 @@
       </div>
 
   
-   <div class="form-group">
+   <div class="col">
       <div class="col-md-0"></div>
       <input type="submit" class="btn btn-primary">
     </div>
+    <div class="col">
+      <a href="{{ url('/manager/membership') }}" class="btn btn-primary">Back</a>
+    </div>
+  </div>
   </form>
 </div>
 </div>

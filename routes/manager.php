@@ -14,8 +14,28 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::get('/report/daily', 'managerReportController@dailySalesReport')->name('report.daily');
     Route::get('/report/summary', 'managerReportController@summarySalesReport')->name('report.summary');
     Route::get('/report/attendance', 'managerReportController@attendance')->name('report.attendance');
+    Route::get('/report/{id}/delete','managerReportController@destroyAttendance')->name('report.destroy');
 
-    Route::get('/Entity/{id}/approve','EntitiesController@approvePayment')->name('entity.approve');
+    //add new sport
+    Route::get('/addsport/{id}/sport','EntitiesController@addNewSport')->name('sport.addSport');
+    Route::post('/addSport/create','EntitiesController@storeNewSport')->name('sport.new');
+
+    Route::post('/report/summaryBetween', 'managerReportController@betweenDateSalesReport')->name('report.between');
+
+    //corporate customer
+
+        //Product route
+
+    Route::get('/corporate', 'corporateController@index')->name('corporate.index');
+    Route::get('/corporate/{id}/edit','corporateController@edit')->name('corporate.edit');
+    Route::get('/corporate/{id}/delete','corporateController@destroy')->name('corporate.destroy');
+    Route::get('/corporate/create','corporateController@create')->name('corporate.create');
+    Route::post('/corporate/create','corporateController@store')->name('corporate.store');
+    Route::post('/corporate/update','corporateController@update')->name('corporate.update');
+
+
+
+    // Route::get('/Entity/{id}/approve','EntitiesController@approvePayment')->name('entity.approve');
 
     // Route::get('/', 'EntitiesController@message'); // localhost:8000/
 

@@ -1,4 +1,4 @@
-@extends('layouts.master-client')
+@extends('manager.layouts.master-client')
 @section('content')
 
      
@@ -13,7 +13,7 @@
                     <h2 class="title"> Customer List</h2>
                   </div>
                   <div class ="col-md-2"> 
-                    <a href="{{action('CustomerController@create')}}" class="btn btn-warning">Add new</a>
+                    <a href="{{action('Manager\corporateController@create')}}" class="btn btn-warning">Add new</a>
                     </div>
                  </div>
 
@@ -26,15 +26,14 @@
       <tr>
         <!-- <th>No</th> -->
         <th>ID</th>
-        <th>Card code</th>
         <th>Name</th>
         <!-- <th>last name</th> -->
         <!-- <th>Gender</th> -->
         <th>phone</th>
         <th>email</th>
         <!-- <th>date of birth</th> -->
-        <th>Discount</th>
-        <th>Edit</th>
+        <th>Entity</th>
+        <!-- <th>Edit</th> -->
         <th>Delete</th>
       </tr>
     </thead>
@@ -43,23 +42,17 @@
       <tr>
         <!-- <td>{{$loop->iteration}}</td> -->
         <td>{{$customer->id}}</td>
-        <td>{{$customer->card_code}}</td>
-        <td>{{$customer['firstName']}} {{$customer['lastName']}}</td>
+       <td>{{$customer['firstName']}} {{$customer['lastName']}}</td>
         <!-- <td>{{$customer['lastName']}}</td> -->
         <!-- <td>{{$customer['gender']}}</td> -->
         <td>{{$customer['phone']}}</td>
         <td>{{$customer['email']}}</td>
         <!-- <td>{{$customer['dob']}}</td> -->
-        <td>{{$customer['discount']}}</td>
-        <td><a href="{{action('CustomerController@edit', $customer['id'])}}" class="btn btn-warning">Edit</a></td>
-      <td>
-          <form action="{{action('CustomerController@destroy', $customer['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button onclick="return confirm('Are you sure?')" class="btn btn-danger" type="submit">Delete</button>
-           
-          </form>
-        </td>
+        <td>{{$customer['entitie']['name']}}</td>
+       
+        <td><a onclick="return confirm('Are you sure?')" href="{{route('corporate.destroy',['id'=>$customer->id])}}" class = "btn btn-danger">Delete</a></td>
+     
+   
       </tr>
       @endforeach
    </tbody>

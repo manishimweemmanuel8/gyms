@@ -9,9 +9,40 @@
 
                   <div class='row'>
                     <div class="col-md-10">
-                    <h2 class="title"> Daily Sale Report</h2>
+                    <h2 class="title"> Summary Sale Report</h2>
                   </div>
+
+                  <div class="col-md-10">
+
+              <div class="card">
+            <form method="post" class="form-inline" action="{{route('report.between')}}">
+                {{ csrf_field() }}
+
+                <div class="form-group">
+                    <label for="title">From:</label>
+
+                    <div class="col-sm-10">
+                        <input type="date" name="from" id="from" class="form-control" >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="title">To:</label>
+
+                    <div class="col-sm-10">
+                        <input type="date" name="to" id="to" class="form-control" >
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+            </div>
               </div>
+            </div>
  <table id="example" class="display" style="width:100%">                               
                         
                         <thead class="btn-light">

@@ -13,7 +13,8 @@
   <form method="post" action="{{url('manager/sport')}}">
     {{ csrf_field() }}
 
-      <div class="form-group">
+      <div class="row">
+        <div class="col">
           <label >Name</label>
 
           <input type="text" class="form-control"  name="name">
@@ -22,7 +23,7 @@
 
 
 
-            <div class="form-group">
+            <div class="col">
               <label>select Category</label>
                 <select id="category" name="category_id" class="form-control"  >
                 <option value="" selected disabled>--- Select Category ---</option>
@@ -31,12 +32,17 @@
                   @endforeach
                   </select>
           </div>
+        </div>
 
   
-   <div class="form-group">
-      <div class="col-md-0"></div>
+   <div class="row">
+      <div class="col">
       <input type="submit" class="btn btn-primary">
     </div>
+    <div class="col">
+      <a href="{{ url('/manager/sport') }}" class="btn btn-primary">Back</a>
+    </div>
+  </div>
   </form>
 </div>
 </div>

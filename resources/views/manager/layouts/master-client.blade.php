@@ -61,11 +61,11 @@
                     <img src="{{asset('assets/photos/Aqua_A4.jpg')}}" height="100%">
                 </div>
             </div>
-            <div class="main-panel">
+            <div class="main-panel" >
                 <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-wrapper">
+                <nav class="navbar fixed-top navbar-expand-lg navbar-transparent  navbar-absolute bg-primary " >
+                    <div class="container-fluid"  >
+                        <div class="navbar-wrapper" >
                             <div class="navbar-toggle">
                                 <button type="button" class="navbar-toggler">
                                 <span class="navbar-toggler-bar bar1"></span>
@@ -76,9 +76,14 @@
 
 
 
-                            <a class="navbar-brand" href="#pablo">For Manager</a>
+                             <a class="navbar-brand" href="{{ url('/manager') }}">
+                                Home
+                            </a>
                             <a class="navbar-brand" href="{{ url('/manager/Entity') }}">
                                 Entity
+                            </a>
+                            <a class="navbar-brand" href="{{ url('/manager/corporate') }}">
+                                Customer
                             </a>
                             <a class="navbar-brand" href="{{ url('/manager/category') }}">
                                 Category
@@ -121,14 +126,7 @@
                             </form> -->
                             <ul class="navbar-nav">
                              
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="now-ui-icons location_world"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                   
                                         <a class="dropdown-item" href="{{ route('manager.logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
@@ -142,8 +140,6 @@
               @csrf
 
             </form>
-                                    </div>
-                                </li>
 
                                                       </ul>
                         </div>
@@ -151,7 +147,7 @@
                 </nav>
                 <!-- End Navbar -->
 
-                <div class="panel-header panel-header-sm">
+                <div class="panel-header panel-header-sm" >
 
                 </div>
                 <div class="content">
@@ -200,6 +196,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
 
 <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 

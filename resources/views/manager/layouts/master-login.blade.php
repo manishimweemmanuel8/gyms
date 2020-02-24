@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>GMS Receptionist Login</title>
+    <title>GMS Manager Login</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -37,29 +37,10 @@
                             <a class="navbar-brand" href="{{ url('/manager') }}">
                                 Manager
                             </a>
-                          
+                            
 
 
                             </div>
-
-                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('manager.login') }}">{{ __('Login') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('manager.register') }}">{{ __('Register') }}</a>
-                        </li>
-                  
-                </ul>
-            </div>
 
             </div>
             <div class="content">
@@ -69,7 +50,7 @@
                         <div class="card card-upgrade">
                             <div class="card-header text-center">
                                 <br>
-                                <h4 class="card-title">Receptionist Login</h3>
+                                <h4 class="card-title">Manager Login</h3>
                                     <br>
                             </div>
                             <div class="card-body">

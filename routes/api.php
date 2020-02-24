@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Categorie;
 use App\Sport;
 use App\Membership;
+use App\Entitie;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::get('/memberships','ApiController@memberships');
 //corporate
 
 Route::get('entities', function() {
-    return $entities=DB::table('entities')->get();
+    return $entities=Entitie::all();
 });
 
 Route::get('/corporateEntitie' , 'apicorporate@customer');

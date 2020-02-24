@@ -1,5 +1,5 @@
 @extends('manager.layouts.master-client')
-@section('content') 
+@section('content')  
 
       
         <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
@@ -34,7 +34,7 @@
         <th>Created on</th>
         <th>Edit</th>
         <th>Delete</th>
-          <th>Approve payment</th>
+        <th>Add Sport</th>
       </tr>
     </thead>
     <tbody>
@@ -52,14 +52,16 @@
         <td><a href="{{action('Manager\EntitiesController@edit', $entity['id'])}}" class="btn btn-warning">Edit</a></td>
       
       <td>
-          <form action="{{action('Manager\EntitiesController@destroy', $entity['id'])}}" method="post">
+          <form  class="delete" action="{{action('Manager\EntitiesController@destroy', $entity['id'])}}" method="post">
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button onclick="return confirm('Are you sure?')" class="btn btn-danger" type="submit">Delete</button>
            
           </form>
         </td>
-        <td><a href="{{route('entity.approve',['id'=>$entity->id])}}" class = "btn btn-info">Approve</a></td>
+
+       <td><a href="{{route('sport.addSport',['id'=>$entity->id])}}" class = "btn btn-info">New Sport</a></td>
+
       </tr>
       @endforeach
     </tbody>
@@ -69,6 +71,13 @@
                     </div>
                 </div>
               </div>
+
+
+              <script>
+    $(".delete").on("submit", function(){
+        return confirm("Are you sure?");
+    });
+</script>
 
 
 

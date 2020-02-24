@@ -195,6 +195,7 @@
           </div>
       </div>
 
+
            <div class="row">
             <div class="col">
        <label >Location</label>
@@ -230,7 +231,17 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col">
+
       <input type="submit" class="btn btn-primary">
+  </div>
+   <div class="col">
+      <a href="{{ url('/manager/Entity') }}" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+    
+
  
   </form>
 </div>

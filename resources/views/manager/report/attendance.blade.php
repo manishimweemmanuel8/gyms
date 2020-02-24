@@ -43,12 +43,7 @@
 
 
                                                   <td>
-                                                      <form action="{{action('Control\AttendanceController@destroy', $attendance['id'])}}" method="post">
-                                                        {{csrf_field()}}
-                                                        <input name="_method" type="hidden" value="DELETE">
-                                                        <button class="btn btn-danger" type="submit">Delete</button>
-                                                       
-                                                      </form>
+                                                      <a onclick="return confirm('Are you sure?')" href="{{route('report.destroy',['id'=>$attendance->id])}}" class = "btn btn-danger">Delete</a>
                                                     </td>
                                             </tr>
                                         @endforeach
@@ -60,6 +55,14 @@
                     </div>
                 </div>
               </div>
+
+              <script>
+        window.onload = function () {
+            $('[data-toggle=confirmation]').confirmation({
+                rootSelector: '[data-toggle=confirmation]',
+            });
+        }
+    </script>
 
 
 

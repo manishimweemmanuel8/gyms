@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Payment;
-
+use App\Categorie;
 class EntitiesController extends Controller
 {
     //
@@ -22,7 +22,7 @@ class EntitiesController extends Controller
 
     public function create()
     {
-        $categories = DB::table("categories")->pluck("name","id");
+        $categories = Categorie::where('id','3')->pluck("name","id");
         return view('manager/Entity.create',compact('categories'));
     }
 
@@ -48,6 +48,7 @@ class EntitiesController extends Controller
     {
         $memberships = DB::table("memberships")
             ->where("sport_id",$request->sport_id)
+            ->where("duration",'>',2)
             ->pluck("name","id");
         return response()->json($memberships);
     }
@@ -73,7 +74,7 @@ class EntitiesController extends Controller
         ]);
       }
         
-           $payment = new Payment([
+          $payment=new Payment([
             'customer_id' => DB::table("entities")->where('email',$request->get('email'))->value("id"),
             'receptionist_id' => 1,
             'categorie_id' => $request->get('categorie_id'),
@@ -90,7 +91,9 @@ class EntitiesController extends Controller
              'location' => $request->get('location'),
              'status'=>'No',
              'client_type'=>'CORPORATE',
-        ]);
+        ]
+        
+      );
 
 
 
@@ -149,6 +152,56 @@ class EntitiesController extends Controller
     public function destroy($id)
     {
         entitie::destroy($id);
+        return redirect('/manager/Entity');
+    }
+
+    public function addNewSport($id)
+    {
+       
+
+
+        $entity = Entitie::find($id);
+         $categories = Categorie::where('id','3')->pluck("name","id");
+       
+        return view('manager.Entity.sport', compact('entity','id'),['categories'=>$categories]);
+    }
+
+    public function storeNewSport(Request $request)
+    {
+        $request->validate([
+            'id'=>'required',
+            'categorie_id'=>'required',
+            'sport_id'=>'required',
+            'expiry_date'=>'required',
+            'membership_id'=>'required'
+        ]);
+  
+          $payment=new Payment([
+            'customer_id' => $request->get('id'),
+            'receptionist_id' => 1,
+            'categorie_id' => $request->get('categorie_id'),
+            'sport_id' => $request->get('sport_id'),
+             'membership_id' => $request->get('membership_id'),
+             'amount' => DB::table("prices")
+            ->where("categorie_id",$request->get('categorie_id'))
+            ->where("sport_id",$request->get('sport_id'))
+            ->where("membership_id",$request->get('membership_id'))
+            ->value("amount"),
+             'duration' => DB::table("memberships")
+                ->where("id",$request->get('membership_id'))->value("duration"),
+             'expiry_date'=>$request->get('expiry_date'),
+             'location' => $request->get('location'),
+             'status'=>'No',
+             'client_type'=>'CORPORATE',
+        ]
+        
+      );
+
+
+
+        
+        $payment->save();
+
         return redirect('/manager/Entity');
     }
 

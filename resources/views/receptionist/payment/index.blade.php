@@ -54,7 +54,7 @@
           <form action="{{action('Receptionist\PaymentController@destroy', $payment['id'])}}" method="post"> 
             {{csrf_field()}}
             <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
+            <button onclick="return confirm('Are you sure?')" class="btn btn-danger" type="submit">Delete</button>
            
           </form>
         </td>

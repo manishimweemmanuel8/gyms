@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Manager\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller; 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/manager/Entity';
+    protected $redirectTo = '/manager';
 
     /**
      * Create a new controller instance.

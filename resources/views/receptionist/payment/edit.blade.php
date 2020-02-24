@@ -213,7 +213,8 @@
                     <form class="well form-horizontal" id="contact_form" method="post" action="{{action('Receptionist\PaymentController@update', $id)}}">
   {{csrf_field()}}
      @if($customers !=null)
-    <div class="form-group">
+    <div class="row">
+        <div class="col">
 
       
         
@@ -227,7 +228,7 @@
   </div>
     @endif
 
-            <div class="form-group">
+            <div class="col">
               <label>select Category</label>
                 <select id="category" name="categorie_id" class="form-control"  >
 <option value="{{$payment->categorie_id}}">{{$payment->categorie['name']}}</option>                  @foreach($categories as $key => $categorie)
@@ -235,8 +236,10 @@
                   @endforeach
                   </select>
           </div>
+      </div>
 
-            <div class="form-group">
+            <div class="row">
+                <div class="col">
 
                 <label for="title">Select Sport</label>
 
@@ -245,28 +248,35 @@
                 </select>
           </div>
          
-            <div class="form-group">
+            <div class="col">
             
       
                 <label for="title">Select Membership</label>
                 <select name="membership_id" id="membership" class="form-control" >
-                   <option value="{{$payment->membership_id}}">{{$payment->membership['name']}}
+                   <option value="{{$payment->membership_id}}">{{$payment->membership['name']}}</option>
                 </select>
+            </div>
             </div>
 
 
 
-             <div class="form-group">
+
+             <div class="row">
+                <div class="col">
                 <label for="title">Expiry Date:</label>
                         <input type="date" class="form-control" id="lgFormGroupInput" name="expiry_date" value="{{$payment->expiry_date}}">
 
             </div>
 
 
-    <div class="form-group row">
+    <div class="col">
       <div class="col-md-2"></div>
       <button type="submit" class="btn btn-primary">Edit</button>
     </div>
+    <div class="col">
+      <a href="{{ url('/receptionist/payment') }}" class="btn btn-primary">Back</a>
+    </div>
+</div>
   </form>
 </div>
 </div>
