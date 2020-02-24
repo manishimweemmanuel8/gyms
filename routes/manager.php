@@ -2,6 +2,7 @@
 
 Route::group(['namespace' => 'Manager'], function() {
     Route::get('/', 'HomeController@index')->name('manager.dashboard');
+    Route::get('/', 'HomeController@summarySalesReport')->name('manager.dashboard');
     Route::resource('/Entity', 'EntitiesController');
     Route::resource('/category', 'CategorieController');
     Route::resource('/sport', 'SportController');
