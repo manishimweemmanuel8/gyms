@@ -115,7 +115,7 @@ class apicommitted extends Controller
                             'First name' => DB::table('commiteds')->where('id',$payment)->value('firstName'),
                             'Last name' => DB::table('commiteds')->where('id',$payment)->value('lastName'),
                             'expiration date' =>DB::table('payments')->where('customer_id',$payment)->value('expiry_date'),
-                            'message'=> 'client to allowed'
+                            'message'=> 'invalid sport payment'
                   
                         
                     ]
