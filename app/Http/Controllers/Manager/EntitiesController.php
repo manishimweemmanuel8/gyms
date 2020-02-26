@@ -58,7 +58,6 @@ class EntitiesController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'expiry_date'=>'required',
             'payment_type'=>'required'
         ]);
        
@@ -69,36 +68,10 @@ class EntitiesController extends Controller
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'payment_type' =>$request->get('payment_type'),
-            'expiry_date'=>$request->get('expiry_date'),
 
         ]);
       }
         
-          $payment=new Payment([
-            'customer_id' => DB::table("entities")->where('email',$request->get('email'))->value("id"),
-            'receptionist_id' => 1,
-            'categorie_id' => $request->get('categorie_id'),
-            'sport_id' => $request->get('sport_id'),
-             'membership_id' => $request->get('membership_id'),
-             'amount' => DB::table("prices")
-            ->where("categorie_id",$request->get('categorie_id'))
-            ->where("sport_id",$request->get('sport_id'))
-            ->where("membership_id",$request->get('membership_id'))
-            ->value("amount"),
-             'duration' => DB::table("memberships")
-                ->where("id",$request->get('membership_id'))->value("duration"),
-             'expiry_date'=>$request->get('expiry_date'),
-             'location' => $request->get('location'),
-             'status'=>'No',
-             'client_type'=>'CORPORATE',
-        ]
-        
-      );
-
-
-
-        
-        $payment->save();
 
         return view('/manager/Entity.import');
     }
@@ -130,21 +103,17 @@ class EntitiesController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'expiry_date'=>'required'
         ]);
         $entity = Entitie::find($id);
         $entity->name = $request->get('name');
         $entity->email = $request->get('email');
         $entity->customer_id = $request->get('customer_id');
-        $entity->expiry_date=$request->get('expiry_date');
 
         $entity->save();
         DB::table('customers')
             ->where('id', $request->get('customer_id'))
             ->update(['entity_representative' => 1]);
-             DB::table('payments')
-            ->where('customer_id', $id)
-            ->update(['expiry_date' => $request->get('expiry_date')]);
+            
 
         return redirect('/manager/Entity');
     }
@@ -205,14 +174,14 @@ class EntitiesController extends Controller
         return redirect('/manager/Entity');
     }
 
-      public function approvePayment($id)
-    {
+    //   public function approvePayment($id)
+    // {
          
-             DB::table('payments')
-            ->where('customer_id', $id)
-            ->update(['status' => 'Yes']);
-        return redirect('/manager/Entity');
-    }
+    //          DB::table('payments')
+    //         ->where('customer_id', $id)
+    //         ->update(['status' => 'Yes']);
+    //     return redirect('/manager/Entity');
+    // }
 
   
 
@@ -282,7 +251,8 @@ class EntitiesController extends Controller
                "entitie_id"=>DB::table('entities')->orderBy('id', 'desc')
                             ->pluck('id')->first(),
                "dob"=>$importData[5],
-               "gender"=>$importData[6]
+               "department"=>$importData[6],
+               "gender"=>$importData[7]
                // "entity_representative"=>$importData[7]
              );
             Customer::insertData($insertData);

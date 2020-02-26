@@ -43,26 +43,14 @@
   </div>
   
     @endif
-    <div class="col">
 
-      
-       <input name="_method" type="hidden" value="PATCH">
-      <label>Expiry Date</label>
-        <input type="date" class="form-control form-control-lg" id="lgFormGroupInput" name="expiry_date" value="{{$entity->expiry_date}}">
-    </div>
-  </div>
-
-  
-
-
-    <div class="row">
       <div class="col">
       <button type="submit" class="btn btn-primary">Edit</button>
-    </div>
-     <div class="col">
       <a href="{{ url('/manager/Entity') }}" class="btn btn-primary">Back</a>
     </div>
+ 
   </div>
+
   </form>
 </div>
 </div>

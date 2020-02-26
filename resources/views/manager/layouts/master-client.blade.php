@@ -76,7 +76,7 @@
 
 
 
-                             <a class="navbar-brand" href="{{ url('/manager') }}">
+                            <a class="navbar-brand" href="{{ url('/manager') }}">
                                 Home
                             </a>
                             <a class="navbar-brand" href="{{ url('/manager/Entity') }}">

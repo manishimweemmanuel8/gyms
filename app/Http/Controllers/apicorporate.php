@@ -31,7 +31,7 @@ class apicorporate extends Controller
 
        $entitie_id=DB::table('customers')->where('id', $payment)
                     ->value("entitie_id");
-                     $sport_id = DB::table('payments')->where('customer_id', $entitie_id)->value("sport_id");
+       $sport_id = DB::table('payments')->where('customer_id', $entitie_id)->value("sport_id");
 
 
             $todayDate = date("Y-m-d");
@@ -41,6 +41,7 @@ class apicorporate extends Controller
 
                     if($client){
 
+                    
                     $attend = DB::table('attendances')
                     ->where('created_at', $todayDate)
                     ->where('customer_id', $payment)
