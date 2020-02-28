@@ -35,6 +35,11 @@ Route::group(['namespace' => 'Manager'], function() {
     Route::post('/corporate/update','corporateController@update')->name('corporate.update');
 
 
+    Route::get('dropdownlist','EntitiesController@index');
+    Route::get('get-sport-list','EntitiesController@getSportList');
+    Route::get('get-membership-list','EntitiesController@getMembershipList');
+
+
 
     // Route::get('/Entity/{id}/approve','EntitiesController@approvePayment')->name('entity.approve');
 

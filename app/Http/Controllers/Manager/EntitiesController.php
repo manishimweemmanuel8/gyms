@@ -48,8 +48,8 @@ class EntitiesController extends Controller
     {
         $memberships = DB::table("memberships")
             ->where("sport_id",$request->sport_id)
-            ->where("duration",'>',2)
-            ->pluck("name","id");
+            ->where("duration",'365')
+            ->pluck("id");
         return response()->json($memberships);
     }
 
@@ -131,45 +131,84 @@ class EntitiesController extends Controller
 
         $entity = Entitie::find($id);
          $categories = Categorie::where('id','3')->pluck("name","id");
+         $sports = DB::table("sports")
+            ->where("category_id",'3')
+            ->whereIn('id',[1,2,3,4])
+            ->pluck("name","id");
+
+         
+
        
-        return view('manager.Entity.sport', compact('entity','id'),['categories'=>$categories]);
+        return view('manager.Entity.sport', compact('entity','id'),['categories'=>$categories,'sports'=>$sports]);
     }
 
     public function storeNewSport(Request $request)
     {
         $request->validate([
             'id'=>'required',
-            'categorie_id'=>'required',
             'sport_id'=>'required',
             'expiry_date'=>'required',
             'membership_id'=>'required'
         ]);
   
-          $payment=new Payment([
+          $payment=[
+
+             [
             'customer_id' => $request->get('id'),
             'receptionist_id' => 1,
-            'categorie_id' => $request->get('categorie_id'),
+            'categorie_id' => 3,
             'sport_id' => $request->get('sport_id'),
              'membership_id' => $request->get('membership_id'),
-             'amount' => DB::table("prices")
-            ->where("categorie_id",$request->get('categorie_id'))
-            ->where("sport_id",$request->get('sport_id'))
-            ->where("membership_id",$request->get('membership_id'))
-            ->value("amount"),
-             'duration' => DB::table("memberships")
-                ->where("id",$request->get('membership_id'))->value("duration"),
+             'amount' => 0,
+             'duration' => $request->get('membership_id'),
              'expiry_date'=>$request->get('expiry_date'),
              'location' => $request->get('location'),
              'status'=>'No',
-             'client_type'=>'CORPORATE',
-        ]
-        
-      );
+             'client_type'=>'CORPORATE'
+           ],
+            
+            [
+            'customer_id' => $request->get('id'),
+            'receptionist_id' => 1,
+            'categorie_id' => 3,
+            'sport_id' => $request->get('sport_id_one'),
+             'membership_id' => $request->get('membership_id'),
+             'amount' => 0,
+             'duration' => $request->get('membership_id'),
+             'expiry_date'=>$request->get('expiry_date'),
+             'location' => $request->get('location'),
+             'status'=>'No',
+             'client_type'=>'CORPORATE'
+           ],
 
+             ['customer_id' => $request->get('id'),
+            'receptionist_id' => 1,
+            'categorie_id' => 3,
+            'sport_id' => $request->get('sport_id_two'),
+             'membership_id' => $request->get('membership_id'),
+             'amount' => 0,
+             'duration' => $request->get('membership_id'),
+             'expiry_date'=>$request->get('expiry_date'),
+             'location' => $request->get('location'),
+             'status'=>'No',
+             'client_type'=>'CORPORATE'],
 
+             ['customer_id' => $request->get('id'),
+            'receptionist_id' => 1,
+            'categorie_id' => 3,
+            'sport_id' => $request->get('sport_id_three'),
+             'membership_id' => $request->get('membership_id'),
+             'amount' => 0,
+             'duration' => $request->get('membership_id'),
+             'expiry_date'=>$request->get('expiry_date'),
+             'location' => $request->get('location'),
+             'status'=>'No',
+             'client_type'=>'CORPORATE'
+           ],
+        ];
 
-        
-        $payment->save();
+        // $payment->save();
+        Payment::insert($payment);
 
         return redirect('/manager/Entity');
     }

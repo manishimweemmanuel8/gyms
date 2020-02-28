@@ -178,20 +178,45 @@
 
             <div class="row">
                 <div class ="col">
-              <label>select Category</label>
-                <select id="category" name="categorie_id" class="form-control"  >
-                <option value="" selected disabled>--- Select Category ---</option>
-                  @foreach($categories as $key => $category)
-                  <option value="{{$key}}"> {{$category}}</option>
+                  <label>select sport</label>
+                <select id="sport" name="sport_id" class="form-control"  >
+                <option value="" selected disabled>--- Select Sport ---</option>
+                  @foreach($sports as $key => $sport)
+                  <option value="{{$key}}"> {{$sport}}</option>
                   @endforeach
                   </select>
           </div>
 
             <div class="col">
+              <label>select sport</label>
+                <select id="sport" name="sport_id_one" class="form-control"  >
+                <option value="" selected disabled>--- Select Sport ---</option>
+                  @foreach($sports as $key => $sport)
+                  <option value="{{$key}}"> {{$sport}}</option>
+                  @endforeach
+                  </select>
+          </div>
+      </div>
 
-                <label for="title">Select Sport</label>
-                <select name="sport_id" id="sport" class="form-control" >
-                </select>
+       <div class="row">
+                <div class ="col">
+              <label>select sport</label>
+                <select id="sport" name="sport_id_two" class="form-control"  >
+                <option value="" selected disabled>--- Select Sport ---</option>
+                  @foreach($sports as $key => $sport)
+                  <option value="{{$key}}"> {{$sport}}</option>
+                  @endforeach
+                  </select>
+          </div>
+
+            <div class="col">
+              <label>select sport</label>
+                <select id="sport" name="sport_id_three" class="form-control"  >
+                <option value="" selected disabled>--- Select Sport ---</option>
+                  @foreach($sports as $key => $sport)
+                  <option value="{{$key}}"> {{$sport}}</option>
+                  @endforeach
+                  </select>
           </div>
       </div>
 
@@ -206,13 +231,13 @@
           <option value="2">Pool</option>
         <option value="3">Sauna</option>
           <option value="4">Massage</option>
+          <option value="4">All</option>
         </select>
 
     </div>
             <div class="col"> 
-                <label for="title">Select Membership</label>
-                <select name="membership_id" id="membership" class="form-control" >
-                </select>
+              <label >Membership</label> 
+        <input type="number" class="form-control" name="membership_id" >
             </div>
         </div>
 
@@ -252,55 +277,7 @@
 
 
 
-<script type="text/javascript">
-    $('#category').change(function(){
-    var categoryID = $(this).val();    
-    if(categoryID){
-        $.ajax({
-           type:"GET",
-           url:"{{url('get-sport-list')}}?category_id="+categoryID,
-           success:function(res){               
-            if(res){
-                $("#sport").empty();
-                $("#sport").append('<option>Select</option>');
-                $.each(res,function(key,value){
-                    $("#sport").append('<option value="'+key+'">'+value+'</option>');
-                });
-           
-            }else{
-               $("#sport").empty();
-            }
-           }
-        });
-    }else{
-        $("#sport").empty();
-        $("#membership").empty();
-    }      
-   });
-    $('#sport').on('change',function(){
-    var sportID = $(this).val();    
-    if(sportID){
-        $.ajax({
-           type:"GET",
-           url:"{{url('get-membership-list')}}?sport_id="+sportID,
-           success:function(res){               
-            if(res){
-                $("#membership").empty();
-                $.each(res,function(key,value){
-                    $("#membership").append('<option value="'+key+'">'+value+'</option>');
-                });
-           
-            }else{
-               $("#membership").empty();
-            }
-           }
-        });
-    }else{
-        $("#membership").empty();
-    }
-        
-   });
-</script>
+
         </div>
         <footer class="footer">
             <div class="container-fluid">

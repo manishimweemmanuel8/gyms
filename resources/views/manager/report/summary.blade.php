@@ -63,37 +63,37 @@
                     <tr>
                       <td>{{$todayDate}}</td>
                       <td >GYM</td>
-                      <td >{{$cashGymSession}}</td>
-                      <td >{{$cashGymMonth}}</td>
+                      <td >{{number_format($cashGymSession)}}</td>
+                      <td >{{number_format($cashGymMonth)}}</td>
                       <td>Trimester</td>
                        <td>Semester</td>
-                        <td>{{$cashGymYear}}</td>
+                        <td>{{number_format($cashGymYear)}}</td>
                         <td>10_Tickets</td>
-                        <td>{{$cashGym20Tickets}}</td>
+                        <td>{{number_format($cashGym20Tickets)}}</td>
                     </tr>
 
                       <tr>
                       <td>{{$todayDate}}</td>
                       <td >SAUNA</td>
-                      <td >{{$cashSaunaSession}}</td>
-                      <td >{{$cashSaunaMonth}}</td>
+                      <td >{{number_format($cashSaunaSession)}}</td>
+                      <td >{{number_format($cashSaunaMonth)}}</td>
                       <td>Trimester</td>
                        <td>Semester</td>
-                        <td>{{$cashSaunaYear}}</td>
+                        <td>{{number_format($cashSaunaYear)}}</td>
                         <td>10_Tickets</td>
-                        <td>{{$cashSauna20Ticket}}</td>
+                        <td>{{number_format($cashSauna20Ticket)}}</td>
                     </tr>
 
                       <tr>
                      <td>{{$todayDate}}</td>
                       <td >SWIMMING</td>
-                      <td >{{$cashPoolSession}}</td>
-                      <td >{{$cashPoolMonth}}</td>
+                      <td >{{number_format($cashPoolSession)}}</td>
+                      <td >{{number_format($cashPoolMonth)}}</td>
                       <td>Trimester</td>
                        <td>Semester</td>
-                        <td>{{$cashPoolYear}}</td>
+                        <td>{{number_format($cashPoolYear)}}</td>
                         <td>10_Tickets</td>
-                        <td>{{$cashPoolTicket}}</td>
+                        <td>{{number_format($cashPoolTicket)}}</td>
                     </tr>
                    
                   </tbody>

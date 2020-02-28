@@ -92,7 +92,8 @@ class apicorporate extends Controller
                             'sport' => DB::table('sports')->where('id',$sport_id)->value('name'),
                             'name' => DB::table('customers')->where('id',$payment)->value('firstName'),
                             'expiration date' =>DB::table('payments')->where('customer_id',$entitie_id)->value('expiry_date'),
-                              'message'=> 'you allow to attend'
+                              'message'=> 'you allow to attend',
+                              'ticket number'=> DB::table('attendances')->count()
                   
                         
                     ]

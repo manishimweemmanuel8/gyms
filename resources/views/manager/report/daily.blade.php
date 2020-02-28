@@ -36,7 +36,7 @@
                                                 @endif
                                                 <td>{{$payment['sport']['name']}}</td>
                                                 <td>{{$payment['membership']['name']}}</td>
-                                                <td>{{$payment['amount']}}</td>
+                                                <td>{{number_format($payment['amount'])}}</td>
                                             
                                             </tr>
                                         @endforeach

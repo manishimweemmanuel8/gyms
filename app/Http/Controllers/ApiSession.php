@@ -83,7 +83,8 @@ class ApiSession extends Controller
                             'sport' => $payment->sport->name,
                             'membership' => $payment->membership->name,
                             'amount' => $payment->amount,
-                            'telephone' => $customer
+                            'telephone' => $customer,
+                            'ticket number'=> DB::table('attendances')->count()
                         
                     ]
                 );
@@ -143,7 +144,8 @@ class ApiSession extends Controller
                             'sport' => $payment->sport->name,
                             'membership' => $payment->membership->name,
                             'amount' => $payment->amount,
-                            'telephone' => $customer
+                            'telephone' => $customer,
+                            'ticket number'=> DB::table('attendances')->count()
                         
                     ]
                 );
