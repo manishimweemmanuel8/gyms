@@ -27,7 +27,7 @@
         <th>ID</th>
         <th>name </th>
         <th>category </th>
-{{--        <th>Edit</th>--}}
+   <!-- <th>Edit</th> -->
         <!-- <th>Delete</th> -->
       </tr>
     </thead>
@@ -38,7 +38,7 @@
         <td>{{$sport->name}}</td>
         <td>{{$sport['category']['name']}}</td>
 
-{{--        <td><a href="{{action('PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td>--}}
+    
 
          <!--  <td>
           <form action="{{action('Manager\SportController@destroy', $sport['id'])}}" method="post">

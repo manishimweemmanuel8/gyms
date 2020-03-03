@@ -44,31 +44,31 @@ class SportController extends Controller
         $sport->save();
         return redirect('/manager/sport')->with('succes', 'Data has been successfully save!');
     }
-//    public function edit($id,$category_id=null)
-//    {
-//        $categories=null;
-//        if(!$category_id){
-//            $categories = DB::table("categories")->pluck("name","id");
-//        }
-//        $entity = Entitie::find($id);
-//        return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers]);
-//    }
+   public function edit($id,$category_id=null)
+   {
+       $categories=null;
+       if(!$category_id){
+           $categories = DB::table("categories")->pluck("name","id");
+       }
+       $entity = Entitie::find($id);
+       return view('manager.Entity.edit', compact('entity','id'),['customer_id'=>$customer_id,'customers'=>$customers]);
+   }
 
-//    public function update(Request $request, $id)
-//    {
-//        $request->validate([
-//            'name'=>'required',
-//            'email'=>'required'
-//        ]);
-//
-//        $entity = Entitie::find($id);
-//        $entity->name = $request->get('name');
-//        $entity->email = $request->get('email');
-//        $entity->customer_id = $request->get('customer_id');
-//
-//        $entity->save();
-//        return redirect('/manager/Entity');
-//    }
+   public function update(Request $request, $id)
+   {
+       $request->validate([
+           'name'=>'required',
+           'email'=>'required'
+       ]);
+
+       $entity = Entitie::find($id);
+       $entity->name = $request->get('name');
+       $entity->email = $request->get('email');
+       $entity->customer_id = $request->get('customer_id');
+
+       $entity->save();
+       return redirect('/manager/Entity');
+   }
 
     public function destroy($id)
     {

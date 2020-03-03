@@ -12,7 +12,7 @@
 use App\Customer;
 
 Route::get('/', function () {
-    // return view('/receptionist/auth/login');
+    return view('/manager/auth/login');
 
      
 

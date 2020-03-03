@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller
 {
 
-    protected $redirectTo = '/receptionist/login';
+    protected $redirectTo = '/manager/login';
 
     /**
      * Create a new controller instance.
