@@ -15,9 +15,9 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h3 class="card-title">SWIMMING</h3>
-                   <p class="card-text">participants :{{$cashGymSession}}</p>
-                    <p class="card-text">sales :{{$cashGymSession}}</p>
-                    <a href="#" class="btn btn-outline-light">Outline</a>
+                   <p class="card-text">participants :{{$poolParticipants}}</p>
+                    <p class="card-text">sales :{{number_format($poolSales)}} RWF</p>
+                    <!-- <a href="#" class="btn btn-outline-light">Outline</a> -->
                 </div>
             </div>
         </div>
@@ -26,31 +26,31 @@
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h3 class="card-title">GYM</h3>
-                    <p class="card-text">participants :{{$gymAttendace}}</p>
-                    <p class="card-text">sales :{{$cashGymSession}}</p>
-                    <a href="#" class="btn btn-outline-light">Outline</a>
+                    <p class="card-text">participants :{{$gymParticipants}}</p>
+                    <p class="card-text">sales :{{number_format($gymSales)}} RWF</p>
+                    <!-- <a href="#" class="btn btn-outline-light">Outline</a> -->
                 </div>
             </div>
         </div>
 
-         <div class="col-sm-4 py-2">
+        <!--  <div class="col-sm-4 py-2">
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h3 class="card-title">MASSAGE</h3>
-                  <p class="card-text">participants :{{$cashGymSession}}</p>
-                    <p class="card-text">sales :{{$cashGymSession}}</p>
+                  <p class="card-text">participants :</p>
+                    <p class="card-text">sales :</p>
                     <a href="#" class="btn btn-outline-light">Outline</a>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-sm-4 py-2">
             <div class="card text-white bg-primary">
                 <div class="card-body">
                     <h3 class="card-title">SAUNA</h3>
-                    <p class="card-text">participants :{{$cashGymSession}}</p>
-                    <p class="card-text">sales :{{$cashGymSession}}</p>
-                    <a href="#" class="btn btn-outline-light">Outline</a>
+                    <p class="card-text">participants :{{$saunaParticipants}}</p>
+                    <p class="card-text">sales :{{number_format($saunaSales)}}RWF</p>
+                    <!-- <a href="#" class="btn btn-outline-light">Outline</a> -->
                 </div>
             </div>
         </div>

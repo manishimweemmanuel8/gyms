@@ -102,6 +102,9 @@ class HomeController extends Controller
 
         $gymAttendace=$cashGymSession+$gymMonth+$gymYear+$gymTicket;
 
+        $gymParticipants=$gymTicket+$gymYear+$gymStudent+$gymMonth+$gymSessionAdult;
+        $gymSales=$cashGymSession+$cashGym20Tickets+$cashGymYear+$cashGymMonth;
+
 
         //SUANA Session
 
@@ -157,13 +160,19 @@ class HomeController extends Controller
         $cashSauna20Ticket=$saunaTicket*$saunaTicketAmount;
 
 
+        $saunaParticipants=$saunaTicket+$saunaYear+$saunaMonth+$saunaSession;
+        $saunaSales=$cashSauna20Ticket+$cashSaunaSession+$cashSaunaMonth+$cashSaunaYear;
+
+
          //POOL
 
+
+
         //adult session
-        $poolSessionAdult=DB::table("payments")
+        $poolSessionAdult=DB::table("attendances")
             ->where("sport_id",1)
             ->where("membership_id",1)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
 
         $poolSessionAdultAmount=DB::table("prices")
@@ -175,10 +184,10 @@ class HomeController extends Controller
 
         //student session
 
-        $poolStudent=DB::table("payments")
+        $poolStudent=DB::table("attendances")
             ->where("sport_id",7)
             ->where("membership_id",22)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
         $poolStudentAmount=DB::table("prices")
             ->where("sport_id",7)
@@ -187,10 +196,10 @@ class HomeController extends Controller
         $cashPoolStudent=$poolStudent*$poolStudentAmount;
 
         //kid session
-         $poolSessionKid= DB::table("payments")
+         $poolSessionKid= DB::table("attendances")
             ->where("sport_id",5)
             ->where("membership_id",17)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
 
         $poolSessionKidAmount= DB::table("prices")
@@ -204,10 +213,10 @@ class HomeController extends Controller
 
         //pool month adult
 
-          $poolMonthAdult=DB::table("payments")
+          $poolMonthAdult=DB::table("attendances")
             ->where("sport_id",1)
             ->where("membership_id",2)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
         $poolMonthAdultAmount=DB::table("prices")
             ->where("sport_id",1)
@@ -217,10 +226,10 @@ class HomeController extends Controller
 
         //pool month kid
 
-         $poolMonthKid=DB::table("payments")
+         $poolMonthKid=DB::table("attendances")
             ->where("sport_id",5)
             ->where("membership_id",18)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
 
         $poolMonthKidAmount=DB::table("prices")
@@ -233,10 +242,10 @@ class HomeController extends Controller
 
         //pool year
 
-        $poolYear=DB::table("payments")
+        $poolYear=DB::table("attendances")
             ->where("sport_id",1)
             ->where("membership_id",3)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
         $poolYearAmount=DB::table("prices")
             ->where("sport_id",1)
@@ -246,10 +255,10 @@ class HomeController extends Controller
 
         //pool ticket
 
-        $poolTicket=DB::table("payments")
+        $poolTicket=DB::table("attendances")
             ->where("sport_id",1)
             ->where("membership_id",30)
-            ->where('created_at', '>=', date('Y-m-d'). ' 00:00:00')
+            ->where('created_at', date('Y-m-d'))
             ->count();
         $poolTicketAmount=DB::table("prices")
             ->where("sport_id",1)
@@ -257,8 +266,11 @@ class HomeController extends Controller
             ->where("categorie_id",3)->value("amount");
         $cashPoolTicket=$poolTicket*$poolTicketAmount;
 
+        $poolParticipants=$poolTicket+$poolYear+$poolMonthKid+$poolMonthAdult+$poolStudent+$poolSessionKid+$poolSessionAdult;
+        $poolSales=$cashPoolTicket+$cashPoolSession+$cashPoolMonth+$cashPoolYear;
 
-        return view('manager/home',compact('gymAttendace','cashGymSession','cashGymMonth','cashGymYear','cashGym20Tickets','cashSaunaSession','cashSaunaMonth','cashSaunaYear','cashSauna20Ticket','cashPoolSession','cashPoolMonth','cashPoolYear','cashPoolTicket'));
+
+        return view('manager/home',compact('poolParticipants','poolSales','gymParticipants','gymSales','saunaParticipants','saunaSales'));
 
     }
 
