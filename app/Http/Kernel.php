@@ -51,22 +51,10 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'control.auth' => \App\Http\Middleware\RedirectIfNotControl::class,
-        'control.guest' => \App\Http\Middleware\RedirectIfControl::class,
-        'controller.auth' => \App\Http\Middleware\RedirectIfNotController::class,
-        'controller.guest' => \App\Http\Middleware\RedirectIfController::class,
-        'controller.auth' => \App\Http\Middleware\RedirectIfNotController::class,
-        'controller.guest' => \App\Http\Middleware\RedirectIfController::class,
-        'manager.auth' => \App\Http\Middleware\RedirectIfNotManager::class,
-        'manager.guest' => \App\Http\Middleware\RedirectIfManager::class,
-        'management.auth' => \App\Http\Middleware\RedirectIfNotManagement::class,
-        'management.guest' => \App\Http\Middleware\RedirectIfManagement::class,
-        'manager.auth' => \App\Http\Middleware\RedirectIfNotManager::class,
-        'manager.guest' => \App\Http\Middleware\RedirectIfManager::class,
         'receptionist.auth' => \App\Http\Middleware\RedirectIfNotReceptionist::class,
         'receptionist.guest' => \App\Http\Middleware\RedirectIfReceptionist::class,
-        'receptionist.auth' => \App\Http\Middleware\RedirectIfNotReceptionist::class,
-        'receptionist.guest' => \App\Http\Middleware\RedirectIfReceptionist::class,
+        'manager.auth' => \App\Http\Middleware\RedirectIfNotManager::class,
+        'manager.guest' => \App\Http\Middleware\RedirectIfManager::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -76,7 +64,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-         'auth.jwt' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
     ];
 
     /**

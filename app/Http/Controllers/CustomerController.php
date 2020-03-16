@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
-use App\Entitie;
-use App\Membership;
 use Illuminate\Http\Request;
-use App\commited;
 
 class CustomerController extends Controller
 {
@@ -17,8 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = commited::all();
-        return view('receptionist/customer.index', compact('customers'));
+        //
     }
 
     /**
@@ -26,21 +22,9 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( $entitie_id= null, $membership_id=null)
+    public function create()
     {
-
-        $entities=null;
-        if(!$entitie_id){
-            $entities=Entitie::all();
-        }
-        
-
-         $memberships=null;
-         if(!$membership_id){
-            $memberships=Membership::all();
-         }
-         return view('receptionist/customer/create',['entitie_id'=>$entitie_id, 'entities'=>$entities, 'membership_id'=>$membership_id,'memberships'=>$memberships]);
-         // return view('receptionist/customer/create', ['membership_id'=>$membership_id,'memberships'=>$memberships]);
+        //
     }
 
     /**
@@ -51,20 +35,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $commited = new commited([
-            'firstName' => $request->get('firstName'),
-            'lastName' => $request->get('lastName'),
-            'gender' =>$request->get('gender'),
-            'phone' => $request->get('phone'),
-            'email' => $request->get('email'),
-            'discount' => $request->get('discount'),
-            'dob' => $request->get('dob'),
-            'card_code' => $request->get('card_code'),
-            // 'entity_representative' => $request->get('entity_representative')
-          ]);
-  
-          $commited->save();
-          return redirect('/receptionist/customer')->with('succes', 'Data has been successfully save!');
+        //
     }
 
     /**
@@ -81,17 +52,12 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $custsuomer
+     * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$entitie_id=null)
+    public function edit(Customer $customer)
     {
-         $entities=null;
-        if(!$entitie_id){
-            $entities=Entitie::all();
-        }
-        $customer = commited::find($id);
-        return view('receptionist.customer.edit', compact('customer','id'),['entitie_id'=>$entitie_id,'entities'=>$entities]);
+        //
     }
 
     /**
@@ -101,20 +67,9 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Customer $customer)
     {
-        $customer = commited::find($id);
-        $customer->firstName = $request->get('firstName');
-        $customer->lastName = $request->get('lastName');
-        $customer->gender= $request->get('gender');
-        $customer->phone = $request->get('phone');
-        $customer->email = $request->get('email');
-        $customer->discount = $request->get('discount');
-        $customer->dob = $request->get('dob');
-        $customer->card_code = $request->get('card_code');
-        //$customer->entity_representative=$request->get('entity_representative');
-        $customer->update();
-        return redirect('/receptionist/customer');
+        //
     }
 
     /**
@@ -123,9 +78,8 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Customer $customer)
     {
-        commited::destroy($id);
-        return redirect('/receptionist/customer');
+        //
     }
 }

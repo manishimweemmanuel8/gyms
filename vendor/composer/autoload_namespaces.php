@@ -6,12 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'UpdateHelper\\' => array($vendorDir . '/kylekatarnls/update-helper/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
-    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
-    'OpenCloud' => array($vendorDir . '/rackspace/php-opencloud/lib'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
-    'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
-    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
-    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
 );

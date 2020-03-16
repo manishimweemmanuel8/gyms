@@ -2,11 +2,23 @@
 
 Route::group(['namespace' => 'Receptionist'], function() {
     Route::get('/', 'HomeController@index')->name('receptionist.dashboard');
-    // Route::resource('/customer', 'CustomerController');
-    Route::resource('/payment', 'PaymentController');
-    Route::resource('/session','SessionController');
-    Route::get('/', 'CustomerController@index'); // localhost:8000/
-    Route::post('/uploadFile', 'CustomerController@uploadFile');
+
+
+       //customer information
+    Route::get('/client', 'CommittedCustomerController@index')->name('client.index');
+    Route::get('/client/{id}/edit','CommittedCustomerController@edit')->name('client.edit');
+    Route::get('/client/{id}/delete','CommittedCustomerController@destroy')->name('client.destroy');
+    Route::get('/client/create','CommittedCustomerController@create')->name('client.create');
+    Route::post('/client/create','CommittedCustomerController@store')->name('client.store');
+    Route::post('/client/update','CommittedCustomerController@update')->name('client.update');
+
+    //payment information
+    Route::get('/payment', 'PaymentController@index')->name('payments.index');
+\    Route::get('/payment/{id}/edit','PaymentController@edit')->name('payments.edit');
+    Route::get('/payment/{id}/delete','PaymentController@destroy')->name('payments.destroy');
+    Route::get('/payment/create','PaymentController@create')->name('payments.create');
+    Route::post('/payment/create','PaymentController@store')->name('payments.store');
+    Route::post('/payment/update','PaymentController@update')->name('payments.update');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('receptionist.login');
@@ -27,8 +39,5 @@ Route::group(['namespace' => 'Receptionist'], function() {
     Route::get('email/resend','Auth\VerificationController@resend')->name('receptionist.verification.resend');
     Route::get('email/verify','Auth\VerificationController@show')->name('receptionist.verification.notice');
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('receptionist.verification.verify');
-    Route::post('payment/store','PaymentController@store')->name('payment.store');
-    Route::post('session/store','SessionController@store')->name('session.store');
-
 
 });

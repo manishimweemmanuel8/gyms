@@ -2,55 +2,43 @@
 
 Route::group(['namespace' => 'Manager'], function() {
     Route::get('/', 'HomeController@index')->name('manager.dashboard');
-    Route::get('/', 'HomeController@summarySalesReport')->name('manager.dashboard');
-    Route::resource('/Entity', 'EntitiesController');
-    Route::resource('/category', 'CategorieController');
-    Route::resource('/sport', 'SportController');
-    
-    Route::resource('/membership', 'MembershipController');
-    Route::resource('/price', 'PriceController');
-    Route::get('dropdownlist','PriceController@index');
-    Route::get('get-sport-list','PriceController@getSportList');
-    Route::get('get-membership-list','PriceController@getMembershipList');
-    Route::post('/uploadFile', 'EntitiesController@uploadFile');
-    Route::get('/report/daily', 'managerReportController@dailySalesReport')->name('report.daily');
-    Route::get('/report/summary', 'managerReportController@summarySalesReport')->name('report.summary');
-    Route::get('/report/attendance', 'managerReportController@attendance')->name('report.attendance');
-    Route::get('/report/{id}/delete','managerReportController@destroyAttendance')->name('report.destroy');
 
-    //add new sport
-    Route::get('/addsport/{id}/sport','EntitiesController@addNewSport')->name('sport.addSport');
-    Route::post('/addSport/create','EntitiesController@storeNewSport')->name('sport.new');
+    //Corporate
 
-    Route::post('/report/summaryBetween', 'managerReportController@betweenDateSalesReport')->name('report.between');
+    Route::get('/corporate', 'CorporateController@index')->name('corporate.index');
+    Route::get('/corporate/{id}/edit','CorporateController@edit')->name('corporate.edit');
+    Route::get('/corporate/{id}/delete','CorporateController@destroy')->name('corporate.destroy');
+    Route::get('/corporate/create','CorporateController@create')->name('corporate.create');
+    Route::post('/corporate/create','CorporateController@store')->name('corporate.store');
+    Route::post('/corporate/update','CorporateController@update')->name('corporate.update');
 
-    //corporate customer
+    //Payment
 
-        //Product route
+    Route::get('/payment', 'PaymentCorporateController@index')->name('payment.index');
+    Route::get('/payment/{id}/edit','PaymentCorporateController@edit')->name('payment.edit');
+    Route::get('/payment/{id}/delete','PaymentCorporateController@destroy')->name('payment.destroy');
+    Route::get('/payment/create','PaymentCorporateController@create')->name('payment.create');
+    Route::post('/payment/create','PaymentCorporateController@store')->name('payment.store');
+    Route::post('/payment/update','PaymentCorporateController@update')->name('payment.update');
 
-    Route::get('/corporate', 'corporateController@index')->name('corporate.index');
-    Route::get('/corporate/{id}/edit','corporateController@edit')->name('corporate.edit');
-    Route::get('/corporate/{id}/delete','corporateController@destroy')->name('corporate.destroy');
-    Route::get('/corporate/create','corporateController@create')->name('corporate.create');
-    Route::post('/corporate/create','corporateController@store')->name('corporate.store');
-    Route::post('/corporate/update','corporateController@update')->name('corporate.update');
+     //customer information
+    Route::get('/customer', 'CorporateCustomerController@index')->name('customer.index');
+    Route::post('/uploadFile', 'CorporateCustomerController@uploadFile');
+    Route::get('/customer/{id}/edit','CorporateCustomerController@edit')->name('customer.edit');
+    Route::get('/customer/{id}/delete','CorporateCustomerController@destroy')->name('customer.destroy');
+    Route::get('/customer/create','CorporateCustomerController@create')->name('customer.create');
+    Route::post('/customer/create','CorporateCustomerController@store')->name('customer.store');
+    Route::post('/customer/update','CorporateCustomerController@update')->name('customer.update');
 
 
-    Route::get('dropdownlist','EntitiesController@index');
-    Route::get('get-sport-list','EntitiesController@getSportList');
-    Route::get('get-membership-list','EntitiesController@getMembershipList');
+    //subscription
 
-
-
-    // Route::get('/Entity/{id}/approve','EntitiesController@approvePayment')->name('entity.approve');
-
-    // Route::get('/', 'EntitiesController@message'); // localhost:8000/
-
-
-
-
-
-
+    Route::get('/subscription', 'SubscriptionController@index')->name('subscription.index');
+    Route::get('/subscription/{id}/edit','SubscriptionController@edit')->name('subscription.edit');
+    Route::get('/subscription/{id}/delete','SubscriptionController@destroy')->name('subscription.destroy');
+    Route::get('/subscription/create','SubscriptionController@create')->name('subscription.create');
+    Route::post('/subscription/create','SubscriptionController@store')->name('subscription.store');
+    Route::post('/subscription/update','SubscriptionController@update')->name('subscription.update');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('manager.login');

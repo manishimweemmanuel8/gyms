@@ -39,45 +39,11 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapControlRoutes();
+        $this->mapReceptionistRoutes();
 
         $this->mapManagerRoutes();
 
-        $this->mapManagementRoutes();
-
-        $this->mapReceptionistRoutes();
-
         //
-    }    
-    
-    /**
-     * Define the "receptionist" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapReceptionistRoutes()
-    {
-        Route::prefix('receptionist')
-             ->middleware(['web'])
-             ->namespace($this->namespace)
-             ->group(base_path('routes/receptionist.php'));
-    }    
-    
-    /**
-     * Define the "management" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapManagementRoutes()
-    {
-        Route::prefix('management')
-             ->middleware(['web'])
-             ->namespace($this->namespace)
-             ->group(base_path('routes/management.php'));
     }    
     
     /**
@@ -96,23 +62,19 @@ class RouteServiceProvider extends ServiceProvider
     }    
     
     /**
-     * Define the "control" routes for the application.
+     * Define the "receptionist" routes for the application.
      *
      * These routes are typically stateless.
      *
      * @return void
      */
-    protected function mapControlRoutes()
+    protected function mapReceptionistRoutes()
     {
-        Route::prefix('control')
+        Route::prefix('receptionist')
              ->middleware(['web'])
              ->namespace($this->namespace)
-             ->group(base_path('routes/control.php'));
+             ->group(base_path('routes/receptionist.php'));
     }
-
-
-
-
 
 
 

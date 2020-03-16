@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/receptionist/customer';
+    protected $redirectTo = '/receptionist';
 
     /**
      * Create a new controller instance.
@@ -67,6 +67,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+
         $this->guard()->logout();
 
         $request->session()->flush();
@@ -74,8 +75,6 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         return redirect($this->redirectTo);
-
-       
     }
 
 }

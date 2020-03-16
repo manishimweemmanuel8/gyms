@@ -1,67 +1,78 @@
-@extends('manager.layouts.master-client')
+@extends('manager.layouts.app')
+
 @section('content')
-
-     
-        <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
-        <div class="wrapper wrapper--w680">
-            <div class="card">
-                <div class="card-heading"></div>
-                <div class="card-body">
-
-                  <div class='row'>
-                    <div class="col-md-10">
-                    <h2 class="title"> Customer List</h2>
-                  </div>
-                  <div class ="col-md-2"> 
-                    <a href="{{action('Manager\corporateController@create')}}" class="btn btn-warning">Add new</a>
-                    </div>
-                 </div>
-
-                  
-<table id="example" class="display" style="width:100%">                               
-                       
-                        
-                        <thead class="btn-light">
-                        
-      <tr>
-        <!-- <th>No</th> -->
-        <th>ID</th>
-        <th>Name</th>
-        <!-- <th>last name</th> -->
-        <!-- <th>Gender</th> -->
-        <th>phone</th>
-        <th>email</th>
-        <!-- <th>date of birth</th> -->
-        <th>Entity</th>
-        <!-- <th>Edit</th> -->
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($customers as $customer)
-      <tr>
-        <!-- <td>{{$loop->iteration}}</td> -->
-        <td>{{$customer->id}}</td>
-       <td>{{$customer['firstName']}} {{$customer['lastName']}}</td>
-        <!-- <td>{{$customer['lastName']}}</td> -->
-        <!-- <td>{{$customer['gender']}}</td> -->
-        <td>{{$customer['phone']}}</td>
-        <td>{{$customer['email']}}</td>
-        <!-- <td>{{$customer['dob']}}</td> -->
-        <td>{{$customer['entitie']['name']}}</td>
-       
-        <td><a onclick="return confirm('Are you sure?')" href="{{route('corporate.destroy',['id'=>$customer->id])}}" class = "btn btn-danger">Delete</a></td>
-     
-   
-      </tr>
-      @endforeach
-   </tbody>
-
-  </table>
-</div>
+<aside class="right-side right-padding">
+            <section class="content-header">
+                <!--section starts-->
+                <h2>Corporates</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index-2.html">
+                            <i class="fa fa-fw fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Corporate</a>
+                    </li>
+                    <li>
+                        <a href="news.html">Corporates</a>
+                    </li>
+                </ol>
+            </section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Basic charts strats here-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i> Corporates
+                            </h4>
+                                <span class="pull-right">
+                                    <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
+                                    <i class="glyphicon glyphicon-remove removepanel"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body table-responsive">
+                                <table class="table table-bordered text-center" id="fitness-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Names</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Representative</th>
+                                            <th class="text-center">Edit/Save</th>
+                                            <th class="text-center">Delete/Cancel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($corporates as $corporate)
+                                        <tr>
+                                            <td>{{$corporate->created_at}}</td>
+                                             <td>{{$corporate->names}}</td>
+                                            <td>{{$corporate->email}}</td>
+                                            <td>{{$corporate->representative}}</td>
+                                            
+                                           <td>
+                                                <a class="edit btn btn-primary" href="{{route('corporate.edit',['id'=>$corporate->id])}}">
+                                                    <i class="fa fa-fw fa-edit"></i> Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="delete btn btn-danger" href="{{route('corporate.destroy',['id'=>$corporate->id])}}">
+                                                    <i class="fa fa-trash-o"></i> Delete
+                                                </a>
+                                            </td>
+                                           
+                                      </tr>
+                                       @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
-            <!-- </div> -->
+            </div>
+        </aside>
 
-@endsection
+        @endsection

@@ -1,74 +1,88 @@
-@extends('layouts.master-client')
+@extends('receptionist.layouts.app')
+
 @section('content')
-          <div class="page-wrapper bg-blue p-t-10 p-b-10 font-robo">
-        <div class="wrapper wrapper--w680">
-            <div class="card">
-                <div class="card-heading"></div>
-                <div class="card-body">
-
-                  <div class='row'>
-                    <div class="col-md-10">
-                    <h2 class="title"> Payment List</h2>
-                  </div>
-                  <div class ="col-md-2"> 
-
-                         <a href="{{action('Receptionist\PaymentController@create')}}" class="btn btn-warning">Add new</a>
-                       </div>
-                     </div>
-                    <table id="example" class="display" style="width:100%">                               
-                       
-                        
-                        <thead class="btn-light">
-                       
+<aside class="right-side right-padding">
+            <section class="content-header">
+                <!--section starts-->
+                <h2>Commited Customer</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index-2.html">
+                            <i class="fa fa-fw fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Commited Customer</a>
+                    </li>
+                    <li>
+                        <a href="news.html">Commited Customer</a>
+                    </li>
+                </ol>
+            </section>
 
 
-                        <tr>
-        <th>ID</th>
-        <th>Customer </th>
-        <th>Receptionist </th>
-        <th>Category</th>
-        <th>sport</th>
-        <th>membership</th>
-        <th>Expiry Date</th>
-        <th>duration</th>
-        <th>Amount</th>
-        <!-- <th>Edit</th> -->
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($payments as $payment)
-      <tr>
-        <td>{{$payment['customer_id']}}</td>
-        <td>{{$payment->committed['firstName']}}  {{$payment->committed['lastName']}}</td>
-        <td>{{$payment->receptionist['name']}}</td>
-        <td>{{$payment->categorie->name}}</td>
-        <td>{{$payment->sport->name}}</td>
-        <td>{{$payment->membership->name}}</td>
-        <td>{{$payment->expiry_date}}</td>
-        <td>{{$payment->duration}}</td>
-        <td>{{$payment->amount}}</td>
-         {{--<td><a href="{{action('Receptionist\PaymentController@edit', $payment['id'])}}" class="btn btn-warning">Edit</a></td> --}}
+            <!-- Datatables -->
 
-          <td>
-          <form action="{{action('Receptionist\PaymentController@destroy', $payment['id'])}}" method="post"> 
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button onclick="return confirm('Are you sure?')" class="btn btn-danger" type="submit">Delete</button>
-           
-          </form>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
+            <!-- /.content -->
 
 
-  </table>
-</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Basic charts strats here-->
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                <i class="fa fa-newspaper-o" aria-hidden="true"></i> Customers
+                            </h4>
+                                <span class="pull-right">
+                                    <i class="glyphicon glyphicon-chevron-up showhide clickable"></i>
+                                    <i class="glyphicon glyphicon-remove removepanel"></i>
+                                </span>
+                            </div>
+                            <div class="panel-body table-responsive">
+                                <table class="table table-bordered text-center" id="fitness-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Date</th>
+                                            <th class="text-center">Customer</th>
+                                            <th class="text-center">Receptionist</th>
+                                            <th class="text-center">Subscription</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center">Expiration Date</th>
+                                            <th class="text-center">Edit/Save</th>
+                                            <th class="text-center">Delete/Cancel</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($payments as $payment)
+                                        <tr>
+                                            <td>{{$payment->created_at}}</td>
+                                             <td>{{$payment->customer_id}}</td>
+                                            <td>{{$payment->receptionist_id}}</td>
+                                            <td>{{$payment->subscription_id}}</td>
+                                            <td>{{$payment->amount}}</td>
+                                            <td>{{$payment->expirydate}}</td>
+                                           <td>
+                                                <a class="edit btn btn-primary" href="{{route('payments.edit',['id'=>$payment->id])}}">
+                                                    <i class="fa fa-fw fa-edit"></i> Edit
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="delete btn btn-danger" href="{{route('payments.destroy',['id'=>$payment->id])}}">
+                                                    <i class="fa fa-trash-o"></i> Delete
+                                                </a>
+                                            </td>
+                                           
+                                      </tr>
+                                       @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
+            </div>
+        </aside>
 
-
-
-@endsection
+        @endsection

@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Http\Controllers\Manager;
+
 use App\Http\Controllers\Controller;
 
+use App\Corporate;
 use Illuminate\Http\Request;
-use App\Customer;
-use App\Entitie;
 
-class corporateController extends Controller
+class CorporateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class corporateController extends Controller
     public function index()
     {
         //
-         $customers=Customer::all();
-        return view('manager/corporate.index', compact('customers'));
+         $corporates=Corporate::all();
+        return view('manager/corporate.index', compact('corporates'));
     }
 
     /**
@@ -25,17 +26,10 @@ class corporateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($entitie_id= null)
+    public function create()
     {
         //
-
-        $entities=null;
-        if(!$entitie_id){
-            $entities=Entitie::all();
-        }
-        
-
-         return view('manager/corporate/create',['entitie_id'=>$entitie_id, 'entities'=>$entities]);
+        return view('manager/corporate.create');
     }
 
     /**
@@ -47,28 +41,25 @@ class corporateController extends Controller
     public function store(Request $request)
     {
         //
-        $customer = new Customer([
-            'firstName' => $request->get('firstName'),
-            'lastName' => $request->get('lastName'),
-            'gender' =>$request->get('gender'),
-            'phone' => $request->get('phone'),
-            'email' => $request->get('email'),
-            'entitie_id' => $request->get('entitie_id'),
-            'dob' => $request->get('dob'),
-            // 'entity_representative' => $request->get('entity_representative')
-          ]);
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+        ]);
+        $corporate = new Corporate();
   
-          $customer->save();
-          return redirect('/manager/corporate')->with('succes', 'Data has been successfully save!');
+        $corporate->names= $request->input('name');
+        $corporate->email= $request->input('email');
+        $corporate->save(); 
+        return redirect()->route('corporate.index')->with('info','corporate Updated Successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Corporate  $corporate
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Corporate $corporate)
     {
         //
     }
@@ -76,56 +67,50 @@ class corporateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Corporate  $corporate
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,$entitie_id=null)
+    public function edit($id)
     {
         //
-        $entities=null;
-        if(!$entitie_id){
-            $entities=Entitie::all();
-        }
-        $customer = Customer::find($id);
-        return view('manager.corporate.edit', compact('customer','id'),['entitie_id'=>$entitie_id,'entities'=>$entities]);
-
+        $corporate = Corporate::find($id);
+        return view('manager/corporate.edit',['corporate'=> $corporate]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Corporate  $corporate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Corporate $corporate)
     {
         //
-        $customer = Customer::find($request->input('id'));
-        $customer->firstName = $request->get('firstName');
-        $customer->lastName = $request->get('lastName');
-        $customer->gender= $request->get('gender');
-        $customer->phone = $request->get('phone');
-        $customer->email = $request->get('email');
-        $customer->entitie_id = $request->get('entitie_id');
-        $customer->dob = $request->get('dob');
-        //$customer->entity_representative=$request->get('entity_representative');
-        $customer->save();
-        return redirect('/manager/corporate');
+        $request->validate([
+             'name'=>'required',
+            'email'=>'required',
+        ]);
+
+        $corporate = Corporate::find($request->input('id'));
+        $corporate->names= $request->input('name');
+        $corporate->email= $request->input('email');
+        $corporate->update(); 
+        return redirect()->route('corporate.index')->with('info','corporate Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Corporate  $corporate
      * @return \Illuminate\Http\Response
      */
-   public function destroy($id)
+    public function destroy($id)
     {
         //
-        $customer = Customer::find($id);
+         $corporate = Corporate::find($id);
         //delete
-        $customer->delete();
+        $corporate->delete();
         return redirect()->route('corporate.index');
     }
 }

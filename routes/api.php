@@ -1,10 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Categorie;
-use App\Sport;
-use App\Membership;
-use App\Entitie;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +13,14 @@ use App\Entitie;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-// Route::apiResource('/payment', 'ApiController');
-Route::post('/loginReceptionist', 'ApiController@loginReceptionist');
-Route::post('/loginController', 'ApiController@loginController');
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+
+
+
+});
+
+Route::post('/loginReceptionist', 'ApiAuthantication@loginReceptionist');
 Route::post('/session','ApiSession@session');
 Route::put('/check','ApiController@show');
 Route::get('/get','ApiSubscribe@getCustomer');
@@ -53,9 +51,3 @@ Route::get('committed', function() {
 });
 Route::get('/committedSport' , 'apicommitted@sport');
 Route::post('/committed', 'apicommitted@committedCustomer');
-
-
-
-
-
-

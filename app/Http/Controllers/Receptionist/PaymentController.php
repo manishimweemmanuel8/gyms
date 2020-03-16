@@ -1,131 +1,112 @@
 <?php
 
 namespace App\Http\Controllers\Receptionist;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\AuthManager;
+
 use App\Http\Controllers\Controller;
 
+use App\Payment;
+use App\Subscription;
 use Illuminate\Http\Request;
 use DB;
-use App\Customer;
-use App\Receptionist;
-use App\Payment;
-use App\Membership;
 
 class PaymentController extends Controller
 {
-     public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $payments = Payment::with('committed')->where('status','Yes')->get();
+        //
+        $payments = Payment::all();
          return view('receptionist/payment.index', compact('payments'));
-        // return $payments;
     }
-    
-     public function create( $commited_id=null,$receptionist_id=null, $membership_id=null)
-        {
-            $commiteds=null;
-        if(!$commited_id){
-            $commiteds=DB::table('commiteds')->get();
-        }
-        $receptionists= null;
-        if(!$receptionist_id){
-            $receptionists = Receptionist::all();
-        }
 
-      
-
-            $categories = DB::table("categories")->pluck("name","id");
-            return view('receptionist/payment.create',compact('categories'),[ 'commited_id'=>$commited_id, 'commiteds'=>$commiteds,'receptionist_id'=>$receptionist_id, 'receptionists'=>$receptionists
-            // ,'membership_id'=>$membership_id,'memberships'=>$memberships
-            ]);
-        }
-
-        public function getSportList(Request $request)
-        {
-            $sports = DB::table("sports")
-            ->where("category_id",$request->category_id)
-            ->pluck("name","id");
-            return response()->json($sports);
-        }
-
-        public function getMembershipList(Request $request)
-        {
-            $memberships = DB::table("memberships")
-            ->where("sport_id",$request->sport_id)
-            ->pluck("name","id");
-            return response()->json($memberships);
-        }
-
-
-
-         public function store(Request $request)
-     {
-       
-
-         $payment = new Payment([
-                'customer_id' => $request->get('customer_id'),
-                'receptionist_id' => Auth::guard('receptionist')->user()->id ,
-                'categorie_id' => $request->get('categorie_id'),
-                'sport_id' => $request->get('sport_id'),
-                'membership_id' => $request->get('membership_id'),
-                'duration' =>DB::table("memberships")
-                ->where("id",$request->get('membership_id'))->value("duration"),
-                'expiry_date' =>$request->get('expiry_date'),
-                'amount'=>DB::table("prices")
-                ->where("categorie_id",$request->get('categorie_id'))
-                ->where("sport_id",$request->get('sport_id'))
-                ->where("membership_id",$request->get('membership_id'))
-                ->value("amount"),
-                'location' => $request->get('location'),
-                'status'=>'Yes',
-                'client_type'=>'INDIVIDUAL',
-
-              ]);
-
-              $payment->save();
-              return redirect('/receptionist/payment')->with('succes', 'Data has been successfully save!'); 
-          }
-            public function show(Payment $payment)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         //
     }
 
-    public function edit($id,$customer_id=null)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-         $customers=null;
-        if(!$customer_id){
-            $customers=Customer::all();
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Payment $payment)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id,$subscription_id=null)
+    {
+         $subscriptions=null;
+        if(!$subscription_id){
+            $subscriptions=Subscription::all();
         }
-        $payment = Payment::find($id);
+         $payment = Payment::find($id);
 
-        $categories = DB::table("categories")->pluck("name","id");
-
-        return view('receptionist.payment.edit', compact('payment','id','categories'),['customer_id'=>$customer_id,'customers'=>$customers]);
+        return view('receptionist.payment.edit', compact('payment','id'),['subscription_id'=>$subscription_id,'subscriptions'=>$subscriptions]);
     }
 
-        
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Payment $payment)
     {
-        $payment = Payment::find($id);
-        $payment->customer_id = $request->get('customer_id');
-        $payment->categorie_id =$request->get('categorie_id');
-        $payment->sport_id= $request->get('sport_id');
-        $payment->membership_id = $request->get('membership_id');
-        $payment->expiry_date = $request->get('expiry_date');
-        $payment->duration=DB::table("memberships")
-        ->where("id",$request->get('membership_id'))->value("duration");
-        $payment->amount=DB::table("prices")
-        ->where("categorie_id",$request->get('categorie_id'))
-        ->where("sport_id",$request->get('sport_id'))
-        ->where("membership_id",$request->get('membership_id'))
-        ->value("amount");
-        $payment->save();
-        return redirect('/receptionist/payment');
+        //
+        $request->validate([
+             'subscription_id'=>'required',
+            'expirydate'=>'required',
+        ]);
+
+        $payment = Payment::find($request->input('id'));
+        $payment->subscription_id= $request->input('subscription_id');
+        $payment->expirydate= $request->input('expirydate');
+        $payment->amount= DB::table('subscriptions')->where('id',$request->input('subscription_id'))->value('amount');
+        $payment->update(); 
+        return redirect()->route('payments.index')->with('info','payment Updated Successfully');
     }
-     public function destroy($id)
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Payment  $payment
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        payment::destroy($id);
-        return redirect('/receptionist/payment');
+        //
+         $payment = Payment::find($id);
+        //delete
+        $payment->delete();
+        return redirect()->route('payments.index');
     }
 }
-

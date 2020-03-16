@@ -8,11 +8,14 @@
     "multiauth",
     "bitfumes",
     "admin auth",
-    "multi auth"
+    "multi auth",
+    "laravel permissions",
+    "laravel roles permissions",
+    "laravel acl"
   ],
   "authors": [
     {
-      "name": "s-sarthak",
+      "name": "sarthaksavvy",
       "email": "sarthak@bitfumes.com"
     }
   ],
