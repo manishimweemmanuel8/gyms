@@ -137,6 +137,7 @@ class ComposerStaticInit6b21d5e499a020a941690ab97cfc7cbd
         ),
         'A' => 
         array (
+            'Arrilot\\Widgets\\' => 16,
             'App\\' => 4,
         ),
     );
@@ -368,6 +369,10 @@ class ComposerStaticInit6b21d5e499a020a941690ab97cfc7cbd
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
         ),
+        'Arrilot\\Widgets\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/arrilot/laravel-widgets/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -454,6 +459,26 @@ class ComposerStaticInit6b21d5e499a020a941690ab97cfc7cbd
         'App\\Receptionist' => __DIR__ . '/../..' . '/app/Receptionist.php',
         'App\\Subscription' => __DIR__ . '/../..' . '/app/Subscription.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Arrilot\\Widgets\\AbstractWidget' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/AbstractWidget.php',
+        'Arrilot\\Widgets\\AsyncFacade' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/AsyncFacade.php',
+        'Arrilot\\Widgets\\Console\\WidgetMakeCommand' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Console/WidgetMakeCommand.php',
+        'Arrilot\\Widgets\\Contracts\\ApplicationWrapperContract' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Contracts/ApplicationWrapperContract.php',
+        'Arrilot\\Widgets\\Controllers\\WidgetController' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Controllers/WidgetController.php',
+        'Arrilot\\Widgets\\Facade' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Facade.php',
+        'Arrilot\\Widgets\\Factories\\AbstractWidgetFactory' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Factories/AbstractWidgetFactory.php',
+        'Arrilot\\Widgets\\Factories\\AsyncWidgetFactory' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Factories/AsyncWidgetFactory.php',
+        'Arrilot\\Widgets\\Factories\\JavascriptFactory' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Factories/JavascriptFactory.php',
+        'Arrilot\\Widgets\\Factories\\WidgetFactory' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Factories/WidgetFactory.php',
+        'Arrilot\\Widgets\\Misc\\EncryptException' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Misc/EncryptException.php',
+        'Arrilot\\Widgets\\Misc\\InvalidWidgetClassException' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Misc/InvalidWidgetClassException.php',
+        'Arrilot\\Widgets\\Misc\\LaravelApplicationWrapper' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Misc/LaravelApplicationWrapper.php',
+        'Arrilot\\Widgets\\Misc\\NamespaceNotFoundException' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Misc/NamespaceNotFoundException.php',
+        'Arrilot\\Widgets\\Misc\\ViewExpressionTrait' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Misc/ViewExpressionTrait.php',
+        'Arrilot\\Widgets\\NamespacesRepository' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/NamespacesRepository.php',
+        'Arrilot\\Widgets\\ServiceProvider' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/ServiceProvider.php',
+        'Arrilot\\Widgets\\WidgetGroup' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/WidgetGroup.php',
+        'Arrilot\\Widgets\\WidgetGroupCollection' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/WidgetGroupCollection.php',
+        'Arrilot\\Widgets\\WidgetId' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/WidgetId.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
