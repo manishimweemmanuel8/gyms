@@ -459,6 +459,7 @@ class ComposerStaticInit6b21d5e499a020a941690ab97cfc7cbd
         'App\\Receptionist' => __DIR__ . '/../..' . '/app/Receptionist.php',
         'App\\Subscription' => __DIR__ . '/../..' . '/app/Subscription.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\Widgets\\RecentNews' => __DIR__ . '/../..' . '/app/Widgets/RecentNews.php',
         'Arrilot\\Widgets\\AbstractWidget' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/AbstractWidget.php',
         'Arrilot\\Widgets\\AsyncFacade' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/AsyncFacade.php',
         'Arrilot\\Widgets\\Console\\WidgetMakeCommand' => __DIR__ . '/..' . '/arrilot/laravel-widgets/src/Console/WidgetMakeCommand.php',
